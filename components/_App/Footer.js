@@ -12,11 +12,11 @@ const Footer = () => {
                         <div className="single-footer-widget">
                             <Link href="/">
                                 <a className="logo">
-                                    <img src="/images/logo2.png" alt="logo" />
+                                    <img src="/images/ayllu_logo.png" width='87' height='24' alt="logo" />
                                 </a>
                             </Link>
 
-                            <p>Working to bring significant changes in online-based learning by doing extensive research for course curriculum preparation, student engagements, and looking forward to the flexible education!</p>
+                            <p>Somos individuos de diferentes países Latino Americanos con un gol en común: Agregar valor educativo a Latino América, para que se sus sociedades se mantengan a la vanguardia de las tecnologías, y las habilidades prácticas para el desarrollo social.</p>
 
                             <ul className="social-link">
                                 <li>
@@ -137,7 +137,7 @@ const Footer = () => {
                 <div className="footer-bottom-area">
                     <div className="row align-items-center">
                         <div className="col-lg-6 col-md-6">
-                            <p><i className='bx bx-copyright'></i>{currentYear} Ayllu is Proudly Powered by <a target="_blank" href="https://envytheme.com/">EnvyTheme</a></p>
+                            <p><i className='bx bx-copyright'></i>{currentYear} Ayllu</p>
                         </div>
 
                         <div className="col-lg-6 col-md-6">
