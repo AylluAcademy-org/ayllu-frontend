@@ -62,7 +62,7 @@ const Navbar = () => {
                                     <li className="nav-item">
                                         <Link href="#" activeClassName="active">
                                             <a onClick={e => e.preventDefault()} className="nav-link">
-                                                Home 
+                                                Home <i className='bx bx-chevron-down'></i>
                                             </a>
                                         </Link>
 
@@ -126,7 +126,7 @@ const Navbar = () => {
                                     <li className="nav-item">
                                         <Link href="#">
                                             <a onClick={e => e.preventDefault()} className="nav-link">
-                                                Pages 
+                                                Pages <i className='bx bx-chevron-down'></i>
                                             </a>
                                         </Link>
 
@@ -230,7 +230,7 @@ const Navbar = () => {
                                     <li className="nav-item megamenu">
                                         <Link href="#">
                                             <a onClick={e => e.preventDefault()} className="nav-link">
-                                                Courses
+                                                Courses <i className='bx bx-chevron-down'></i>
                                             </a>
                                         </Link>
 
@@ -488,15 +488,8 @@ const Navbar = () => {
                                             </li>
                                         </ul>
                                     </li>
-                                    <li className="nav-item">
-                                        <Link href="#" activeClassName="active">
-                                            <a onClick={e => e.preventDefault()} className="nav-link">
-                                                FAQs
-                                            </a>
-                                        </Link>
 
-                                    </li>
-                                    {/* <li className="nav-item">
+                                    <li className="nav-item">
                                         <Link href="#">
                                             <a onClick={e => e.preventDefault()} className="nav-link">
                                                 Events <i className='bx bx-chevron-down'></i>
@@ -516,9 +509,9 @@ const Navbar = () => {
                                                 </Link>
                                             </li>
                                         </ul>
-                                    </li> */}
+                                    </li>
  
-                                    {/* <li className="nav-item">
+                                    <li className="nav-item">
                                         <Link href="#">
                                             <a onClick={e => e.preventDefault()} className="nav-link">
                                                 Shop <i className='bx bx-chevron-down'></i>
@@ -557,8 +550,8 @@ const Navbar = () => {
                                             </li>
                                         </ul>
                                     </li>
-  */}
-                                    {/* <li className="nav-item">
+ 
+                                    <li className="nav-item">
                                         <Link href="#">
                                             <a onClick={e => e.preventDefault()} className="nav-link">
                                                 Blog <i className='bx bx-chevron-down'></i>
@@ -618,7 +611,7 @@ const Navbar = () => {
                                                 </ul>
                                             </li>
                                         </ul>
-                                    </li> */}
+                                    </li>
                                 </ul>
 
                                 <div className="others-option d-flex align-items-center">
