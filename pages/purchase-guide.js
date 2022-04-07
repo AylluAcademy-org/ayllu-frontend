@@ -23,7 +23,7 @@ const PurchaseGuide = () => {
                                 <img src="/images/courses/courses3.jpg" alt="image" />
                                 <p><i>This Purchase Guide was last updated on January 1, 2020.</i></p>
                                 <h3>1. Our website</h3>
-                                <p>Our website address is: http://edemy.com</p>
+                                <p>Our website address is: http://Ayllu.com</p>
                                 <h3>2. Account Registering</h3>
                                 <p>In order to buy any course or become a member of our center, customers/ learners must first register with a personal account providing the following information:</p>
                                 <ol>
@@ -56,7 +56,7 @@ const PurchaseGuide = () => {
                                     <li>To update data you provide directly, log into your account and update your account at any time.</li>
                                 </ul>
                                 <blockquote className="blockquote">
-                                    <p>We collect certain data from you directly, like information you enter yourself, data about your participation in courses, and data from third-party platforms you connect with eDemy. We also collect some data automatically, like information about your device and what parts of our Services you interact with or spend time using.</p>
+                                    <p>We collect certain data from you directly, like information you enter yourself, data about your participation in courses, and data from third-party platforms you connect with Ayllu. We also collect some data automatically, like information about your device and what parts of our Services you interact with or spend time using.</p>
                                 </blockquote>
                                 <h3>7. Our Policy Concerning Children</h3>
                                 <p>We recognize the privacy interests of children and encourage parents and guardians to take an active role in their children’s online activities and interests. Children under 13 (or under 16 in the European Economic Area) should not use the Services. If we learn that we’ve collected personal data from a child under those ages, we will take reasonable steps to delete it.</p>

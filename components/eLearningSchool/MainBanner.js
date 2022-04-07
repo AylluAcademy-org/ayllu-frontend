@@ -9,7 +9,7 @@ const MainBanner = () => {
                     <div className="col-lg-6 col-md-12">
                         <div className="main-banner-content">
                             <h1>The World’s Leading Distance Learning Provider</h1>
-                            <p>Flexible easy to access learning opportunities can bring a significant change in how individuals prefer to learn! The eDemy can offer you to enjoy the beauty of eLearning!</p>
+                            <p>Flexible easy to access learning opportunities can bring a significant change in how individuals prefer to learn! The Ayllu can offer you to enjoy the beauty of eLearning!</p>
 
                             <Link href="/profile-authentication">
                                 <a className="default-btn">

@@ -1,7 +1,7 @@
 {
-    "name": "edemy",
+    "name": "Ayllu",
     "version": "1.4.0",
-    "description": "eDemy - React Next.js Education LMS Template",
+    "description": "Ayllu - React Next.js Education LMS Template",
     "main": "index.js",
     "scripts": {
         "dev": "next dev",

@@ -26,7 +26,7 @@ const Navbar = () => {
     return (
         <React.Fragment>
             <div id="navbar" className="navbar-area">
-                <div className="edemy-nav">
+                <div className="Ayllu-nav">
                     <div className="container-fluid">
                         <div className="navbar navbar-expand-lg navbar-light">
               

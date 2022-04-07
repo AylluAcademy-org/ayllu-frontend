@@ -10,7 +10,7 @@ const ViewAllCourses = () => {
                         <div className="view-all-courses-content">
                             <span className="sub-title">Distance learning</span>
                             <h2>Feel Like You Are Attending Your classNamees Physically!</h2>
-                            <p>eDemy training programs can bring you a super exciting experience of learning through online! You never face any negative experience while enjoying your classNamees virtually by sitting in your comfort zone. Our flexible learning initiatives will help you to learn better and quicker than the traditional ways of learning skills.</p>
+                            <p>Ayllu training programs can bring you a super exciting experience of learning through online! You never face any negative experience while enjoying your classNamees virtually by sitting in your comfort zone. Our flexible learning initiatives will help you to learn better and quicker than the traditional ways of learning skills.</p>
 
                             <Link href="/courses-1">
                                 <a className="default-btn">

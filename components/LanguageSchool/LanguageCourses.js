@@ -6,7 +6,7 @@ const LanguageCourses = () => {
         <div className="courses-area pt-100 pb-70 bg-f5f7fa">
             <div className="container">
                 <div className="section-title">
-                    <span className="sub-title">Welcome to eDemy</span>
+                    <span className="sub-title">Welcome to Ayllu</span>
                     <h2>Our Language Courses</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>

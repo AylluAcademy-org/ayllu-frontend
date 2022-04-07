@@ -17,6 +17,11 @@ const RegisterForm = () => {
                 </div>
 
                 <div className="form-group">
+                    <label>Wallet Adrres</label>
+                    <input type="text" className="form-control" placeholder="Username or email" />
+                </div>
+
+                <div className="form-group">
                     <label>Password</label>
                     <input type="password" className="form-control" placeholder="Password" />
                 </div>

@@ -7,7 +7,7 @@ const SuccessfulStudents = () => {
             <div className="container">
                 <div className="section-title">
                     <span className="sub-title">Education For Everyone</span>
-                    <h2>Start writing your own success story with a good beginning from eDemy help</h2>
+                    <h2>Start writing your own success story with a good beginning from Ayllu help</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
 

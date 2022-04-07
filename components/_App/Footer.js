@@ -123,7 +123,7 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <i className='bx bx-envelope'></i> 
-                                    <a href="mailto:hello@edemy.com">hello@edemy.com</a>
+                                    <a href="mailto:hello@Ayllu.com">hello@Ayllu.com</a>
                                 </li>
                                 <li>
                                     <i className='bx bxs-inbox'></i> 
@@ -137,7 +137,7 @@ const Footer = () => {
                 <div className="footer-bottom-area">
                     <div className="row align-items-center">
                         <div className="col-lg-6 col-md-6">
-                            <p><i className='bx bx-copyright'></i>{currentYear} eDemy is Proudly Powered by <a target="_blank" href="https://envytheme.com/">EnvyTheme</a></p>
+                            <p><i className='bx bx-copyright'></i>{currentYear} Ayllu is Proudly Powered by <a target="_blank" href="https://envytheme.com/">EnvyTheme</a></p>
                         </div>
 
                         <div className="col-lg-6 col-md-6">

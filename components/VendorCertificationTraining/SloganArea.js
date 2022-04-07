@@ -15,7 +15,7 @@ const SloganArea = () => {
                         <div className="slogan-content">
                             <p>Our project management training equips learners with the knowledge and discipline required to effectively plan, manage, execute, and control projects regardless of industry. You'll learn all about the most popular project management methodologies that help organizations deliver successful projects.</p>
                             <h3>William James</h3>
-                            <span className="sub-title">CEO at eDemy</span>
+                            <span className="sub-title">CEO at Ayllu</span>
                         </div>
                     </div>
                 </div>

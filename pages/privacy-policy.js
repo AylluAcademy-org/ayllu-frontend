@@ -25,7 +25,7 @@ const PrivacyPolicy = () => {
                                 <h3>1. What Data We Get</h3>
 
                                 <blockquote className="blockquote">
-                                    <p>We collect certain data from you directly, like information you enter yourself, data about your participation in courses, and data from third-party platforms you connect with eDemy. We also collect some data automatically, like information about your device and what parts of our Services you interact with or spend time using.</p>
+                                    <p>We collect certain data from you directly, like information you enter yourself, data about your participation in courses, and data from third-party platforms you connect with Ayllu. We also collect some data automatically, like information about your device and what parts of our Services you interact with or spend time using.</p>
                                 </blockquote>
 
                                 <h3>2. Data You Provide to Us</h3>
