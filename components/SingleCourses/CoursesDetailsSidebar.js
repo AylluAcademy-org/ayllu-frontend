@@ -39,22 +39,17 @@ const CoursesDetailsSidebar = () => {
                 </div>
 
                 <ul className="info">
-                    <li className="price">
-                        <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-tag"></i> Price</span>
-                            $49
-                        </div>
-                    </li>
+               
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-teacher"></i> Instructor</span>
-                            Sarah Taylor
+                            Juán Perez
                         </div>
                     </li>
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-time"></i> Duration</span>
-                            7 weeks
+                            20 hrs
                         </div>
                     </li>
                     <li>
@@ -63,12 +58,7 @@ const CoursesDetailsSidebar = () => {
                             25
                         </div>
                     </li>
-                    <li>
-                        <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-web"></i> Enrolled</span>
-                            255 students
-                        </div>
-                    </li>
+
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-lock"></i> Access</span>
@@ -90,18 +80,7 @@ const CoursesDetailsSidebar = () => {
                     </Link>
                 </div>
 
-                <div className="courses-share">
-                    <div className="share-info">
-                        <span>Share This Course <i className="flaticon-share"></i></span>
-
-                        <ul className="social-link">
-                            <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
-                            <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
-                            <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
-                            <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-linkedin'></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+            
             </div>
         </React.Fragment>
     )
