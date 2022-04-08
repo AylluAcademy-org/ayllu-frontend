@@ -12,7 +12,7 @@ const SingleCourses = () => {
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle="Python for Finance: Investment Fundamentals & Data Analytics" 
+                pageTitle="Introducción a Scala" 
                 homePageUrl="/" 
                 homePageText="Home" 
                 innerPageUrl="/courses-1" 
@@ -40,12 +40,11 @@ const SingleCourses = () => {
                                     <TabPanel>
                                         <div className="courses-overview">
                                             <h3>Course Description</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                                            <h3>Certification</h3>
+                                            <p>Aprende a desarrollar programas con el lenguaje Scala desde cero hasta conceptos avanzados</p>
+                                            {/* <h3>Certification</h3>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
                                             <h3>Who this course is for</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p> */}
                                         </div>
                                     </TabPanel>
 
@@ -338,7 +337,6 @@ const SingleCourses = () => {
                 </div>
             </div>
 
-            <YouMightLikeTheCourses />
 
             <Footer />
         </React.Fragment>
