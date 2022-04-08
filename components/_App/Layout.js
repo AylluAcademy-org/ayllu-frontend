@@ -6,11 +6,11 @@ const Layout = ({ children }) => {
     return(
         <React.Fragment>
             <Head>
-                <title>Ayllu - React Next.js Education LMS Template</title>
+                <title>Ayllu Academy</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="description" content="Ayllu - React Next.js Education LMS Template" />
-                <meta name="og:title" property="og:title" content="Ayllu - React Next.js Education LMS Template"></meta>
-                <meta name="twitter:card" content="Ayllu - React Next.js Education LMS Template"></meta>
+                <meta name="description" content="Ayllu Academy" />
+                <meta name="og:title" property="og:title" content="Ayllu Academy"></meta>
+                <meta name="twitter:card" content="Ayllu - Academy"></meta>
                 <link rel="canonical" href="https://Ayllu-react.envytheme.com/"></link>
             </Head>
 
