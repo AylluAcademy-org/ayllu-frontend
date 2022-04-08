@@ -12,7 +12,7 @@ const Footer = () => {
                         <div className="single-footer-widget">
                             <Link href="/">
                                 <a className="logo">
-                                    <img src="/images/ayllu_logo.png" width='87' height='24' alt="logo" />
+                                    <img src="/images/ayllu_logo2.png" width='87' height='24' alt="logo" />
                                 </a>
                             </Link>
 
@@ -45,7 +45,13 @@ const Footer = () => {
 
                     <div className="col-lg-2 col-md-6 col-sm-6">
                         <div className="single-footer-widget pl-5">
-                            <h3>Explore</h3>
+                            
+                        </div>
+                    </div>
+
+                    <div className="col-lg-2 col-md-6 col-sm-6">
+                        <div className="single-footer-widget">
+                        <h3>Navegar</h3>
                             <ul className="footer-links-list">
                                 <li>
                                     <Link href="/">
@@ -70,39 +76,6 @@ const Footer = () => {
                                 <li>
                                     <Link href="/contact">
                                         <a>Contact</a>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className="col-lg-2 col-md-6 col-sm-6">
-                        <div className="single-footer-widget">
-                            <h3>Resources</h3>
-                            <ul className="footer-links-list">
-                                <li>
-                                    <Link href="#">
-                                        <a>Student Success</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="#">
-                                        <a>Scholarships</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="#">
-                                        <a>For Business</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="#">
-                                        <a>Go Premium</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="#">
-                                        <a>Team Plans</a>
                                     </Link>
                                 </li>
                             </ul>
