@@ -20,6 +20,13 @@ const RegisterForm = () => {
                     <label>Wallet Address</label>
                     <input type="text" className="form-control" placeholder="Username or email" />
                 </div>
+                
+                <div className="form-group">
+                    <label>Profile Picture</label>
+                    <div class="custom-file">
+                        <input type="file" className="custom-file-input" id="customFile"/>
+                    </div>
+                </div>
 
                 <div className="form-group">
                     <label>Password</label>
