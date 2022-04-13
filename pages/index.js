@@ -17,7 +17,6 @@ const Index = () => {
         <React.Fragment>
             <Navbar />
             <MainBanner />
-            <Partner />
             <Features />
             <AboutUs />
             <PopularCourses />
