@@ -12,12 +12,12 @@ const SingleCourses = () => {
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle="Introducción a Scala" 
+                pageTitle="Introducción a Haskell" 
                 homePageUrl="/" 
                 homePageText="Home" 
                 innerPageUrl="/courses-1" 
                 innerPageText="Courses" 
-                activePageText="Introducción a Scala" 
+                activePageText="Introducción a Haskell" 
             />  
             
             <div className="courses-details-area pb-80">
@@ -35,7 +35,7 @@ const SingleCourses = () => {
 
                                         <TabPanel>
                                             <div className="courses-curriculum">
-                                                <h3>Python Introduction</h3>
+                                                <h3>Haskell Modulo 1</h3>
                                                 <ul>
                                                     <li>
                                                         <a href="#" className="d-flex justify-content-between align-items-center">
@@ -46,7 +46,7 @@ const SingleCourses = () => {
                                                         </a>
                                                     </li>
                                                 </ul>
-                                                <h3>Stepping into the World of Python</h3>
+                                                <h3>Haskell Modulo 2</h3>
                                                 <ul>
                                                     <li>
                                                         <a href="#" className="d-flex justify-content-between align-items-center">

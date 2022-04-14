@@ -48,34 +48,34 @@ const CoursesDetailsSidebar = () => {
                     </li>
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-time"></i> Duration</span>
+                            <span><i className="flaticon-time"></i> Duración</span>
                             20 hrs
                         </div>
                     </li>
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-distance-learning"></i> Lessons</span>
+                            <span><i className="flaticon-distance-learning"></i> Lecciones</span>
                             25
                         </div>
                     </li>
 
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-lock"></i> Access</span>
+                            <span><i className="flaticon-lock"></i> Acceso</span>
                             Lifetime
                         </div>
                     </li>
                 </ul>
 
                 <div className="btn-box">
-                    <Link href="#">
+                    {/* <Link href="#">
                         <a className="default-btn">
                             <i className="flaticon-shopping-cart"></i> Add to Cart <span></span>
                         </a>
-                    </Link>
+                    </Link> */}
                     <Link href="#">
                         <a className="default-btn">
-                            <i className="flaticon-tag"></i> Buy Now <span></span>
+                            <i className="flaticon-tag"></i> Comprar ahora <span></span>
                         </a>
                     </Link>
                 </div>

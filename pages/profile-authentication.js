@@ -10,10 +10,10 @@ const ProfileAuthentication = () => {
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle="Profile Authentication" 
+                pageTitle="Autenticación de perfil" 
                 homePageUrl="/" 
                 homePageText="Home" 
-                activePageText="Profile Authentication" 
+                activePageText="Autenticación de perfil" 
             />  
 
             <div className="profile-authentication-area ptb-100">

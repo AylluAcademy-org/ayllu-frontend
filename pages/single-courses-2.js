@@ -11,12 +11,12 @@ const SingleCourses = () => {
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle="Python for Finance: Investment Fundamentals & Data Analytics" 
+                pageTitle="Introducción a haskell" 
                 homePageUrl="/" 
                 homePageText="Home" 
                 innerPageUrl="/courses-1" 
                 innerPageText="Courses" 
-                activePageText="Python for Finance: Investment Fundamentals & Data Analytics" 
+                activePageText="Introducción a haskell" 
             />  
 
             <div className="courses-details-area ptb-100">

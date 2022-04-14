@@ -8,17 +8,17 @@ const RegisterForm = () => {
             <form>
                 <div className="form-group">
                     <label>Nombre Completo</label>
-                    <input type="text" className="form-control" placeholder="Username or email" />
+                    <input type="text" className="form-control" placeholder="Nombre completo" />
                 </div>
 
                 <div className="form-group">
                     <label>Correo Electrónico</label>
-                    <input type="email" className="form-control" placeholder="Username or email" />
+                    <input type="email" className="form-control" placeholder="Correo Electrónico" />
                 </div>
 
                 <div className="form-group">
                     <label>Dirección de billetera digital ($ADA)</label>
-                    <input type="text" className="form-control" placeholder="Username or email" />
+                    <input type="text" className="form-control" placeholder="Dirección" />
                 </div>
                 
                 <div className="form-group">
@@ -30,7 +30,7 @@ const RegisterForm = () => {
 
                 <div className="form-group">
                     <label>Contraseña</label>
-                    <input type="password" className="form-control" placeholder="Password" />
+                    <input type="password" className="form-control" placeholder="Contrasena" />
                 </div>
 
                 <p className="description">La contraseña debe tener al menos ocho caracteres. Para hacerlo más fuerte, use letras mayúsculas y minúsculas, números y símbolos como ! " ? $ % ^ & )</p>
