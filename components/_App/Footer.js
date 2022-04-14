@@ -55,27 +55,23 @@ const Footer = () => {
                             <ul className="footer-links-list">
                                 <li>
                                     <Link href="/">
-                                        <a>Home</a>
+                                        <a>Inicio</a>
                                     </Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <Link href="/about-1">
                                         <a>About</a>
                                     </Link>
-                                </li>
+                                </li> */}
                                 <li>
                                     <Link href="/courses-1">
-                                        <a>Courses</a>
+                                        <a>Cursos</a>
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link href="/events">
-                                        <a>Events</a>
-                                    </Link>
-                                </li>
+
                                 <li>
                                     <Link href="/contact">
-                                        <a>Contact</a>
+                                        <a>Contacto</a>
                                     </Link>
                                 </li>
                             </ul>
@@ -84,7 +80,7 @@ const Footer = () => {
 
                     <div className="col-lg-4 col-md-6 col-sm-6">
                         <div className="single-footer-widget">
-                            <h3>Address</h3>
+                            <h3>Direccion</h3>
                             <ul className="footer-contact-info">
                                 <li>
                                     <i className='bx bx-map'></i> 
@@ -98,10 +94,7 @@ const Footer = () => {
                                     <i className='bx bx-envelope'></i> 
                                     <a href="mailto:hello@Ayllu.com">hello@Ayllu.com</a>
                                 </li>
-                                <li>
-                                    <i className='bx bxs-inbox'></i> 
-                                    <a href="tel:+557854578964">+55 785 4578964</a>
-                                </li>
+                            
                             </ul>
                         </div>
                     </div>
@@ -117,12 +110,12 @@ const Footer = () => {
                             <ul>
                                 <li>
                                     <Link href="/privacy-policy">
-                                        <a>Privacy Policy</a>
+                                        <a>Politica de privacidad</a>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href="/terms-of-service">
-                                        <a>Terms & Conditions</a>
+                                        <a>Terminos y condiciones</a>
                                     </Link>
                                 </li>
                             </ul>

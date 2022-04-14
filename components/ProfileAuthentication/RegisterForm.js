@@ -3,37 +3,37 @@ import React from 'react';
 const RegisterForm = () => {
     return (
         <div className="register-form">
-            <h2>Register</h2>
+            <h2>Registrate</h2>
 
             <form>
                 <div className="form-group">
-                    <label>Username</label>
+                    <label>Nombre Completo</label>
                     <input type="text" className="form-control" placeholder="Username or email" />
                 </div>
 
                 <div className="form-group">
-                    <label>Email</label>
+                    <label>Correo Electrónico</label>
                     <input type="email" className="form-control" placeholder="Username or email" />
                 </div>
 
                 <div className="form-group">
-                    <label>Wallet Address</label>
+                    <label>Dirección de billetera digital ($ADA)</label>
                     <input type="text" className="form-control" placeholder="Username or email" />
                 </div>
                 
                 <div className="form-group">
-                    <label>Profile Picture</label>
+                    <label>Avatar</label>
                     <div class="custom-file">
                         <input type="file" className="custom-file-input" id="customFile"/>
                     </div>
                 </div>
 
                 <div className="form-group">
-                    <label>Password</label>
+                    <label>Contraseña</label>
                     <input type="password" className="form-control" placeholder="Password" />
                 </div>
 
-                <p className="description">The password should be at least eight characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & )</p>
+                <p className="description">La contraseña debe tener al menos ocho caracteres. Para hacerlo más fuerte, use letras mayúsculas y minúsculas, números y símbolos como ! " ? $ % ^ & )</p>
 
                 <button type="submit">Register</button>
             </form>

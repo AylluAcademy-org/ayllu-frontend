@@ -11,25 +11,25 @@ const CoursesGrid01 = () => {
             <PageBanner 
                 pageTitle="Listado de Cursos" 
                 homePageUrl="/" 
-                homePageText="Home" 
-                activePageText="Courses Grid 01" 
+                homePageText="Inicio" 
+                activePageText="Listado de Cursos" 
             />  
 
             <div className="courses-area courses-section pt-100 pb-70">
                 <div className="container">
                     <div className="Ayllu-grid-sorting row align-items-center">
                         <div className="col-lg-8 col-md-6 result-count">
-                            <p>We found <span className="count">12</span> courses available for you</p>
+                            <p>Encontramos <span className="count">12</span> cursos disponibles para ti</p>
                         </div>
 
                         <div className="col-lg-4 col-md-6 ordering">
                             <div className="select-box">
                                 <select className="form-control">
-                                    <option>Sort By</option>
-                                    <option>Popularity</option>
-                                    <option>Latest</option>
-                                    <option>Price: low to high</option>
-                                    <option>Price: high to low</option>
+                                    <option>Ordenar por</option>
+                                    <option>Popularidad</option>
+                                    <option>Más recientes</option>
+                                    <option>Precio: bajo a alto</option>
+                                    <option>Precio: alto a bajo</option>
                                 </select>
                             </div>
                         </div>
@@ -57,14 +57,14 @@ const CoursesGrid01 = () => {
 
                                     <h3>
                                         <Link href="/single-courses-1">
-                                            <a>Introduction to Scala</a>
+                                            <a>Introducción a Haskell</a>
                                         </Link>
                                     </h3>
                                     
                                     <p>Aprende a desarrollar programas con el lenguaje Scala desde cero hasta conceptos avanzados</p>
                                     <ul className="courses-box-footer d-flex justify-content-between align-items-center">
                                         <li>
-                                            <i className='flaticon-agenda'></i> 15 Lessons
+                                            <i className='flaticon-agenda'></i> 15 Lecciones
                                         </li>
 
                                     </ul>

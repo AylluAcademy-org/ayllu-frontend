@@ -52,7 +52,7 @@ const Navbar = () => {
 
                             <div className={classOne} id="navbarSupportedContent">
                                 <form className="search-box">
-                                    <input type="text" className="input-search" placeholder="Search for anything" />
+                                    <input type="text" className="input-search" placeholder="Busca lo que desees" />
                                     <button type="submit">
                                         <i className="flaticon-search"></i>
                                     </button>
@@ -62,7 +62,7 @@ const Navbar = () => {
                                     <li className="nav-item">
                                         <Link href="/" activeClassName="active">
                                             <a className="nav-link">
-                                                Home 
+                                                Inicio 
                                             </a>
                                         </Link>
 
@@ -175,19 +175,20 @@ const Navbar = () => {
                                     <li className="nav-item ">
                                         <Link href="/courses-1">
                                             <a  className="nav-link">
-                                                Courses
+                                                Cursos
                                             </a>
                                         </Link>
 
                                     </li>
                                     <li className="nav-item">
-                                        <Link href="/faq" activeClassName="active">
+                                        <Link href="/faq">
                                             <a className="nav-link">
                                                 FAQs
                                             </a>
                                         </Link>
 
                                     </li>
+                                   
 
                                     {/* <li className="nav-item">
                                         <Link href="#">
@@ -326,7 +327,7 @@ const Navbar = () => {
                                     <div className="option-item">
                                         <Link href="/profile-authentication">
                                             <a className="default-btn">
-                                                <i className="flaticon-user"></i> Login/Register <span></span>
+                                                <i className="flaticon-user"></i> Entrar/Registrarse <span></span>
                                             </a>
                                         </Link>
                                     </div>
