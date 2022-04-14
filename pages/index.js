@@ -11,6 +11,7 @@ import LatestNews from '../components/Common/LatestNews';
 import ViewAllCourses from '../components/eLearningSchool/ViewAllCourses';
 import AffordableCertification from '../components/eLearningSchool/AffordableCertification';
 import Footer from '../components/_App/Footer';
+import SubscribeForm from '../components/Common/SubscribeForm';
 
 const Index = () => {
     return (
@@ -18,6 +19,7 @@ const Index = () => {
             <Navbar />
             <MainBanner />
             <Features />
+            <SubscribeForm/>
             <AboutUs />
             <PopularCourses />
             <FeedbackSliderWithFunFacts />
