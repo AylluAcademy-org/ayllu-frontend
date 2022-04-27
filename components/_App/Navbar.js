@@ -2,6 +2,7 @@ import React from 'react';
 import Link from '../../utils/ActiveLink';
 import blockfrostApiKey from '../../config';
 import NamiWalletApi, { Cardano } from '../../pages/nami-js'
+let nami;
 
 const Navbar = () => {
 
