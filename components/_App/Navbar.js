@@ -385,7 +385,7 @@ const Navbar = () => {
                                     </div> */}
                                     <div className="option-item">
                                             <button className="default-btn"  onClick={connect}>
-                                                 {connected ? "Conectado" : "Conectar a Nami"} 
+                                            <i className="flaticon-credit-card"></i> {connected ? "Conectado" : "Conectar a Nami"} 
                                             </button>
                                     </div>
 
