@@ -1,12 +1,66 @@
 import React from 'react';
 import Link from '../../utils/ActiveLink';
+import blockfrostApiKey from '../../config';
+import NamiWalletApi, { Cardano } from '../../pages/nami-js'
+let nami;
 
 const Navbar = () => {
+
+    /**
+     * START WALLET SETUP
+     */
+     const [connected, setConnected] = React.useState()
+     const [address, setAddress] = React.useState()
+     const [nfts, setNfts] = React.useState([])
+     const [balance, setBalance] = React.useState()
+     const [transaction, setTransaction] = React.useState()
+     const [amount, setAmount] = React.useState("10")
+     const [txHash, setTxHash] = React.useState()
+     const [recipientAddress, setRecipientAddress] = React.useState("addr_test1qqsjrwqv6uyu7gtwtzvhjceauj8axmrhssqf3cvxangadqzt5f4xjh3za5jug5rw9uykv2klc5c66uzahu65vajvfscs57k2ql")
+     const [witnesses, setWitnesses] = React.useState()
+     const [policy, setPolicy] = React.useState()
+     const [builtTransaction, setBuiltTransaction] = React.useState() 
+ 
+     const [complextxHash, setComplextxHash] = React.useState()
+     const [policyExpiration, setPolicyExpiration] = React.useState(new Date());
+     const [complexTransaction, setComplexTransaction] = React.useState({recipients: [{address:"addr_test1qqsjrwqv6uyu7gtwtzvhjceauj8axmrhssqf3cvxangadqzt5f4xjh3za5jug5rw9uykv2klc5c66uzahu65vajvfscs57k2ql", 
+         amount: "3", 
+         mintedAssets:[{assetName: "MyNFT", quantity:'1',  policyId: "Example PolicyID", 
+         policyScript:"ExamplePolicy"}] }]})
+ 
+    /**
+     * END WALLET SETUP
+     */
     const [menu, setMenu] = React.useState(true)
 
     const toggleNavbar = () => {
         setMenu(!menu)
     }
+    React.useEffect(() => {
+        const defaultDate = new Date();
+        defaultDate.setTime(defaultDate.getTime() + (1 * 60 * 90 * 1000))
+        setPolicyExpiration(defaultDate);
+
+    }, [])
+    React.useEffect(() => {
+        async function t() {
+
+            const S = await Cardano();
+            nami = new NamiWalletApi(
+                S,
+                window.cardano,
+               blockfrostApiKey
+            )
+
+
+            if (await nami.isInstalled()) {
+                await nami.isEnabled().then(result => { setConnected(result) })
+
+            }
+        }
+
+        t()
+    }, [])
 
     React.useEffect(() => {
         let elementId = document.getElementById("navbar");
@@ -22,7 +76,13 @@ const Navbar = () => {
  
     const classOne = menu ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
     const classTwo = menu ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
-
+ 
+    const connect = async () => {
+        // Connects nami wallet to current website 
+        await nami.enable()
+            .then(result => setConnected(result))
+            .catch(e => console.log(e))
+    }
     return (
         <React.Fragment>
             <div id="navbar" className="navbar-area">
@@ -323,6 +383,11 @@ const Navbar = () => {
                                             </Link>
                                         </div>
                                     </div> */}
+                                    <div className="option-item">
+                                            <button className="default-btn"  onClick={connect}>
+                                                 {connected ? "Conectado" : "Conectar a Nami"} 
+                                            </button>
+                                    </div>
 
                                     <div className="option-item">
                                         <Link href="/profile-authentication">
