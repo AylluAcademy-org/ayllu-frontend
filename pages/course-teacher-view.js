@@ -3,14 +3,14 @@ import Navbar from '../components/_App/Navbar';
 import PageBanner from '../components/Common/PageBanner';
 import Footer from '../components/_App/Footer';
 import ProfileCourses from '../components/Profile/ProfileCourses';
-import Courses from '../components/Profile/Courses';
+import Courses from '../components/Profile/courses-teacher';
 
 const Profile = () => {
     return (
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle="Perfil" 
+                pageTitle="Nuevo curso" 
                 homePageUrl="/" 
                 homePageText="Inicio" 
                 activePageText="Perfil" 
@@ -27,15 +27,15 @@ const Profile = () => {
                                 <div className="profile-details">
                                     <div className="form-group">
                                         <label>Nombre Completo</label>
-                                        <input type="text" className="form-control" placeholder="David Quintanilla" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Email</label>
-                                        <input type="text" className="form-control" placeholder="dquintanilla@ayluu.io" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Dirección de Wallet</label>
                                         <input type="text" className="form-control" placeholder="Nombre completo" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Categoria</label>
+                                        <input type="text" className="form-control" placeholder="Categoria" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Descripcion</label>
+                                        <textarea type="text" className="form-control" placeholder="Descripcion" />
                                     </div>
                                 </div>           
                    
@@ -45,17 +45,15 @@ const Profile = () => {
 
                             <div className="col-lg-3 col-md-3">
                                 <div className="content">
-                                   
-                                <img class="rounded-circle z-depth-2" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
-                                    data-holder-rendered="true"/>
-                                    <label>Cambiar foto</label>
+                                <label>Portada del curso</label>
+
+                                <img alt="100x100" src="https://i.ytimg.com/vi/fJRBeWwdby8/maxresdefault.jpg"
+                                  />
 
                                     <div class="custom-file">
                                         <input type="file" className="custom-file-input" id="customFile"/>
                                     </div>
                                     
-                                    <h3 className='mt-3'>Saldo: 430 AYLLU</h3>
-                                    <button class="btn btn-primary" type="submit">Transferir a wallet</button>
 
                                 </div>
                                 
@@ -63,7 +61,6 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    
                     <Courses />
                 </div>
             </div>
