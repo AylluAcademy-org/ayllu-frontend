@@ -17,6 +17,10 @@ yarn install
 yarn dev
 ```
 
+## Style
+
+For the style part, this app uses bootstrap 4 and the component library: https://mui.com/material-ui/getting-started/installation/
+
 ## Author
 
 👤 **Ayllu **
