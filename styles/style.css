@@ -63,6 +63,7 @@ This files table contents are outlined below>>>>>
 ** - Contact Area CSS
 ** - Footer Area CSS
 ** - Go Top CSS
+** - Module test part
 */
 /*================================================
 Default CSS
@@ -17633,3 +17634,192 @@ Go Top CSS
   transform: translateY(-10px);
 }
 /*# sourceMappingURL=style.css.map */
+/*
+  Module test part
+*/
+.title-test-banner{
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 15px;
+}
+
+
+.image-test{
+  padding: 0%;
+  margin: 0%;
+  max-width: 100%;
+  max-height: 100%;
+ 
+}
+
+.info-test{
+  padding-left: 5%;
+  justify-content: center;
+  align-items: center; 
+}
+
+.info-test .list-title-test{
+  border-bottom: 2px solid grey;
+  
+}
+.info-test p{
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.info-test .list-info-test{
+  margin-top: 30px;
+}
+
+.info-test .btn-test  {
+  border: none;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  color: #ffffff;
+  background-color: #fe4a55;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+
+.info-test .btn-test span {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #221638;
+  -webkit-transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 5px;
+}
+
+.info-test .btn-test:hover {
+  color: #ffffff;
+}
+
+.info-test .btn-test:hover span {
+  width: 225%;
+  height: 562.5px;
+}
+
+
+.test-part .name-module-test{
+  color: #007bb5;
+  
+  
+
+};
+
+.test-title-area{
+  
+  width: 100%;
+}
+
+ .test-title-course  {
+    
+  position: relative;
+  z-index: 1;
+  padding-top: 0.5%;
+  padding-bottom: 80px;
+  background-color: #100f1f;
+}
+
+.test-title-course h2 {
+
+  text-align: center;
+  max-width: 800px;
+  margin-top: 80px;
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 36px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+
+.test-part{
+  width: 100%;
+  max-height: auto;
+  background-color: #100f1f;
+  color: #ffffff ;
+  padding: 20px;
+
+};
+
+.test-part .container {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.test-part .name-module-test {
+  
+  
+  font-size: 30px;
+  font-weight: 600;
+
+};
+
+.test-part .number-question {
+  
+  font-size: 20px;
+  font-weight: 600;
+
+};
+
+.question-area P{  
+  color: white;
+  padding: 12px;
+  max-width: max-content;
+}
+
+.answer-area {
+  
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.answer-area button{
+  width: 90%;
+  margin: 1px;
+  margin-bottom: 20px;
+  padding-bottom: 0px;
+  
+}
+
+.testAreaButton{
+  position: relative;
+  z-index: 1;
+  background-color: #100f1f !important;
+  
+}
+
+
+
+.testAreaButton .btn-test-next{
+  position: absolute;  
+  right: 10%;
+    
+}
+
+.testAreaButton .btn-test-previous{
+  position: absolute;  
+  left: 10%; 
+  
+}
+
+
+
+
+
