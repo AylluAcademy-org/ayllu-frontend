@@ -1,31 +1,31 @@
 import React from 'react';
+import { useEffect, useState } from "react";
 
-const TestView = () => {
+
+
+const TestView = ({currentQ}) => {
+    let contL=0;
+    const AB=['A','B','C','D','E','F','G','H','I'];
+    
+     
     
     return (
         
             <div className='test-part'>
-                <div className="container " >
-                    <span classname="name-module-test ">Module 3:Exam</span>     
-                    <span className='number-question'> Pregunta 1 de</span> 5  
-                                      
-                </div>
-
-                <div className='container question-area'>
-                    <p>Lorem ipsum?</p>
-                    <div className='answer-area row'>
-                        <div><span>A</span><button>Respuesta 1</button></div>
-                        <div><span>B</span><button>Respuesta 2</button></div>
-                        <div><span>C</span><button>Respuesta 3</button></div>
-                        <div><span>D</span><button>Respuesta 4</button></div>
+               
+                <div className='question-area'>
+                    <p>{currentQ.quest}</p>
+                    <div className='answer-area '>
+                        {currentQ.answ.map((item,index) => ( 
+                                                      
+                            <div ><button><span>{AB[index]}</span>{item}</button></div>
+                            
+                        ))}                      
+                      
+                        
                     </div>
 
-                </div>
-
-
-
-
-                
+                </div>                
             </div>
            
             
@@ -33,4 +33,4 @@ const TestView = () => {
     );
 }
 
-export default TestView;
+export default TestView ;
