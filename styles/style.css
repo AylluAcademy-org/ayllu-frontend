@@ -63,7 +63,7 @@ This files table contents are outlined below>>>>>
 ** - Contact Area CSS
 ** - Footer Area CSS
 ** - Go Top CSS
-** - Module test part
+** - Module test CSS
 */
 /*================================================
 Default CSS
@@ -17637,6 +17637,10 @@ Go Top CSS
 /*
   Module test part
 */
+
+
+
+
 .title-test-banner{
   padding-top: 60px;
   padding-bottom: 60px;
@@ -17719,9 +17723,22 @@ Go Top CSS
 
 };
 
+/*
+  view 2 test 
+*/
+.test-module-area {
+  padding: 0%;
+  margin: 0%;
+  position: absolute;
+  background-color: #00bcd4 !important;
+}
 .test-title-area{
-  
-  width: 100%;
+    height:100%;
+    width:100%;
+    position:absolute;    
+    left:0;
+    overflow:hidden;
+    background-color: #100f1f;
 }
 
  .test-title-course  {
@@ -17729,7 +17746,7 @@ Go Top CSS
   position: relative;
   z-index: 1;
   padding-top: 0.5%;
-  padding-bottom: 80px;
+  padding-bottom: 20px;
   background-color: #100f1f;
 }
 
@@ -17738,7 +17755,6 @@ Go Top CSS
   text-align: center;
   max-width: 800px;
   margin-top: 80px;
-  margin-bottom: 1%;
   margin-left: auto;
   margin-right: auto;
   font-size: 36px;
@@ -17746,77 +17762,184 @@ Go Top CSS
   color: #ffffff;
 }
 
+.test-moduleQ{
+  position: relative;
+  z-index: 1;
+}
+
+.test-title-course h4 {
+  position: absolute;  
+  left: 11%; 
+  max-width: 800px;
+  margin-top: 1.5%;
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.test-title-course h5 {
+  position: absolute;  
+  right: 10%; 
+  max-width: 800px;
+  margin-top: 1.5%;
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  font-weight:400;
+  color: #ffffff;
+}
+
+.test-progressbar {  
+  margin-left: 10%;
+  margin-right: 11%;
+  margin-top: 4rem;
+  margin-bottom: 0%;
+  width: auto;
+  height: fit-content;
+  
+}
 
 .test-part{
   width: 100%;
   max-height: auto;
   background-color: #100f1f;
   color: #ffffff ;
-  padding: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
 
 };
 
-.test-part .container {
-  display: flex;
-  justify-content: space-between;
 
-  width: 100%;
-}
 
 .test-part .name-module-test {
   
   
-  font-size: 30px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 500;
 
 };
 
 .test-part .number-question {
   
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
 
 };
 
+.test-part .question-area{
+
+}
+
 .question-area P{  
+  font-size: 20px;
+  font-weight: 600;
   color: white;
-  padding: 12px;
-  max-width: max-content;
+  padding: 1px;
+  
 }
 
 .answer-area {
+  display: row;
+  align-items: center;
+ 
+  width: 100%;
   
-  padding-right: 12px;
-  padding-left: 12px;
+}
+
+.answer-area button span{  
+  width: fit-content;
+  padding: 0px 10px;  
+  height: 30px;
+  font-size: 20px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-weight: 400;
+  background-color: #3f3d6b;  
+  color: #ffffff;
+  margin-right: 15px;
+  
 }
 
 .answer-area button{
-  width: 90%;
-  margin: 1px;
-  margin-bottom: 20px;
-  padding-bottom: 0px;
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  width:100%;
+  height: 34px;
+  margin: 2px;
+  border-radius: 10px;
+  margin-left: 0%;
+  margin-bottom: 1%;
+  padding: 0px;
+  font-size: 20px;
+  font-weight: 400;
   
 }
 
-.testAreaButton{
-  position: relative;
-  z-index: 1;
-  background-color: #100f1f !important;
+.test-title-area .testAreaButton{
+  width: 100%;
+  height: 100%;
+  float:left;
   
+  padding-top: 100px;
+  padding: 10px 55px;
+  
+}
+
+.test-title-area .test-part{
+  height: fit-content;
+  min-height: 250px;
+
 }
 
 
 
 .testAreaButton .btn-test-next{
+  width: 150px;
   position: absolute;  
   right: 10%;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  color: #ffffff;
+  background-color: #fe4a55;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 5px;
+  padding: 5px;
+  
+ 
     
 }
 
+.testAreaButton .btn-test-next:hover {
+  color: #100f1f;
+}
+
+
 .testAreaButton .btn-test-previous{
+  width: 150px;
   position: absolute;  
   left: 10%; 
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  color: #ffffff;
+  background-color: #fe4a55;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 5px;
+  padding: 5px;
   
+}
+
+
+.testAreaButton .btn-test-previous:hover {
+  color: #100f1f;
 }
 
 
