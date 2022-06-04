@@ -17741,7 +17741,7 @@ Go Top CSS
     background-color: #100f1f;
 }
 
- .test-title-course  {
+.test-title-course  {
     
   position: relative;
   z-index: 1;
@@ -17831,6 +17831,7 @@ Go Top CSS
 };
 
 .test-part .question-area{
+  color: #ffffff;
 
 }
 
@@ -17864,7 +17865,7 @@ Go Top CSS
   
 }
 
-.answer-area button{
+.answer-area .buttonUnAnswer{
   display: flex;
   align-content: flex-start;
   align-items: flex-start;
@@ -17879,6 +17880,26 @@ Go Top CSS
   font-weight: 400;
   
 }
+
+.answer-area .buttonUnAnswer:focus{
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  width:100%;
+  height: 34px;
+  margin: 2px;
+  border-radius: 10px;
+  margin-left: 0%;
+  margin-bottom: 1%;
+  padding: 0px;
+  font-size: 20px;
+  font-weight: 400;
+  background-color: #fe4a55;
+  color: #ffffff;
+  
+}
+
+
 
 .test-title-area .testAreaButton{
   width: 100%;
@@ -17942,7 +17963,212 @@ Go Top CSS
   color: #100f1f;
 }
 
+/*
+  view Result test 
+*/
 
+.test-result-area{  
+  height:100%;
+  width:100%;
+  position:absolute;   
+  left:0;  
+  background-color: #100f1f;
+  display:flexbox;
+  
+}
+
+.test-title-course-module {  
+  width: 100%; 
+  height: 100px; 
+  position: relative;
+  /*z-index: 1;*/
+  padding-top: 0.5%;
+  padding-bottom: 20px;
+  background-color: #100f1f;    
+  /*border-bottom: 2px solid grey;*/
+}
+
+.test-title-course-module h4 {
+  position: absolute;  
+  width: 100%;
+  text-align: center;
+  height: 100px; 
+  margin-top: 5%;
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  font-weight: 400;
+  color: #ffffff;
+  
+}
+
+.result-area-message {
+  /*position: relative;
+  height: max-content;
+  z-index: 1;*/
+  display : flex;
+  flex-direction : row;
+  margin: 3% 10%;  
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.result-area-message .area-message{     
+  width: 70%;
+  height: fit-content;
+  margin-top: 10px;
+  margin-bottom: 1%;  
+  font-size: 20px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+
+.result-area-message .area-message h3{
+  font-size: 30px !important;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.result-area-message .area-message  h4{
+  font-size: 20px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.result-area-message .area-grade{  
+  width: 30%;      
+  display : flex;
+  flex-direction : row;
+  align-items: center;
+  justify-content: center;
+  border-right: 3px solid #1e1d2f;
+  background-color: #1e1d2f;
+  border-radius: 20px;   
+  
+}
+.area-grade .area-grade-box {
+  width: 50%;
+  text-align: center;
+  justify-content: center;
+}
+
+.area-grade .area-grade-box-sep {
+  width: 2px;
+  margin: 0.5px 0%;
+  height: 80%;
+  border-right: 2px solid #606060;
+  border-radius: 25px;
+}
+
+
+.area-grade .area-grade-box h3{
+  margin-bottom: 0%;
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.area-grade .area-grade-box .grade-numberQ{
+  font-size: 30px;
+  font-weight: 600;
+  color: #606060;
+}
+
+.area-response-result{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #1e1d2f;
+  
+}
+
+.area-showQ{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 10px 10%;  
+  padding-left: 1%;
+  padding-right: 1%;
+  
+  
+}
+
+.area-showQ .showQ{
+  width: 80%;
+  border-bottom: 1px solid #606060;
+  margin: 10px 0%;
+  padding: 20px 0%;
+}
+
+.showQ-question-area{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.showQ-question-number p{
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.showQ-question-number p{
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.showQ-question-q p{
+  color: #ffffff;
+}
+
+.showQ-answer-correct {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #30ff24;
+  border-radius: 10px;
+  
+}
+
+.showQ-answer-correct .showQ-answer{
+  width: 90%;
+  margin:5px;
+  margin-left: 10px;
+}
+
+.showQ-answer-correct .showQ-answer-mark{
+  text-align: right;
+  width: 10%;
+  color: green;
+  margin:5px;
+  margin-right: 15px;
+}
+.showQ-answer-correct p{
+  color: #ffffff;
+}
+
+.showQ-answer-incorrect {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid red;
+  border-radius: 10px;
+
+}
+
+.showQ-answer-incorrect .showQ-answer{
+  width: 90%;
+  margin:5px;
+  margin-left: 10px;
+}
+
+.showQ-answer-incorrect .showQ-answer-mark{
+  text-align: right;
+  width: 10%;
+  color: red;
+  margin:5px;
+  margin-right: 15px;
+}
+.showQ-answer-incorrect p{
+  color: #ffffff;
+}
 
 
 

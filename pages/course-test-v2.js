@@ -7,7 +7,7 @@ import Progressbar from '../components/TestModule/Progress_bar';
 import TestView from '../components/TestModule/TestView';
 import Link from '../utils/ActiveLink';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { display } from '@mui/system';
 resetIdCounter();
 
@@ -19,8 +19,16 @@ const CouseTestV2 = () => {
     const questionArray=[{quest:'Esta es la pregunta 1?',answ:['Answer 1','Answer 2','Answer 3','Answer 4']},{quest:'Esta es la pregunta 2?',answ:['Answer 1','Answer 2']},{quest:'Esta es la pregunta 3?',answ:['Answer 1','Answer 2','Answer 3','Answer 4']}];
     const numberQ=questionArray.length;
     const [actualQ, setActualQ] = useState(1);
-    const [showN, setShowN] = useState(true);
+    const [showN, setShowN] = useState(true);    
     const porcNQ = (actualQ*100)/numberQ;
+    
+    
+
+    const [indexBtnClicked, setIndexBtnClicked] = useState([]);
+    const handleClick = index => {
+        setIndexBtnClicked(indexBtnClicked => [...indexBtnClicked, {quest:questionArray[actualQ-1].quest,ans:index}]);       
+    }
+
 
     
 
@@ -37,12 +45,16 @@ const CouseTestV2 = () => {
         setActualQ(actualQ + 1);  
         if(actualQ + 1 === numberQ){
             setShowN(!showN);
-        }
+        };
+
+        
+        
         
     };
 
     function btnFiQ () {
         console.log('Fin de la prueba');
+        console.log(indexBtnClicked);       
         
     };
 
@@ -70,6 +82,7 @@ const CouseTestV2 = () => {
                 </div>
 
                 <TestView
+                    onClick={handleClick} 
                     currentQ={questionArray[actualQ-1]}
                 />
 
@@ -81,7 +94,7 @@ const CouseTestV2 = () => {
                     <button onClick={btnNextQ} className="btn-test-next">Siguiente</button> 
                     ) : (
 
-                        <Link href="/">
+                        <Link href="/course-test-result">
                             <a onClick={btnFiQ} className="btn-test-next">Terminar</a>
                         </Link>
                         
@@ -89,15 +102,8 @@ const CouseTestV2 = () => {
             </div> 
 
                   
-            </div>
-           
-
-            
-  
-
-            
-
-            
+            </div>          
+                   
                   
         </React.Fragment>
         
