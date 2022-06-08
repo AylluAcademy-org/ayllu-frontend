@@ -55,7 +55,8 @@ const CouseTestResult = () => {
         <React.Fragment>
 
             <Navbar />
-            <div className="test-result-area">
+            
+            <div className=" test-result-area">
                 <div className="test-title-course-module">                                                
                     <h4>{pageTitle} - {nameModule}</h4>                                    
                 </div>
@@ -87,18 +88,22 @@ const CouseTestResult = () => {
                                         <div className='showQ-question-number' ><p>{index+1}.  </p> </div>
                                         <div className='showQ-question-q' ><p>{item.quest}</p></div>
                                     </div>
+
+                                    <div className='showQ-answer-area' >
                                     
-                                    {item.isCorrect? (
-                                            <div className='showQ-answer-correct'>
-                                                <p className='showQ-answer'> {item.answ}</p>
-                                                <p className='showQ-answer-mark'>✓</p>
-                                            </div>
-                                        ) : (
-                                            <div className='showQ-answer-incorrect'>
-                                                <p className='showQ-answer'> {item.answ} </p>
-                                                <p className='showQ-answer-mark'>X</p>
-                                            </div>                        
-                                        )}  
+                                        {item.isCorrect? (
+                                                <div className='showQ-answer-correct'>
+                                                    <p className='showQ-answer'> {item.answ}</p>
+                                                    <p className='showQ-answer-mark'>✓</p>
+                                                </div>
+                                            ) : (
+                                                <div className='showQ-answer-incorrect'>
+                                                    <p className='showQ-answer'> {item.answ} </p>
+                                                    <p className='showQ-answer-mark'>X</p>
+                                                </div>                        
+                                        )} 
+
+                                    </div> 
                                 </div>                                                    
                                 
                             ))} 
