@@ -3,11 +3,9 @@ import { useEffect, useState } from "react";
 
 
 
-const TestView = ({currentQ}) => {
+const TestView = ( { onClick,currentQ}) => {
     let contL=0;
     const AB=['A','B','C','D','E','F','G','H','I'];
-    
-     
     
     return (
         
@@ -18,7 +16,7 @@ const TestView = ({currentQ}) => {
                     <div className='answer-area '>
                         {currentQ.answ.map((item,index) => ( 
                                                       
-                            <div ><button><span>{AB[index]}</span>{item}</button></div>
+                            <div ><button className='buttonUnAnswer'  onClick={()=> onClick(item)}><span>{AB[index]}</span>{item}</button></div>
                             
                         ))}                      
                       
