@@ -1,6 +1,6 @@
 //Endpoints to interact with the ModulesOnCourse table
 import axios from "axios";
-API_URL = "https://cc2micpvg9.execute-api.us-east-1.amazonaws.com/dev/";
+const API_URL = "https://cc2micpvg9.execute-api.us-east-1.amazonaws.com/dev/";
 
 /**
  * Get all modules on course

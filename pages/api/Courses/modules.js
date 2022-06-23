@@ -1,6 +1,6 @@
 //Endpoints to interact with the modules table
 import axios from "axios";
-API_URL = "https://cc2micpvg9.execute-api.us-east-1.amazonaws.com/dev/";
+const API_URL = "https://cc2micpvg9.execute-api.us-east-1.amazonaws.com/dev/";
 
 /**
  * Get module by id
