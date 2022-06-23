@@ -17,6 +17,8 @@ export const getAllUsers = async () => {
 /**
  * Create a new user
  * user object is passed as a parameter
+ * It makes a POST request to the API, and then returns the response data of the new user.
+ * @param {user} user
  * {
     "name": "David Quintanilla",
     "email": "Davidquinta@gmail.com",
