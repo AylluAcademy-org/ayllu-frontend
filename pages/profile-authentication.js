@@ -4,27 +4,8 @@ import PageBanner from "../components/Common/PageBanner";
 import LoginForm from "../components/ProfileAuthentication/LoginForm";
 import RegisterForm from "../components/ProfileAuthentication/RegisterForm";
 import Footer from "../components/_App/Footer";
-import { createUser } from "./api/Users/users";
 const ProfileAuthentication = () => {
-  //create states for the forms
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [image, setImage] = useState("");
-  const [walletadd, setWalletadd] = useState("");
 
-  //create a function to handle the submit event of the register form
-  const handleRegisterSubmit = (e) => {
-    e.preventDefault();
-    const user = {
-      name: name,
-      email: email,
-      password: password,
-      image: image,
-      walletadd: walletadd,
-    };
-    createUser(user);
-  };
 
   return (
     <React.Fragment>

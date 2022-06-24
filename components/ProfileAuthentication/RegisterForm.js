@@ -1,17 +1,27 @@
 import React from "react";
-import { createUser } from "./api/Users/users";
+import { useState } from "react";
 
+//Import API Function
+import { createUser } from "../../pages/api/Users/users";
+
+/**
+ * It creates a user object to send to the API.
+ */
 const RegisterForm = () => {
-  //create states for the forms
+  /* Creating a state for each of the inputs. */
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [image, setImage] = useState("");
   const [walletadd, setWalletadd] = useState("");
 
-  //create a function to handle the submit event of the register form
+  /**
+   * It creates a user object to send to the API.
+   * @param e - event
+   */
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
+    //create a user object to send to the API
     const user = {
       name: name,
       email: email,
@@ -19,7 +29,16 @@ const RegisterForm = () => {
       image: image,
       walletadd: walletadd,
     };
+    /* Calling the API function to create a new user. */
     createUser(user);
+    /* Clearing the form. */
+    setName("");
+    setEmail("");
+    setPassword("");
+    setImage("");
+    setWalletadd("");
+    //reload the page
+    //window.location.reload();
   };
 
   return (

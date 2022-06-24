@@ -1,6 +1,5 @@
 //Endpoints to interact with the categories table
 import axios from "axios";
-const API_URL = "https://cc2micpvg9.execute-api.us-east-1.amazonaws.com/dev/";
 
 /**
  * Get all categories
@@ -9,7 +8,7 @@ const API_URL = "https://cc2micpvg9.execute-api.us-east-1.amazonaws.com/dev/";
  */
 export const getCategories = async () => {
   axios
-    .get(API_URL + "categories")
+    .get(process.env.API_URL + "categories")
     .then((response) => {
       console.log(response.data);
       return response.data;
