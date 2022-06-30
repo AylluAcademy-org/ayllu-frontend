@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-
+//Import sweetalert2
+import Swal from "sweetalert2";
 //Import API Function
 import { createUser } from "../../pages/api/Users/users";
 

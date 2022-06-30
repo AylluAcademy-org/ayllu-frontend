@@ -24,6 +24,7 @@
         "nodemailer-sendgrid-transport": "^0.2.0",
         "react": "^17.0.2",
         "react-accessible-accordion": "^3.3.5",
+        "react-aws-s3": "^1.5.0",
         "react-dom": "^17.0.2",
         "react-hook-form": "^6.15.8",
         "react-image-lightbox": "^5.1.4",
