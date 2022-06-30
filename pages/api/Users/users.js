@@ -9,10 +9,16 @@ const API_URL = "https://cc2micpvg9.execute-api.us-east-1.amazonaws.com/dev/";
  * @returns {object} - The users object
  */
 export const getAllUsers = async () => {
-  axios.get(API_URL + "users").then((response) => {
-    console.log(response.data);
-    return response.data;
-  });
+  axios
+    .get(API_URL + "users")
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+      return error;
+    });
 };
 
 /**
