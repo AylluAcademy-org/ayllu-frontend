@@ -20,6 +20,7 @@ const RegisterForm = () => {
    * It creates a user object to send to the API.
    * @param e - event
    */
+
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
     //create a user object to send to the API
@@ -30,14 +31,36 @@ const RegisterForm = () => {
       image: image,
       walletadd: walletadd,
     };
-    /* Calling the API function to create a new user. */
-    createUser(user);
-    /* Clearing the form. */
-    setName("");
-    setEmail("");
-    setPassword("");
-    setImage("");
-    setWalletadd("");
+
+    createUser(user).then((response) => {
+      try {
+        if (response.status === 200) {
+          Swal.fire({
+            title: "Success",
+            text: "User created successfully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          /* Clearing the form. */
+          setName("");
+          setEmail("");
+          setPassword("");
+          setImage("");
+          setWalletadd("");
+          //reload the page
+          //window.location.reload();
+        }
+      } catch (error) {
+        Swal.fire({
+          title: "Error",
+          text: "User not created",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
     //reload the page
     //window.location.reload();
   };
