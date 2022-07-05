@@ -54,7 +54,7 @@ const RegisterForm = () => {
       } catch (error) {
         Swal.fire({
           title: "Error",
-          text: "User not created",
+          text: "Usuario no creado",
           icon: "error",
           showConfirmButton: false,
           timer: 1500,
