@@ -33,12 +33,12 @@ const CouseTestResult = () => {
         if(grade >= minG){
             mess={
                 mess1:'¡Lo lograste!',
-                mess2:`Obtuviste una calificacion mayor o igual a ${minG}`
+                mess2:`Obtuviste una calificación mayor o igual a ${minG}`
             };
         }else{
             mess={
                 mess1:'¡No te rindas!',
-                mess2:`Necesitas una calificacion minima de ${minG} para aprobar`
+                mess2:`Necesitas una calificación minima de ${minG} para aprobar`
             };
         };
         return mess;

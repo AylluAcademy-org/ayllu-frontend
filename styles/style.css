@@ -445,6 +445,10 @@ textarea.form-control {
   height: auto;
   padding-top: 15px;
 }
+/*================================================
+Navbar version 2 Area CSS
+=================================================*/
+
 
 /*================================================
 Navbar Area CSS
@@ -1619,6 +1623,69 @@ Navbar Area CSS
   }
 }
 
+
+/*================================================
+Main Banner V2 Area CSS
+=================================================*/
+.main-banner-v2{
+  position: relative;  
+  background-color: #FF627D; 
+  padding-top: 30px;
+  width: 100%;
+}
+
+
+
+.main-banner-v2 .container-fluid{ 
+  background: url(/images/home/Backdrop_01.png) no-repeat ;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+  padding-top: 30px;
+  padding-left: 0px;
+  padding-bottom: 60px;
+  width: 100%;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.5);
+}
+
+.main-banner-v2 .container-fluid .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.main-banner-v2 .container-fluid .row .col-lg-6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-mainBanner{
+  border: none;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  color: #ffffff;
+  background-color: #FF3657;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.btn-mainBanner:hover{
+  background-color: #FF627D;
+  color: #FFFF;
+}
+
+
+
+
 /*================================================
 Main Banner Area CSS
 =================================================*/
@@ -1647,28 +1714,42 @@ Main Banner Area CSS
 }
 
 .main-banner-content {
-  max-width: 595px;
+  max-width: 500px;
   position: relative;
-  top: -60px;
-  padding-right: 30px;
+  top: 60px;
+  bottom: 0px;
+  right: -140px;
+  padding-left: 100px;
+  margin-bottom: 0%  !important;
+  margin-top: 0% !important;
 }
 
 .main-banner-content h1 {
   margin-bottom: 25px;
-  font-size: 48px;
-  font-weight: 800;
+  margin-top: 0%;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  color:black ;
 }
 
 .main-banner-content p {
   max-width: 450px;
-  line-height: 1.8;
-  font-weight: 600;
+  line-height: 1;
+  font-weight: 500;
   font-size: 17px;
 }
 
 .main-banner-content .default-btn {
   margin-top: 10px;
 }
+
+.imageBanner{
+  max-width:95% ;
+  padding-right: 90px;
+}
+
+
 
 .main-banner-courses-list {
   position: relative;
@@ -2794,6 +2875,309 @@ Features Area CSS
   max-width: 315px;
 }
 
+/*================================================
+Features Area V2 CSS
+=================================================*/
+.features-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgb(254,97,124);
+  background: linear-gradient(0deg, rgba(254,97,124,1) 0%, rgba(255,98,125,1) 100%);
+  margin: 0% !important;
+  padding: 0% !important;
+  padding-top: 35px !important;
+  padding-left: 35px !important;
+}
+
+.features-area .container{
+  max-width: 100% !important;
+  margin: 0% !important;  
+  background-color: #FFFF;
+  padding-top: 0px ;
+  padding-bottom: 20px;
+  padding-left: 15%;
+  padding-right: 15%;
+  box-shadow: 8px 10px 10px 1px rgba(0,0,0,0.5) !important;
+}
+
+
+.features-area .container .section-title{   
+  background-color: #FFFF;
+  padding-top: 50px;
+}
+
+.single-features-box {
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  padding: 30px 31px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  height: 400px;
+}
+
+.single-features-box .icon {
+  font-size: 50px;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.single-features-box h3 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.single-features-box p {
+  margin-bottom: 12px;
+}
+
+
+
+.single-features-box .link-btn {
+  position: absolute;  
+  color: #fe4a55;
+  font-size: 15px;
+  font-weight: 700;
+  bottom: 20px;
+  right: 20%;
+  left: 20%;
+}
+
+.single-features-box .link-btn:hover {
+  color: #221638;
+}
+
+.single-features-box:hover {
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+.single-features-box.without-padding {
+  text-align: left;
+  padding: 0;
+  background-color: transparent;
+}
+
+.single-features-box.without-padding p {
+  max-width: 315px;
+}
+
+/*================================================
+Popular courses Area CSS
+=================================================*/
+.popularCourses-area{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgb(222,87,125);
+  background: linear-gradient(0deg, rgba(222,87,125,1) 0%, rgba(255,98,125,1) 100%);
+  margin: 0% !important;
+  padding: 0% !important;
+  padding-top: 35px !important;
+  padding-right: 35px !important;
+}
+.popularCourses-area .container{
+  position: relative;
+  background-color:#FFFF; 
+  max-width: 100% !important;
+  margin: 0% !important;  
+  padding: 0% ;  
+  box-shadow: 8px 10px 10px 1px rgba(0,0,0,0.5);
+} 
+.popularCourses-area .container .row{
+  width: 100%;
+  height: 100%;
+  padding: 0% !important;
+  margin: 0% !important; 
+}
+
+.popularCourses-area .container .row .col-lg-6  {  
+  padding-right: 20px !important; 
+  padding-left: 20px !important;
+}
+
+.popularCourses-area .container .row .col-md-12  {  
+  padding-right: 20px !important; 
+  padding-left: 20px !important;
+}
+
+
+.owl-prev{
+  color: #fe4a55 !important;
+  background-color: transparent !important;
+  left: -40px;
+}
+.owl-next{
+  color: #fe4a55 !important;
+  background-color: transparent !important;
+  right: -40px;
+  
+}
+
+.owl-prev ,.owl-next{
+  position: absolute;
+  top: 30%;
+}
+.owl-theme .owl-nav [class*=owl-]{  
+  font-size: 70px !important;
+  background-color: none !important;
+  padding: 0%;
+  margin: 15px !important;
+}
+
+.owl-carousel {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.owl-carousel .owl-item {
+  padding: 10px !important;
+}
+.carrouselPopular{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.carrouselPopular h2 {
+  max-width: 615px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.carrouselPopular p{
+  text-align: justify;
+  padding-right: 15%;
+  padding-left: 15%;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+
+.section-title{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  align-items: center;
+  justify-content: center;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.section-title p{
+  text-align: justify;
+  padding-right: 60px;
+  padding-left: 60px;
+  font-size: 25px;
+  font-weight: 700;
+
+}
+
+/*================================================
+Information Additional Area CSS
+=================================================*/
+
+.informationAdditional-area{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgb(136,58,125);
+  background: linear-gradient(0deg, rgba(136,58,125,1) 0%, rgba(222,87,125,1) 100%);
+  margin: 0% !important;
+  padding: 0% !important;
+  padding-top: 35px !important;
+  padding-left: 35px !important;
+  padding-bottom: 100px !important;
+}
+
+.informationAdditional-area .container{
+  max-width: 100% !important;
+  margin-bottom: 0% !important;  
+  background-color: #FFFF;
+  padding-top: 0px ;
+  padding-bottom: 100px;   
+  box-shadow: 5px 10px 15px ;
+}
+
+.informationAdditional-area .container .row{
+  width: 100% !important;
+  margin: 0% !important;  
+  padding: 0px ;
+}
+.infoAdd1{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  right: 40px;
+}
+
+.infoAdd1 h2{
+  max-width: 615px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 36px;
+  font-weight: 800;
+  color: #000000;
+}
+
+.infoAdd1 p{
+  text-align: justify;
+  padding-right: 60px;
+  padding-left: 60px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #000000;
+}
+.infoAdd2{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.infoAdd2 h2{
+  max-width: 615px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 36px;
+  font-weight: 800;
+  color: #000000;
+}
+
+.infoAdd2 p{
+  text-align: justify;
+  padding-right: 60px;
+  padding-left: 60px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #000000;
+}
 /*================================================
 About Area CSS
 =================================================*/
@@ -13525,6 +13909,7 @@ Page Title Area CSS
 Subscribe Area CSS
 =================================================*/
 .subscribe-area {
+  background-color: #FFFF;
   position: relative;
   z-index: 1;
 }
@@ -13759,6 +14144,36 @@ Subscribe Area CSS
   margin-left: 0;
   margin-right: 0;
 }
+
+/*================================================
+SubscribeV2 Area CSS
+=================================================*/
+
+.ptb-50{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.subscribe-content .newsletter-form .default-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 20px 20px 20px 20px;
+  height: 50px;
+  background-color: #FF3657;
+}
+
+.subscribe-content .newsletter-form .input-newsletter {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #eaeaea;
+  color: #221638;
+  height: 50px;
+  padding-left: 18px;
+  border-radius: 20px;
+  
+}
+
 
 /*================================================
 Gallery Area CSS
@@ -17344,9 +17759,7 @@ Footer Area CSS
   color: #fe4a55;
 }
 
-.single-footer-widget .footer-links-list li:last-child {
-  margin-bottom: 0;
-}
+
 
 .single-footer-widget .social-link {
   padding-left: 0;
@@ -17360,13 +17773,6 @@ Footer Area CSS
   margin-right: 10px;
 }
 
-.single-footer-widget .social-link li:last-child {
-  margin-right: 0;
-}
-
-.single-footer-widget .social-link li:last-child {
-  margin-right: 0;
-}
 
 .single-footer-widget .social-link li a {
   width: 30px;
@@ -17582,6 +17988,42 @@ Footer Area CSS
   }
 }
 
+/*================================================
+Footerv2 Area CSS
+=================================================*/
+.footer-area {
+  background: rgb(120,32,136);
+  background: linear-gradient(0deg, rgba(93,44,125,1) 0%, rgba(136,58,125,1) 100%);
+  position: relative;
+  z-index: 1;
+  padding-top: 40px;
+}
+
+.footer-area  .container-fluid{
+  background: url(/images/home/Footer001.png) no-repeat ;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+  padding-top: 200px;
+  padding-left: 0px;
+  padding-bottom: 60px;
+  padding-right: 0px;
+  width: 100% !important;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.footer-area  .container-fluid .row{
+  margin-left: 20%;
+  margin-right: 20%;
+  display: flex;
+}
+
+.vl {
+  border-left: 2px solid gray;
+  height: 300px;
+  top: 10;
+}
 /*================================================
 Go Top CSS
 =================================================*/

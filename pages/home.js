@@ -13,8 +13,7 @@ import AffordableCertification from '../components/eLearningSchool/AffordableCer
 import Footer from '../components/_App/Footer';
 import SubscribeForm from '../components/Common/SubscribeFormV2';
 import InformationAdd from '../components/eLearningSchool/InformationAdditional'
-
-const Index = () => {
+const Home = () => {
     return (
         <React.Fragment>
             <Navbar />
@@ -24,22 +23,8 @@ const Index = () => {
             <InformationAdd />
             <SubscribeForm/>           
             <Footer />
-            {/* 
-            <Navbar />
-            <MainBanner />
-            <Features />
-            <SubscribeForm/>
-            <AboutUs />
-            <PopularCourses />
-            <FeedbackSliderWithFunFacts />
-            <GetInstantCourses />
-            <LatestNews />
-            <ViewAllCourses />
-            <AffordableCertification />
-            <Footer />
-            */}
         </React.Fragment>
     )
 }
 
-export default Index;
+export default Home;
