@@ -4,15 +4,45 @@ import PageBanner from '../components/SingleCourses/PageBanner';
 import CoursesDetailsSidebar from '../components/SingleCourses/CoursesDetailsSidebar';
 import YouMightLikeTheCourses from '../components/Courses/YouMightLikeTheCourses';
 import Footer from '../components/_App/Footer';
+import { useEffect, useState } from 'react';
+import { getCourseById } from '../pages/api/Courses/courses';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 resetIdCounter();
 
 const SingleCourses = () => {
+    /**Get couse by id */
+    const [course, setCourse] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [couseid, setCouseid] = useState('');
+
+    useEffect(() => {
+        getCourseById(couseid).then(response => {
+            if (response.status === 200) {
+                setCourse(response.data);
+                setLoading(false);
+            } else {
+                setError(true);
+                setErrorMessage(response.data.message);
+                setLoading(false);
+            }
+        }
+        ).catch(error => {
+            setError(true);
+            setErrorMessage(error.message);
+            setLoading(false);
+        }
+        );
+    }, []);
+
     return (
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle="Introducción a Haskell" 
+                pageTitle={course.title}
                 homePageUrl="/" 
                 homePageText="Home" 
                 innerPageUrl="/courses-1" 
@@ -22,7 +52,7 @@ const SingleCourses = () => {
 
             <div className="courses-details-area pb-100">
                 <div className="courses-details-image">
-                    <img src="/images/courses/course-details.jpg" alt="image" />
+                    <img src={course.video} alt="image" />
                 </div>
 
                 <div className="container">
@@ -40,7 +70,7 @@ const SingleCourses = () => {
                                     <TabPanel>
                                         <div className="courses-overview">
                                             <h3>Course Description</h3>
-                                            <p>Aprende a desarrollar programas con el lenguaje Scala desde cero hasta conceptos avanzados</p>
+                                            <p>{course.description}</p>
                                             {/* <h3>Certification</h3>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
                                             <h3>Who this course is for</h3>
@@ -50,11 +80,11 @@ const SingleCourses = () => {
 
                                     <TabPanel>
                                         <div className="courses-curriculum">
-                                            <h3>Python Introduction</h3>
+                                            <h3>{course.name}</h3>
                                             <ul>
                                                 <li>
                                                     <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">Python Introduction</span>
+                                                        <span className="courses-name">{couseid.name}</span>
                                                         <div className="courses-meta">
                                                             <span className="questions">5 questions</span>
                                                             <span className="duration">01 Hour</span>
@@ -63,7 +93,7 @@ const SingleCourses = () => {
                                                     </a>
                                                 </li>
                                             </ul>
-                                            <h3>Stepping into the World of Python</h3>
+                                            <h3>{course.description}</h3>
                                             <ul>
                                                 <li>
                                                     <a href="#" className="d-flex justify-content-between align-items-center">

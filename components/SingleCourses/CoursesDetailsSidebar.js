@@ -1,11 +1,42 @@
 import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import {useState, useEffect} from 'react';
+import { getCourseById } from '../../pages/api/Courses/courses';
 const ModalVideo = dynamic(() => import('react-modal-video'), {
     ssr: false
 });
 
 const CoursesDetailsSidebar = () => {
+    const [course, setCourse] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [modalOpen, setModalOpen] = useState(false);
+    const [courseId, setCourseId] = useState('');
+
+    useEffect(() => {
+        getCourseById(courseId).then(response => {
+            if (response.status === 200) {
+                setCourse(response.data);
+                setLoading(false);
+            } else {
+                setError(true);
+                setErrorMessage(response.data.message);
+                setLoading(false);
+            }
+        }
+        ).catch(error => {
+            setError(true);
+            setErrorMessage(error.message);
+            setLoading(false);
+        }
+        );
+    }, []);
+
+
     // Popup Video
 	const [isOpen, setIsOpen] = React.useState(true);
     const openModal = () => {
@@ -23,7 +54,7 @@ const CoursesDetailsSidebar = () => {
             
             <div className="courses-details-info">
                 <div className="image">
-                    <img src="/images/courses/courses1.jpg" alt="image" />
+                    <img src={course.image} alt="image" />
 
                     <Link href="#play-video">
                         <a
@@ -43,19 +74,19 @@ const CoursesDetailsSidebar = () => {
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-teacher"></i> Instructor</span>
-                            Juán Perez
+                            {course.authorId}
                         </div>
                     </li>
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-time"></i> Duración</span>
-                            20 hrs
+                            {course.duration} hrs
                         </div>
                     </li>
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-distance-learning"></i> Lecciones</span>
-                            25
+                            {course.lessons}
                         </div>
                     </li>
 

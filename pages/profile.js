@@ -5,7 +5,7 @@ import PageBanner from '../components/Common/PageBanner';
 import Footer from '../components/_App/Footer';
 import ProfileCourses from '../components/Profile/ProfileCourses';
 import Courses from '../components/Profile/Courses';
-import {getProfile} from '../pages/api/Users/users';
+import {getUserById,updateUser} from '../pages/api/Users/users';
 
 const Profile = () => {
     /**Consume API get profile */
@@ -20,7 +20,7 @@ const Profile = () => {
     const [userId, setUserId] = useState('');
 
     useEffect(() => {
-        getProfile().then(response => {
+        getUserById(userId).then(response => {
             if (response.status === 200) {
                 setProfile(response.data);
                 setCourses(response.data.courses);
@@ -38,6 +38,28 @@ const Profile = () => {
         }
         );
     }, []);
+    /**Update user */
+    const updateUser = (user) => {
+        updateUser(user).then(response => {
+            if (response.status === 200) {
+                setSuccess(true);
+                setSuccessMessage(response.data.message);
+                setLoading(false);
+            } else {
+                setError(true);
+                setErrorMessage(response.data.message);
+                setLoading(false);
+            }
+        }
+        ).catch(error => {
+            setError(true);
+            setErrorMessage(error.message);
+            setLoading(false);
+        }
+        );
+    }
+
+
 
     return (
         <React.Fragment>
@@ -79,9 +101,9 @@ const Profile = () => {
                             <div className="col-lg-3 col-md-3">
                                 <div className="content">
                                    
-                                <img class="rounded-circle z-depth-2" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+                                <img class="rounded-circle z-depth-2" alt="100x100" src={profile.avatar}
                                     data-holder-rendered="true"/>
-                                    <label>Cambiar foto</label>
+                                    <label onClick={updateUser}>Cambiar foto</label>
 
                                     <div class="custom-file">
                                         <input type="file" className="custom-file-input" id="customFile"/>
