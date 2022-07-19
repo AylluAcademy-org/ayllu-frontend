@@ -1,11 +1,44 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/_App/Navbar';
 import PageBanner from '../components/Common/PageBanner';
 import Footer from '../components/_App/Footer';
 import ProfileCourses from '../components/Profile/ProfileCourses';
 import Courses from '../components/Profile/Courses';
+import {getProfile} from '../pages/api/Users/users';
 
 const Profile = () => {
+    /**Consume API get profile */
+    const [profile, setProfile] = useState({});
+    const [courses, setCourses] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [user, setUser] = useState('');
+    const [userId, setUserId] = useState('');
+
+    useEffect(() => {
+        getProfile().then(response => {
+            if (response.status === 200) {
+                setProfile(response.data);
+                setCourses(response.data.courses);
+                setLoading(false);
+            } else {
+                setError(true);
+                setErrorMessage(response.data.message);
+                setLoading(false);
+            }
+        }
+        ).catch(error => {
+            setError(true);
+            setErrorMessage(error.message);
+            setLoading(false);
+        }
+        );
+    }, []);
+
     return (
         <React.Fragment>
             <Navbar />
@@ -26,15 +59,15 @@ const Profile = () => {
                             <div className="col-lg-9 col-md-9">
                                 <div className="profile-details">
                                     <div className="form-group">
-                                        <label>Nombre Completo</label>
+                                        <label>{profile.name}</label>
                                         <input type="text" className="form-control" placeholder="David Quintanilla" />
                                     </div>
                                     <div className="form-group">
-                                        <label>Email</label>
+                                        <label>{profile.email}</label>
                                         <input type="text" className="form-control" placeholder="dquintanilla@ayluu.io" />
                                     </div>
                                     <div className="form-group">
-                                        <label>Dirección de Wallet</label>
+                                        <label>{profile.wallet}</label>
                                         <input type="text" className="form-control" placeholder="Nombre completo" />
                                     </div>
                                 </div>           
@@ -54,7 +87,7 @@ const Profile = () => {
                                         <input type="file" className="custom-file-input" id="customFile"/>
                                     </div>
                                     
-                                    <h3 className='mt-3'>Saldo: 430 AYLLU</h3>
+                                    <h3 className='mt-3'>Saldo: {profile.totalRewards} AYLLU</h3>
                                     <button class="btn btn-primary" type="submit">Transferir a wallet</button>
 
                                 </div>
