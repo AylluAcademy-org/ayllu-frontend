@@ -74,7 +74,7 @@ const Navbar = () => {
                                     <li className="nav-item">
                                         <Link href="/faq">
                                             <a className="nav-link">
-                                                Quienes somos
+                                                Sobre Nosotros
                                             </a>
                                         </Link>
 

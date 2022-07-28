@@ -46,7 +46,7 @@ const FooterV2 = () => {
                                 </li>
                                 <li>
                                     <Link href="/">
-                                        <a>Quienes Somos?</a>
+                                        <a>Sobre Nosotros?</a>
                                     </Link>
                                 </li>
                                 <li>
