@@ -1,6 +1,6 @@
 //Endpoints to interact with the courses table
 import axios from "axios";
-const API_URL = "https://cc2micpvg9.execute-api.us-east-1.amazonaws.com/dev/";
+const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
 /**
  * Get All Courses
  * It makes a GET request to the API, and then returns the response data of list of courses.

@@ -3,7 +3,7 @@
  * A TABLE THAT KEEPS THE RECORD OF THE STUDENTS WHO HAVE ENROLLED IN THE ACADEMY'S COURSES.
  */
 import axios from "axios";
-const API_URL = "https://cc2micpvg9.execute-api.us-east-1.amazonaws.com/dev/";
+const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
 
 /**
  * Get all users on course
