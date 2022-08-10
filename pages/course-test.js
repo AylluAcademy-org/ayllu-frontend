@@ -2,13 +2,24 @@ import React from 'react';
 import Navbar from '../components/_App/Navbar';
 import PageBanner from '../components/SingleCourses/PageBanner';
 import Link from '../utils/ActiveLink';
-import CoursesDetailsSidebar from '../components/SingleCourses/CoursesDetailsSidebar';
-import YouMightLikeTheCourses from '../components/Courses/YouMightLikeTheCourses';
 import Footer from '../components/_App/Footer';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Router from 'next/router'
+
 resetIdCounter();
 
 const SingleCourses = () => {
+    const idTest=1;
+
+    function sendProps(){
+        Router.push({
+            pathname:"/course-test-v2",
+            query:{
+                test:idTest,
+            }
+        });
+    }
+    
     return (
         <React.Fragment>
             <Navbar />
@@ -40,9 +51,9 @@ const SingleCourses = () => {
                                         <li>The exam consist of 10 questions.</li>
                                     </ul></div>
                                     <div>
-                                        <Link href="/course-test-v2">
-                                            <a className="btn-test">Take Exam <span></span></a>
-                                        </Link>
+                                        
+                                         <a onClick={()=>sendProps()} className="btn-test">Take Exam <span></span></a>
+                                       
                                     </div>
                                 </div>
 

@@ -10,9 +10,9 @@ const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
  */
 export const getQuestionsByTestId = async (testId) => {
   axios
-    .get(API_URL + "questions/getQuestionsByTest", {
+    .post(API_URL + "questions/getQuestionsByTest", {
       params: {
-        test_id: testId,
+        testId: testId,
       },
     })
     .then((response) => {

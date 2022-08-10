@@ -8,9 +8,13 @@ const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
  * @param {string} question_id - The id of the question to get
  * @returns {object} - The options object
  */
-export const getOptions = async (question_id) => {
+export const getOptions =  (question_id) => {
   axios
-    .get(API_URL + "options?question_id=" + question_id)
+    .post(API_URL + "options/getOptionsByQuestion", {
+      params: {
+        questionId: question_id,
+      },
+    })
     .then((response) => {
       console.log(response.data);
       return response.data;
