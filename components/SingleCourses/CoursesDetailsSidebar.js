@@ -6,34 +6,42 @@ import { getCourseById } from '../../pages/api/Courses/courses';
 const ModalVideo = dynamic(() => import('react-modal-video'), {
     ssr: false
 });
-
+import axios from 'axios';
 const CoursesDetailsSidebar = () => {
+    const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
+
+    /**Get couse by id */
     const [course, setCourse] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
-    const [modalOpen, setModalOpen] = useState(false);
-    const [courseId, setCourseId] = useState('');
+    const [couseid, setCouseid] = useState(2);
 
-    useEffect(() => {
-        getCourseById(courseId).then(response => {
-            if (response.status === 200) {
-                setCourse(response.data);
-                setLoading(false);
-            } else {
-                setError(true);
-                setErrorMessage(response.data.message);
-                setLoading(false);
-            }
-        }
-        ).catch(error => {
+
+    /**Get course by Id with AXIOS with parameters*/
+    const getCourse = async () => {
+        try {
+            /**
+             * TODO: 
+             * 1. Get course by id from REDUX store
+             * 2. Get course by id from API
+             */
+            const response = await axios.get(API_URL +'courses/getById?course_id=2');
+            console.log("data",response.data);
+            setCourse(response.data);
+            setLoading(false);
+        } catch (error) {
             setError(true);
             setErrorMessage(error.message);
             setLoading(false);
         }
-        );
+    }
+
+    useEffect(() => {
+        /** Get course by Id */
+        getCourse();
     }, []);
 
 
@@ -48,7 +56,7 @@ const CoursesDetailsSidebar = () => {
             <ModalVideo 
                 channel='youtube' 
                 isOpen={!isOpen} 
-                videoId='bk7McNUjWgw' 
+                videoId='Qa8IfEeBJqk' 
                 onClose={() => setIsOpen(!isOpen)} 
             />
             
@@ -86,24 +94,26 @@ const CoursesDetailsSidebar = () => {
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-distance-learning"></i> Lecciones</span>
-                            {course.lessons}
+                            {course.lesson}
+                        </div>
+                    </li>
+                     <li>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <span><i className="flaticon-distance-learning"></i> Lecciones</span>
+                            {course.lesson}
                         </div>
                     </li>
 
+
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-lock"></i> Acceso</span>
-                            Lifetime
-                        </div>
+                            <span><i className="flaticon-lock"></i> Precio: </span>
+${course.price}                        </div>
                     </li>
                 </ul>
 
                 <div className="btn-box">
-                    {/* <Link href="#">
-                        <a className="default-btn">
-                            <i className="flaticon-shopping-cart"></i> Add to Cart <span></span>
-                        </a>
-                    </Link> */}
+
                     <Link href="#">
                         <a className="default-btn">
                             <i className="flaticon-tag"></i> Comprar ahora <span></span>
