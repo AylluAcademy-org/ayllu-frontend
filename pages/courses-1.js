@@ -6,8 +6,10 @@ import PageBanner from '../components/Common/PageBanner';
 import Link from 'next/link';
 import Footer from '../components/_App/Footer';
 import {getAllCourses} from '../pages/api/Courses/courses';
-
+import axios from 'axios';
 const CoursesGrid01 = () => {
+    const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
+
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -18,27 +20,25 @@ const CoursesGrid01 = () => {
     const [userId, setUserId] = useState('');
     const [total, setTotal] = useState(0);
 
-    useEffect(() => {
-        /** Get userID from state */
-        const userId = localStorage.getItem('userId');
-        /**Get list of courses */
-        getAllCourses().then(response => {
-            if (response.status === 200) {
-                setCourses(response.data);
-                /**Count courses*/
-                setTotal(response.data.length);
-                setLoading(false);
-            } else {
-                setError(true);
-                setErrorMessage(response.data.message);
-                setLoading(false);
-            }
-        }   ).catch(error => {
+    const getCourses = async () => {
+        try {
+            const response = await axios.get(API_URL + "courses");
+            console.log("data",response.data);
+            setCourses(response.data);
+            setTotal(2);
+            setLoading(false);
+        } catch (error) {
             setError(true);
             setErrorMessage(error.message);
             setLoading(false);
         }
-        );}, []);
+    }
+    useEffect(() => {
+        /** Get userID from state */
+        const userId = localStorage.getItem('userId');
+        /**Get list of courses */
+        getCourses();
+      }, []);
         
     return (
         <React.Fragment>
@@ -71,8 +71,8 @@ const CoursesGrid01 = () => {
                     </div>
 
                     <div className="row">
-                         {courses.map((course, index) => {
-                        <div className="col-lg-4 col-md-6">
+                         {courses.map((course, id) => {
+                        return  <div className="col-lg-4 col-md-6" key={id}>
                             <div className="single-courses-box">
                                 <div className="courses-image">
                                     <Link href="/single-courses-1">

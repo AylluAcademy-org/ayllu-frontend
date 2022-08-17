@@ -10,8 +10,8 @@ const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
 
 export const getAllCourses = async () => {
   axios.get(API_URL + "courses").then((response) => {
-    console.log(response.data);
-    return response.data;
+    console.log(response);
+    return Promise.resolve(response.data);
   });
 };
 
