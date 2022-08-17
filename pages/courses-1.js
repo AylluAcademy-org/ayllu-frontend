@@ -25,7 +25,8 @@ const CoursesGrid01 = () => {
             const response = await axios.get(API_URL + "courses");
             console.log("data",response.data);
             setCourses(response.data);
-            setTotal(2);
+
+            setTotal(response.data.length);
             setLoading(false);
         } catch (error) {
             setError(true);
@@ -102,7 +103,7 @@ const CoursesGrid01 = () => {
                                     <p>{course.description}</p>
                                     <ul className="courses-box-footer d-flex justify-content-between align-items-center">
                                         <li>
-                                            <i className='flaticon-agenda'></i> {course.lessons} Lecciones
+                                            <i className='flaticon-agenda'></i> {course.lesson} Lecciones
                                         </li>
 
                                     </ul>
