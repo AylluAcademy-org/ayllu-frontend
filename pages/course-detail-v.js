@@ -6,13 +6,50 @@ import YouMightLikeTheCourses from '../components/Courses/YouMightLikeTheCourses
 import Footer from '../components/_App/Footer';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 resetIdCounter();
+import {useState, useEffect} from 'react';
 
+import axios from 'axios';
 const SingleCourses = () => {
+     const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
+
+    /**Get couse by id */
+    const [course, setCourse] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [couseid, setCouseid] = useState(2);
+
+
+    /**Get course by Id with AXIOS with parameters*/
+    const getCourse = async () => {
+        try {
+            /**
+             * TODO: 
+             * 1. Get course by id from REDUX store
+             * 2. Get course by id from API
+             */
+            const response = await axios.get(API_URL +'courses/getById?course_id=2');
+            console.log("data",response.data);
+            setCourse(response.data);
+            setLoading(false);
+        } catch (error) {
+            setError(true);
+            setErrorMessage(error.message);
+            setLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        /** Get course by Id */
+        getCourse();
+    }, []);
     return (
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle="Introducción a Haskell" 
+                pageTitle={course.title}
                 homePageUrl="/" 
                 homePageText="Home" 
                 innerPageUrl="/courses-1" 
@@ -25,7 +62,7 @@ const SingleCourses = () => {
                 <div className="container">
                 <div className='row'>
                         <div className="col mt-5">
-                                    <video src='https://www.youtube.com/watch?v=yhQkMVnpQGM' width="750" height="600" controls>
+                                    <video src= {course.video} width="750" height="600" controls>
                                     </video>
                         </div>
                         <div className="col">
