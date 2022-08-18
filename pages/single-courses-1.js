@@ -31,7 +31,7 @@ const SingleCourses = () => {
              * 1. Get course by id from REDUX store
              * 2. Get course by id from API
              */
-            const response = await axios.get(API_URL +'courses/getById?course_id=2');
+            const response = await axios.get(API_URL +'courses/getById?course_id=7');
             console.log("data",response.data);
             setCourse(response.data);
             setLoading(false);
@@ -60,8 +60,8 @@ const SingleCourses = () => {
             />  
 
             <div className="courses-details-area pb-100">
-                <div className="courses-details-image">
-                    <img src={course.image} alt="image" />
+                <div className="courses-details-image w-4/5">
+                    <img src={course.image} alt="image"  />
                 </div>
 
                 <div className="container">

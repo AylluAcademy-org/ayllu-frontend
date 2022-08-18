@@ -28,7 +28,7 @@ const CoursesDetailsSidebar = () => {
              * 1. Get course by id from REDUX store
              * 2. Get course by id from API
              */
-            const response = await axios.get(API_URL +'courses/getById?course_id=2');
+            const response = await axios.get(API_URL +'courses/getById?course_id=7');
             console.log("data",response.data);
             setCourse(response.data);
             setLoading(false);
