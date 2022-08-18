@@ -8,43 +8,56 @@ const TestView = ( { onClick,currentQ}) => {
     let contL=0;
     const AB=['A','B','C','D','E','F','G','H','I'];
     const [options, setOptions] = useState([]);
-    const [qt, setQt] = useState({});
+    const [options2, setOptions2] = useState([]);
     //console.log("hola");
-    //console.log(currentQ.question_id);
+    console.log(currentQ);
     
         /** Get questionId from state */
         //const qtId = currentQ.question_id;
-        const qtId =qt.question_id;
-        useEffect(()=> {
-            setQt(currentQ);
-            fetchOptions(qtId);
+        const qtId =7;
+        useEffect(()=> {  
+            const controller = new AbortController();                             
+            getOptions(qtId);      
+            return () => {
+              controller.abort()
+            };      
         },[]);
 
-        const fetchOptions =  (question_id) => {
-            axios
-              .post(API_URL + "options/getOptionsByQuestion", {
-                params: {
-                  questionId: question_id,
-                },
-              })
-              .then((res) => {
-                setOptions(res.data);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
+        const client = axios.create({
+          baseURL: "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/" 
+        });
+
+        {/*
+      
+        const getOptions =  (question_id) => {
+            
+            client.post( "options/getOptionsByQuestion", {
+              params: {
+                questionId: question_id,
+              },
+            })
+            .then((response) => {
+              setOptions(response.data);
+            })
+            .catch((error) => {
+              console.log(error);
+              return error;
+            });
           };
+      */}
+
         
         console.log(options);
         //console.log(qtId);
-        console.log(qt);
+        console.log(currentQ);
     return (
         
             <div className='test-part'>
                
                 <div className='question-area'>
-                    {/*<p>{currentQ.text}</p> */}
-                    <p>{qt.text}</p>
+                    {/*<p>{currentQ.text}</p>
+                     <p>{qt}</p>  */}
+                    
                     <div className='answer-area '>
                         {options.map((item,index) => ( 
                                                       

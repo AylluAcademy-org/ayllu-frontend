@@ -9,7 +9,7 @@ import Router from 'next/router'
 resetIdCounter();
 
 const SingleCourses = () => {
-    const idTest=1;
+    const idTest=3;
 
     function sendProps(){
         Router.push({
@@ -18,7 +18,7 @@ const SingleCourses = () => {
                 test:idTest,
             }
         });
-    }
+    }s
     
     return (
         <React.Fragment>
