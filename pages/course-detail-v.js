@@ -7,6 +7,8 @@ import Footer from '../components/_App/Footer';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 resetIdCounter();
 import {useState, useEffect} from 'react';
+import ReactPlayer from 'react-player'
+
 
 import axios from 'axios';
 const SingleCourses = () => {
@@ -19,7 +21,7 @@ const SingleCourses = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
-    const [couseid, setCouseid] = useState(2);
+    const [couseid, setCouseid] = useState(3);
 
 
     /**Get course by Id with AXIOS with parameters*/
@@ -62,8 +64,10 @@ const SingleCourses = () => {
                 <div className="container">
                 <div className='row'>
                         <div className="col mt-5">
-                                    <video src= {course.video} width="750" height="600" controls>
-                                    </video>
+                            <ReactPlayer controls width='750px' height='600px' url='https://bckt-front.s3.us-east-1.amazonaws.com/videos/Curso%20de%20Haskell%20desde%20cero%20_%201%20-%20Primeros%20pasos%20_%20Funciones.mp4?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEIr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMiJHMEUCIQD9dvc%2BCOkBbx1Qj9tTFG%2BeMOCxZAk1%2BPfyvfS%2FH7nx%2FwIgJSOwXiYzFwSz%2FXbUB1sVQ0U9GKsUBa9vgjhZOSIqmJcqhAMI8%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwzODY0MDQ3MzY1MjQiDEhJ8NtXXOJnI%2BIWqSrYAooJcTpcn%2B%2BnlnVp1B9eYS80LnRA5eXj9eGEYCSKBVBoR3Alj7hG3X8Bt6jedNl%2FwYEG4cNxjkaym6kRyYiNfxZ2uAJ3MN7J0yKos2cLmemEgSHY7LdJ4l2u9N3P9LIXE%2F9Q%2FmGjN9dX%2BwmIQQ%2FCC%2BvnrQqERHndJqepRTSUwdOzmng33Aji2L4cJYhtchQZOZh9uXKCFea95nP3s6wdYaYzjh9RN6OvzGQz9UAvLSZOtpcwj3PeHE5SPs%2FmpmtA7%2FK%2BBD%2BBZ%2Fwp1C5LjuJSuqUZ1LB8WRg7DJVlIci0tHBjTI5V1h1qxtq%2B%2Bpum3b0Q5rH40b7DfohrtJd1mzqSAcIsUqbR300TquU82h5oy%2FhI8NL5TdmG54Ywe6pBklizaTBQ%2FN%2B3ue8kXt2ACwkonallufUlSAYHq1cSxYDxoGuR%2FFRUxGXFIDER8XS%2FqBP8l8J1h%2Fy15yC%2BMMDW9JcGOrMCBYLc30sy%2FfRSRkjKCgeuthxc3Bod2IJLs1LdOnvUYyG6xHeoXugvkoHhzmv72vvnFEeQAX%2B%2FfDl6KT2jRtT5kWplevOe%2BymY%2FfxMx5QvQFawszS6N1wjZDpWIHMyT0XnvlreiPhxO7LWexAzbwPJCFWFCZQ2zb9oHHZg8QNwYPnfRY944SzU1NV410xNQWLnmGmhlzl8yD%2BB77cfJ2nrs5VtT5l0egsKnk2WyLEixPR4xSKnJeNvuqYg%2FqHkneTVZ2jgUTLyw09Rc1rTlDT0xitH3536GxB%2FBWmYwremqsQRhxlqYntcjWcsG%2BtM0Ck3DCd1eBAhNObBDwscDXDVlVtnwEdeTPfBojiB3L9yWmUPtKkNZzA%2BAM9BIrhnQhVkhaGSF7PwDSu1VQFm%2B047A8BYuw%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220818T011606Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAVT54ELYGFSMVHENQ%2F20220818%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=d1dd2f9d7a6ebdc95e5540879a9882bbcdfbd45025a3aff2fe81319b61898521'/>
+                                    {/* <video width="750" height="600" controls>
+  <source src="hhttps://www.youtube.com/watch?v=CaGHPGvxzPM&ab_channel=AMPTech" type="video/mp4"></source>
+                                    </video> */}
                         </div>
                         <div className="col">
                             <div className=" courses-details-desc">
