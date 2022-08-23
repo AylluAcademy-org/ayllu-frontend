@@ -14,6 +14,7 @@ resetIdCounter();
 import axios from "axios";
 const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
 
+
 const CouseTestV2 = () => {
     const pageTitle="Introducción a Haskell";
     const titlePageUrl="/single-courses-1";
@@ -84,6 +85,7 @@ const CouseTestV2 = () => {
             },
           })
           .then((res) => {
+            console.log(res);
             setTestArr(res.data);
           })
           .catch((error) => {
@@ -133,7 +135,7 @@ const CouseTestV2 = () => {
 
 
     const actualObject2 = testArr.find(questionActual => questionActual.order===actualQ);
-    //console.log(testArr);
+    console.log(testArr);
     //console.log(actualObject2);
 
     //setTestArr(getQuestionsByTestId(examid))
