@@ -1,56 +1,125 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/_App/Navbar';
 import PageBanner from '../components/Common/PageBanner';
 import Footer from '../components/_App/Footer';
 import ProfileCourses from '../components/Profile/ProfileCourses';
-import Quizzes from '../components/Profile/Quizzes';
+import Courses from '../components/Profile/Courses';
+import {getUserById,updateUser} from '../pages/api/Users/users';
 
 const Profile = () => {
+    /**Consume API get profile */
+    const [profile, setProfile] = useState({});
+    const [courses, setCourses] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [user, setUser] = useState('');
+    const [userId, setUserId] = useState('');
+
+    useEffect(() => {
+        getUserById(userId).then(response => {
+            if (response.status === 200) {
+                setProfile(response.data);
+                setCourses(response.data.courses);
+                setLoading(false);
+            } else {
+                setError(true);
+                setErrorMessage(response.data.message);
+                setLoading(false);
+            }
+        }
+        ).catch(error => {
+            setError(true);
+            setErrorMessage(error.message);
+            setLoading(false);
+        }
+        );
+    }, []);
+    /**Update user */
+    const updateUser = (user) => {
+        updateUser(user).then(response => {
+            if (response.status === 200) {
+                setSuccess(true);
+                setSuccessMessage(response.data.message);
+                setLoading(false);
+            } else {
+                setError(true);
+                setErrorMessage(response.data.message);
+                setLoading(false);
+            }
+        }
+        ).catch(error => {
+            setError(true);
+            setErrorMessage(error.message);
+            setLoading(false);
+        }
+        );
+    }
+
+
+
     return (
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle="Profile" 
+                pageTitle="Perfil" 
                 homePageUrl="/" 
-                homePageText="Home" 
-                activePageText="Profile" 
+                homePageText="Inicio" 
+                activePageText="Perfil" 
             />  
 
             <div className="profile-area">
                 <div className="container">
+
                     <div className="profile-box ptb-100">
                         <div className="row align-items-center">
-                            <div className="col-lg-4 col-md-4">
-                                <div className="image">
-                                    <img src="/images/advisor/advisor10.jpg" alt="image" />
-                                </div>
+                        <h3>Datos personales</h3>
+
+                            <div className="col-lg-9 col-md-9">
+                                <div className="profile-details">
+                                    <div className="form-group">
+                                        <label>{profile.name}</label>
+                                        <input type="text" className="form-control" placeholder="David Quintanilla" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>{profile.email}</label>
+                                        <input type="text" className="form-control" placeholder="dquintanilla@ayluu.io" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>{profile.wallet}</label>
+                                        <input type="text" className="form-control" placeholder="Nombre completo" />
+                                    </div>
+                                </div>           
+                   
+
+
                             </div>
 
-                            <div className="col-lg-8 col-md-8">
+                            <div className="col-lg-3 col-md-3">
                                 <div className="content">
-                                    <h3>Sarah Taylor</h3>
-                                    <span className="sub-title">Agile Project Expert</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    
-                                    <ul className="info">
-                                        <li><span>Phone Number:</span> <a href="tel:+44254588689">(+44) -2545 - 88689</a></li>
-                                        <li><span>Email:</span> <a href="mailto:hello@sarahtaylor.com">hello@sarahtaylor.com</a></li>
-                                    </ul>
+                                   
+                                <img class="rounded-circle z-depth-2" alt="100x100" src={profile.avatar}
+                                    data-holder-rendered="true"/>
+                                    <label onClick={updateUser}>Cambiar foto</label>
 
-                                    <ul className="social-link">
-                                        <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
-                                        <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
-                                        <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
-                                        <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-linkedin'></i></a></li>
-                                    </ul>
+                                    <div class="custom-file">
+                                        <input type="file" className="custom-file-input" id="customFile"/>
+                                    </div>
+                                    
+                                    <h3 className='mt-3'>Saldo: {profile.totalRewards} AYLLU</h3>
+                                    <button class="btn btn-primary" type="submit">Transferir a wallet</button>
+
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
 
-                    <ProfileCourses />
                     
-                    <Quizzes />
+                    <Courses />
                 </div>
             </div>
  

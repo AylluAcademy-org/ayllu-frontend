@@ -20,7 +20,7 @@ const CoursesRightSidebar = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-md-12">
-                            <div className="edemy-grid-sorting row align-items-center">
+                            <div className="Ayllu-grid-sorting row align-items-center">
                                 <div className="col-lg-8 col-md-6 result-count">
                                     <p>We found <span className="count">12</span> courses available for you</p>
                                 </div>
@@ -174,7 +174,7 @@ const CoursesRightSidebar = () => {
                                 
                                             <h3>
                                                 <Link href="/single-courses-1">
-                                                    <a>Python for Finance: Investment Fundamentals & Data Analytics</a>
+                                                    <a>Introducción a haskell</a>
                                                 </Link>
                                             </h3>
 
@@ -212,7 +212,7 @@ const CoursesRightSidebar = () => {
                     
                                             <h3>
                                                 <Link href="/single-courses-1">
-                                                    <a>Machine Learning A-Z™: Hands-On Python & R In Data Science</a>
+                                                    <a>Scala 0 a 100</a>
                                                 </Link>
                                             </h3>
 

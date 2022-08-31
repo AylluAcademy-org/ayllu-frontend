@@ -8,25 +8,33 @@
 ## Install
 
 ```sh
-npm install
+yarn install
 ```
 
 ## Usage
 
 ```sh
-npm run start
+yarn dev
 ```
+
+## Style
+
+For the style part, this app uses bootstrap 4 and the component library: https://mui.com/material-ui/getting-started/installation/
+
+## API Docs
+https://documenter.getpostman.com/view/20934581/UzQvrjYs
 
 ## Author
 
 👤 **Ayllu **
 
-* Website: ayllu.io
-* Github: [@AylluAcademy](https://github.com/AylluAcademy)
+- Website: ayllu.io
+- Github: [@AylluAcademy](https://github.com/AylluAcademy)
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

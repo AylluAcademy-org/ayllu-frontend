@@ -7,7 +7,7 @@ const PopularCourses = () => {
             <div className="container">
                 <div className="section-title">
                     <span className="sub-title">Learn At Your Own Pace</span>
-                    <h2>eDemy Popular Courses</h2>
+                    <h2>Ayllu Popular Courses</h2>
                     <p>Explore all of our courses and pick your suitable ones to enroll and start learning with us! We ensure that you will never regret it!</p>
                 </div>
 

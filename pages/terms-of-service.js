@@ -23,9 +23,9 @@ const TermsOfService = () => {
                                 <img src="/images/courses/courses2.jpg" alt="image" />
                                 <p><i>This Terms of Service was last updated on January 1, 2020.</i></p>
                                 <h3>1. Our website</h3>
-                                <p>Our website address is: http://edemy.com</p>
+                                <p>Our website address is: http://Ayllu.com</p>
                                 <blockquote className="blockquote">
-                                    <p>We collect certain data from you directly, like information you enter yourself, data about your participation in courses, and data from third-party platforms you connect with eDemy. We also collect some data automatically, like information about your device and what parts of our Services you interact with or spend time using.</p>
+                                    <p>We collect certain data from you directly, like information you enter yourself, data about your participation in courses, and data from third-party platforms you connect with Ayllu. We also collect some data automatically, like information about your device and what parts of our Services you interact with or spend time using.</p>
                                 </blockquote>
                                 <h3>2. Data You Provide to Us</h3>
                                 <p>We may collect different data from or about you depending on how you use the Services. Below are some examples to help you better understand the data we collect.</p>

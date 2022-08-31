@@ -22,16 +22,16 @@ const PageBanner = ({pageTitle, homePageUrl, homePageText, innerPageUrl, innerPa
 
                     <h2>{pageTitle}</h2>
 
-                    <div className="rating">
+                    {/* <div className="rating">
                         <i className='bx bxs-star'></i>
                         <i className='bx bxs-star'></i>
                         <i className='bx bxs-star'></i>
                         <i className='bx bxs-star'></i>
                         <i className='bx bxs-star'></i>
                         <div className="rating-count">
-                            <span>4.0 (1 rating)</span>
+                            <span>4.4 (4 rating)</span>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

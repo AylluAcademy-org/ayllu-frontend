@@ -142,7 +142,7 @@ const ProfileCourses = () => {
                     
                             <h3>
                                 <Link href="/single-courses-1">
-                                    <a>Python for Finance: Investment Fundamentals & Data Analytics</a>
+                                    <a>Introducción a haskell</a>
                                 </Link>
                             </h3>
 
@@ -180,7 +180,7 @@ const ProfileCourses = () => {
         
                             <h3>
                                 <Link href="/single-courses-1">
-                                    <a>Machine Learning A-Z™: Hands-On Python & R In Data Science</a>
+                                    <a>Scala 0 a 100</a>
                                 </Link>
                             </h3>
 

@@ -8,12 +8,12 @@ const MainBanner = () => {
                 <div className="row align-items-center">
                     <div className="col-lg-6 col-md-12">
                         <div className="main-banner-content">
-                            <h1>The World’s Leading Distance Learning Provider</h1>
-                            <p>Flexible easy to access learning opportunities can bring a significant change in how individuals prefer to learn! The eDemy can offer you to enjoy the beauty of eLearning!</p>
+                            <h1>Potenciando la educacion y desarrollo en LatAm con la technologia Blockchain</h1>
+                            <p>Adquiere incentivo socio-económico por crear, o consumir contenido educativo.</p>
 
                             <Link href="/profile-authentication">
                                 <a className="default-btn">
-                                    <i className="flaticon-user"></i> Join For Free <span></span>
+                                    <i className="flaticon-user"></i> Inscribete ahora! <span></span>
                                 </a>
                             </Link>
                         </div>
@@ -46,7 +46,7 @@ const MainBanner = () => {
 
                                             <h3>
                                                 <Link href="/single-courses-1">
-                                                    <a>Python for Finance: Investment Fundamentals & Data Analytics</a>
+                                                    <a>Introducción a haskell</a>
                                                 </Link>
                                             </h3>
 
@@ -88,7 +88,7 @@ const MainBanner = () => {
 
                                             <h3>
                                                 <Link href="/single-courses-1">
-                                                    <a>Machine Learning A-Z™: Hands-On Python & R In Data Science</a>
+                                                    <a>Scala 0 a 100</a>
                                                 </Link>
                                             </h3>
 

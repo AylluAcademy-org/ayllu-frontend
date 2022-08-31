@@ -177,7 +177,7 @@ const BlogDetails = () => {
                                     </div>
                                 </div>
 
-                                <div className="edemy-post-navigation">
+                                <div className="Ayllu-post-navigation">
                                     <div className="prev-link-wrapper">
                                         <div className="info-prev-link-wrapper">
                                             <a href="#">

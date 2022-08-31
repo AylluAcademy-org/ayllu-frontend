@@ -17,7 +17,7 @@ const Shop = () => {
 
             <div className="products-area ptb-100">
                 <div className="container">
-                    <div className="edemy-grid-sorting row align-items-center">
+                    <div className="Ayllu-grid-sorting row align-items-center">
                         <div className="col-lg-8 col-md-6 result-count">
                             <p>We found <span className="count">9</span> products available for you</p>
                         </div>

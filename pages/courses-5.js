@@ -18,7 +18,7 @@ const CoursesList01 = () => {
 
             <div className="courses-area ptb-100 bg-f5f7fa">
                 <div className="container">
-                    <div className="edemy-grid-sorting row align-items-center">
+                    <div className="Ayllu-grid-sorting row align-items-center">
                         <div className="col-lg-8 col-md-6 result-count">
                             <p>We found <span className="count">12</span> courses available for you</p>
                         </div>

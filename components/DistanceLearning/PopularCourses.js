@@ -171,7 +171,7 @@ const PopularCourses = () => {
                             </div>
                             <h3>
                                 <Link href="/single-courses-2">
-                                    <a>Python for Finance: Investment Fundamentals & Data Analytics</a>
+                                    <a>Introducción a haskell</a>
                                 </Link>
                             </h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>

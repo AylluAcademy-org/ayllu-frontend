@@ -11,7 +11,7 @@ const GetInstantCourses = () => {
                             <div className="get-instant-courses-content">
                                 <span className="sub-title">Get Instant Access to The Free</span>
                                 <h2>Self Development Course</h2>
-                                <p>eDemy Self Development Course can assist you in bringing the significant changes in personal understanding and reshaping the confidence to achieve the best from your career! We trust that learning should be enjoyable, and only that can make substantial changes to someone!</p>
+                                <p>Ayllu Self Development Course can assist you in bringing the significant changes in personal understanding and reshaping the confidence to achieve the best from your career! We trust that learning should be enjoyable, and only that can make substantial changes to someone!</p>
 
                                 <Link href="/profile-authentication">
                                     <a className="default-btn">

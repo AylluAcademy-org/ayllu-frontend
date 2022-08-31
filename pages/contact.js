@@ -39,7 +39,7 @@ const Contact = () => {
                                         </div>
                                         <h3>Contact</h3>
                                         <p>Mobile: <a href="tel:+44457895789">(+44) - 45789 - 5789</a></p>
-                                        <p>Mail: <a href="mailto:hello@edemy.com">hello@edemy.com</a></p>
+                                        <p>Mail: <a href="mailto:hello@Ayllu.com">hello@Ayllu.com</a></p>
                                     </li>
                                     <li>
                                         <div className="icon">

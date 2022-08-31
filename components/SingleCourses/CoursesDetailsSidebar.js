@@ -1,11 +1,50 @@
 import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import {useState, useEffect} from 'react';
+import { getCourseById } from '../../pages/api/Courses/courses';
 const ModalVideo = dynamic(() => import('react-modal-video'), {
     ssr: false
 });
-
+import axios from 'axios';
 const CoursesDetailsSidebar = () => {
+    const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
+
+    /**Get couse by id */
+    const [course, setCourse] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [couseid, setCouseid] = useState(2);
+
+
+    /**Get course by Id with AXIOS with parameters*/
+    const getCourse = async () => {
+        try {
+            /**
+             * TODO: 
+             * 1. Get course by id from REDUX store
+             * 2. Get course by id from API
+             */
+            const response = await axios.get(API_URL +'courses/getById?course_id=7');
+            console.log("data",response.data);
+            setCourse(response.data);
+            setLoading(false);
+        } catch (error) {
+            setError(true);
+            setErrorMessage(error.message);
+            setLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        /** Get course by Id */
+        getCourse();
+    }, []);
+
+
     // Popup Video
 	const [isOpen, setIsOpen] = React.useState(true);
     const openModal = () => {
@@ -17,13 +56,13 @@ const CoursesDetailsSidebar = () => {
             <ModalVideo 
                 channel='youtube' 
                 isOpen={!isOpen} 
-                videoId='bk7McNUjWgw' 
+                videoId='Qa8IfEeBJqk' 
                 onClose={() => setIsOpen(!isOpen)} 
             />
             
             <div className="courses-details-info">
                 <div className="image">
-                    <img src="/images/courses/courses1.jpg" alt="image" />
+                    <img src={course.image} alt="image" />
 
                     <Link href="#play-video">
                         <a
@@ -39,69 +78,50 @@ const CoursesDetailsSidebar = () => {
                 </div>
 
                 <ul className="info">
-                    <li className="price">
-                        <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-tag"></i> Price</span>
-                            $49
-                        </div>
-                    </li>
+               
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-teacher"></i> Instructor</span>
-                            Sarah Taylor
+                            {course.authorId}
                         </div>
                     </li>
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-time"></i> Duration</span>
-                            7 weeks
+                            <span><i className="flaticon-time"></i> Duración</span>
+                            {course.duration} hrs
                         </div>
                     </li>
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-distance-learning"></i> Lessons</span>
-                            25
+                            <span><i className="flaticon-distance-learning"></i> Lecciones</span>
+                            {course.lesson}
                         </div>
                     </li>
-                    <li>
+                     <li>
                         <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-web"></i> Enrolled</span>
-                            255 students
+                            <span><i className="flaticon-distance-learning"></i> Lecciones</span>
+                            {course.lesson}
                         </div>
                     </li>
+
+
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-lock"></i> Access</span>
-                            Lifetime
-                        </div>
+                            <span><i className="flaticon-lock"></i> Precio: </span>
+${course.price}                        </div>
                     </li>
                 </ul>
 
                 <div className="btn-box">
+
                     <Link href="#">
                         <a className="default-btn">
-                            <i className="flaticon-shopping-cart"></i> Add to Cart <span></span>
-                        </a>
-                    </Link>
-                    <Link href="#">
-                        <a className="default-btn">
-                            <i className="flaticon-tag"></i> Buy Now <span></span>
+                            <i className="flaticon-tag"></i> Comprar ahora <span></span>
                         </a>
                     </Link>
                 </div>
 
-                <div className="courses-share">
-                    <div className="share-info">
-                        <span>Share This Course <i className="flaticon-share"></i></span>
-
-                        <ul className="social-link">
-                            <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
-                            <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
-                            <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
-                            <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-linkedin'></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+            
             </div>
         </React.Fragment>
     )
