@@ -18,7 +18,7 @@ const SingleCourses = () => {
                 test:idTest,
             }
         });
-    }s
+    }
     
     return (
         <React.Fragment>
