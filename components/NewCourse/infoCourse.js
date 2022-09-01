@@ -1,0 +1,83 @@
+import React from 'react';
+import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { useEffect, useState,useRef } from "react";
+import {Router,useRouter }  from 'next/router'
+resetIdCounter();
+import axios from "axios";
+const API_URL_CAT = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/categories";
+const API_URL_COUR = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/courses";
+const API_URL_COURBYCAT = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/courses/getByCategory";
+
+
+const InfoCourse = ({currentCourse}) => {
+    const [categorias, setCategorias] = useState([]);
+    const [cursosList, setCursosList] = useState([]);
+    const [nCategoria, setNCategoria] = useState(""); 
+    const [courseC, setCourseC] = useState("");
+    const router = useRouter();
+  
+    
+    
+   
+    return (
+        
+        <React.Fragment>
+
+             <div className="profile-area">
+                <div className="container">
+
+                    <div className="profile-box ptb-100">
+                        <div className="row align-items-center">                     
+
+                            <div className="col-lg-9 col-md-9">
+                                <div className="profile-details">
+                                  
+                                    <h1>{currentCourse.name}</h1>
+                                    <h3>{currentCourse.description}</h3>                                    
+                                    <label>Precio: </label>
+                                    <h3>{currentCourse.price}</h3> 
+                                    <label>Duración: </label>                            
+                                    <h3>{currentCourse.duration}</h3>
+                                    <label>Número de lecciones: </label>
+                                    <h3>{currentCourse.lesson}</h3>   
+                                    <label>Cantidad de Likes: </label>                           
+                                    <h3>{currentCourse.likes}</h3>
+                                </div>  
+                            </div>
+
+                            <div className="col-lg-3 col-md-3">
+                                <div className="content">
+                                    <label>Portada del curso</label>
+                                    <img alt="Course Image" class="img-preview" src={currentCourse.image} />
+                                </div>
+
+                                <div className="content">
+                                    <label>Video del curso</label>                               
+                                    
+                                    <video width="320" height="240" controls>
+                                    <source src={currentCourse.video} alt="Course Video" type="video/mp4"/>
+                                    </video>                                 
+                                    
+                                </div>
+
+                                
+                                
+                            </div>
+
+
+                        </div>
+
+                        
+                    </div>
+
+                    
+                </div>
+            </div>
+                   
+                  
+        </React.Fragment>
+        
+    )
+}
+
+export default InfoCourse;

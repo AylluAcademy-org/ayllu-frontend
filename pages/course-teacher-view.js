@@ -4,6 +4,10 @@ import PageBanner from '../components/Common/PageBanner';
 import Footer from '../components/_App/Footer';
 import ProfileCourses from '../components/Profile/ProfileCourses';
 import Courses from '../components/Profile/courses-teacher';
+import NewCourse from '../components/NewCourse/newCourse';
+import NewModule from '../components/NewCourse/newModule';
+import NewLesson from '../components/NewCourse/newLesson';
+import SeeCourses from '../components/NewCourse/seeCourses';
 import { useEffect, useState,useRef } from "react";
 import axios from "axios";
 const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/categories";
@@ -11,7 +15,7 @@ const Profile = () => {
 
     const [categorias, setCategorias] = useState([]);
     const [nCategoria, setNCategoria] = useState("");
-
+    const [ventana, setVentana] = useState("VerCurso");
     const getCategories = async () => {
         axios
           .get(API_URL)
@@ -64,7 +68,41 @@ const Profile = () => {
     const btn = document.getElementById("myBtn");
     // add event listener for the button, for action "click"
     btn.addEventListener("click", handleClick);*/}
+    const crearCurso =() => {
+      console.log("Hola estas creando un curso"); 
+      setVentana("CrearCurso");     
+      
+    };
+
+    const crearModulo =() => {
+      console.log("Hola estas creando un modulo"); 
+      setVentana("CrearModulo");     
+      
+    };
+
+    const crearLecciones =() => {
+      console.log("Hola estas creando una leccion"); 
+      setVentana("CrearLeccion");     
+      
+    };
+
+    const renderComponent=() => {
+      switch(ventana) {
+      case "VerCurso":
+        return <SeeCourses />
+      case "CrearCurso":
+        return <NewCourse />
+      case "CrearModulo":
+        return <NewModule />
+      case "CrearLeccion":
+        return <NewLesson />
+    }
+  };
   
+
+
+    console.log(ventana);
+
     return (
         <React.Fragment>
             <Navbar />
@@ -74,91 +112,25 @@ const Profile = () => {
                 homePageText="Inicio" 
                 activePageText="Perfil" 
             />  
+            <div>
+              <div>
+                <a className="default-btn" onClick={crearCurso}>Crear Curso</a>                                      
+              </div>
 
-            <div className="profile-area">
-                <div className="container">
+              <div>
+                <a className="default-btn" onClick={crearModulo}>Crear Modulo</a>                                      
+              </div>
 
-                    <div className="profile-box ptb-100">
-                        <div className="row align-items-center">
-                        <h3>Datos del curso</h3>
-
-                            <div className="col-lg-9 col-md-9">
-                                <div className="profile-details">
-                                    <div className="form-group">
-                                        <label>Nombre del curso</label>
-                                        <input type="text" className="form-control" placeholder="Nombre del curso" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Descripción</label>
-                                        <textarea type="text" className="form-control" placeholder="Descripción del curso" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Precio</label>
-                                        <input type="text" className="form-control" placeholder="Precio" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Duración</label>
-                                        <input type="text" className="form-control" placeholder="Duración" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Cantidad de lecciones</label>
-                                        <input type="text" className="form-control" placeholder="Cantidad de lecciones" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Numero de likes</label>
-                                        <input type="text" className="form-control" placeholder="Numero de Likes" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label  for="category">Categoria</label>
-                                        <select id="category" name="category">
-                                            {categorias.map((item) => ( 
-                                                <option value={item.category_id}>{item.name}</option>    
-                                                
-                                                      
-                                            ))}     
-                                            
-                                        </select>
-                                    </div>
-                                    {/* <div className="form-group">                                       
-                                        <input id="newCat" type="text" className="form-control" placeholder="Nombe de la categoria" />
-                                        <button type="button"  id="myBtn"> Crear nueva categoria </button>
-                                    </div>*/}
-                                    
-                                    <div className="form-group">
-                                        <label>Autor</label>
-                                        <input type="text" className="form-control" placeholder="Autor" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Estatus  <input type="checkbox" value="true"/></label>
-                                        
-                                    </div>
-                                </div>           
-                   
-
-
-                            </div>
-
-                            <div className="col-lg-3 col-md-3">
-                                <div className="content">
-                                <label>Portada del curso</label>
-
-                                <img alt="100x100" src="https://i.ytimg.com/vi/fJRBeWwdby8/maxresdefault.jpg"
-                                  />
-
-                                    <div class="custom-file">
-                                        <input type="file" className="custom-file-input" id="customFile"/>
-                                    </div>
-                                    
-
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-
-                    <Courses />
-                </div>
+              <div>
+                <a className="default-btn" onClick={crearLecciones}>Crear Lecciones</a>                                      
+              </div>
             </div>
+            
+
+            <div>
+              { renderComponent() }
+            </div>
+            
  
             <Footer />
         </React.Fragment>

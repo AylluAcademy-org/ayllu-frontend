@@ -74,7 +74,7 @@ const CouseTestV2 = () => {
 
     const examid= props.test;
     useEffect(()=> {
-        fetchQuestions(examid);
+        getResponseQ(examid);
     },[]);
 
     const fetchQuestions =  (testId) => {
@@ -93,6 +93,24 @@ const CouseTestV2 = () => {
           });
       };
     
+
+    const getResponseQ = (testId)=>{ 
+        axios.post(
+            'https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/questions/getQuestionsByTest',
+            `{\n    "testId": ${testId}\n}`,
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+    ).then((response) => {
+        console.log(response.data);
+        setTestArr(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    };
     
    /*
     const getTestArr = async (examid) => {
@@ -135,6 +153,7 @@ const CouseTestV2 = () => {
 
 
     const actualObject2 = testArr.find(questionActual => questionActual.order===actualQ);
+    
     console.log(testArr);
     //console.log(actualObject2);
 
