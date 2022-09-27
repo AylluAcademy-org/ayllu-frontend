@@ -12,10 +12,11 @@ const API_URL_COURBYCAT = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.co
 const SeeCourses = () => {
     const [categorias, setCategorias] = useState([]);
     const [cursosList, setCursosList] = useState([]);
+    const [cursosAuthor, setCursosAuthor] = useState([]);
     const [nCategoria, setNCategoria] = useState(""); 
     const [courseC, setCourseC] = useState("");
     const router = useRouter();
-  
+    const authorId =1;
     
     const getCategories = async () => {
         axios
@@ -49,6 +50,7 @@ const SeeCourses = () => {
       useEffect(()=> {
         getCursosList();
         
+        
     },[]);
 
     ///function to get the couses By Category
@@ -69,6 +71,27 @@ const SeeCourses = () => {
         console.log(error);
       });
     };
+
+     ///function to get the couses By AuthorId
+     const getListbyAuthor = (authorId)=>{ 
+        axios.get('https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/courses/getCourseByAuthorId', {
+    params: {
+        'authorId': `${authorId}`
+    }
+    }
+    ).then((response) => {
+        console.log(response.data);
+        setCursosAuthor(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    };
+
+    useEffect(()=> {
+        getListbyAuthor(authorId);     
+        
+    },[]);
 
 
     const buscarCursoCat = () => {
@@ -92,6 +115,7 @@ const SeeCourses = () => {
         });
     };
    
+    console.log(cursosAuthor);
     return (
         
         <React.Fragment>
@@ -131,7 +155,7 @@ const SeeCourses = () => {
 
                                 
                                 <div className='courses-list-area '>
-                                    {cursosList.map((item) => ( 
+                                    {cursosAuthor.map((item) => ( 
                                                                 
                                         <div onClick={()=> seeIndividualCourse(item)}>
                                             <h3  >{item.name}</h3>

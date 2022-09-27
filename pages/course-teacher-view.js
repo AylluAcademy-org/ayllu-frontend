@@ -107,14 +107,14 @@ const Profile = () => {
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle="Nuevo curso" 
+                pageTitle="Tus Cursos" 
                 homePageUrl="/" 
                 homePageText="Inicio" 
                 activePageText="Perfil" 
             />  
-            <div>
+            <div className='container'>
               <div>
-                <a className="default-btn" onClick={crearCurso}>Crear Curso</a>                                      
+                <a className="default-btn pointer" onClick={crearCurso}>Crear Curso</a>                                      
               </div>
 
               <div>
