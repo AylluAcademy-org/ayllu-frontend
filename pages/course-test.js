@@ -9,7 +9,7 @@ import Router from 'next/router'
 resetIdCounter();
 
 const SingleCourses = () => {
-    const idTest=3;
+    const idTest=1;
 
     function sendProps(){
         Router.push({

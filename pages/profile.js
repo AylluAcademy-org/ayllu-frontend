@@ -59,7 +59,7 @@ const Profile = () => {
         );
     }
 
-
+    
 
     return (
         <React.Fragment>
@@ -117,7 +117,7 @@ const Profile = () => {
                             </div>
                         </div>
                     </div>
-
+                    
                     
                     <Courses />
                 </div>
