@@ -14,6 +14,14 @@ const InfoCourse = ({ currentCourse }) => {
     const [courseC, setCourseC] = useState("");
     const router = useRouter();
 
+    // Save the prop in a state 
+    useEffect(() => {
+        //read infocurso from localstorage
+        const infoCurso = JSON.parse(localStorage.getItem("infocurso"));
+        console.log("localstorager",infoCurso);
+        setModulosList(infoCurso.modules)
+
+    }, []);
     return (
         <React.Fragment>
             <div className="profile-area">
@@ -57,18 +65,20 @@ const InfoCourse = ({ currentCourse }) => {
                                     </video>
                                 </div>
                             </div>
+                            
+                            
 {/*}
-                            <div className="container">
+                          <div className="container">
                                 <div class="list-group">
 
-                                    {(currentCourse.modules).map((item) => (
+                                    {modulesList.map((item) => (
                                         <a href="#" class="list-group-item list-group-item-action">
-                                            {item.nameº}
+                                            {item.name}
                                         </a>
                                     ))}
                                 </div>
-
-                               
+                            </div>
+                           
                             </div>
                                     */}
                         </div>

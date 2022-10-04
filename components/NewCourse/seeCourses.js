@@ -102,13 +102,11 @@ const SeeCourses = () => {
 
     const seeIndividualCourse = (item) =>{
         console.log(item.name);
-        router.push('/course-teacher-view-course',item.course_id
-       
-        );
+        //router.push('/course-teacher-view-course',item.course_id  );
 
         router.push({
             pathname:"/course-teacher-view-course",
-            asPath: "/courseview",
+            asPath: "/course-teacher-view-course",
             query:{
                 idCourse:item.course_id,
             }

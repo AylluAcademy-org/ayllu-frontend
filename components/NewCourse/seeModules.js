@@ -1,117 +1,122 @@
 import React from 'react';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useEffect, useState,useRef } from "react";
-import {Router,useRouter }  from 'next/router'
+import { useEffect, useState, useRef } from "react";
+import { Router, useRouter } from 'next/router'
 resetIdCounter();
 import axios from "axios";
 
 
 
-const SeeModules = ({currentCourse}) => {
+const SeeModules = ({ currentCourse }) => {
     const [modList, setModList] = useState([]);
+    const [lessList, setLessList] = useState([]);
     const router = useRouter();
-  
-    
+
+
 
 
     ///function to get the couses By Category
-    const getModules = (courseId)=>{ 
+    const getModules = (courseId) => {
         axios.post(
-        'https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/modules/getByCourse',
-        `{\n    "courseId": ${courseId}\n}`,
-        {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+            'https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/modules/getByCourse',
+            `{\n    "courseId": ${courseId}\n}`,
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             }
-        }
-    ).then((response) => {
-        console.log(response.data);
-        setModList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        ).then((response) => {
+            console.log(response.data);
+            setModList(response.data);
+            setLessList(response.data.lessons);
+        })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
-    useEffect(()=> {
+    useEffect(() => {
         getModules(currentCourse);
-        
-    },[]);
+
+    }, []);
 
 
 
-    const seeIndividualCourse = (item) =>{
-        console.log(item.name);
-        router.push('/course-teacher-view-course',item.course_id
-       
-        );
 
-        router.push({
-            pathname:"/course-teacher-view-course",
-            asPath: "/courseview",
-            query:{
-                idCourse:item.course_id,
-            }
-        });
-    };
-   
     return (
-        
+
         <React.Fragment>
 
-             <div className="profile-area">
+            <div className="profile-area">
                 <div className="container">
 
                     <div className="profile-box ptb-100">
                         <div className="row align-items-center">
-                        <h3>Lista de Modulos</h3>
+                            <h3>Lista de Modulos</h3>
 
                             <div className="col-lg-9 col-md-9">
-                                <div className="profile-details">
-                                  
-                                   
-                                    
-                                    <div className="form-group">
-                                    
-        
+                                <div class="accordion" id="accordionExample">
+                                    <div className='courses-list-area '>
+                                        {modList.map((item) => (
 
-                                    </div>
-                                                                  
-                                                                       
-                                </div>  
 
-                                
-                                <div className='courses-list-area '>
-                                    {modList.map((item) => ( 
-                                                                
-                                        <div onClick={()=> seeIndividualCourse(item)}>
-                                            <h3  >{item.name}</h3>
-                                            <img alt={"Module "+item.name + " Image"} src={item.image} />
-                                        </div>
-                                        
-                                    ))}                      
-                                
-                        
-                                </div>         
-                   
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingOne">
+                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        {item.name}
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                            <div class="list-group">
+
+                                                                {item.lessons.map((item2) => (
+                                                                    <a href="#" class="list-group-item list-group-item-action">
+                                                                        {item2.name}
+                                                                    </a>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                            
+                                           
+
+                                        ))}
+
+
+                                </div>
+
+
+
 
 
                             </div>
 
-                           
+
+
+
+
 
                         </div>
 
-                        
+
+
                     </div>
 
-                    
+
                 </div>
+
+
             </div>
-                   
-                  
-        </React.Fragment>
-        
+        </div>
+
+
+        </React.Fragment >
+
     )
 }
 

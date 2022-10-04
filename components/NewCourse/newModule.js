@@ -8,40 +8,20 @@ const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/cate
 
 
 
-const NewCourse = () => {
-    const [categorias, setCategorias] = useState([]);
+const NewCourse = (currentCourseId) => {
     const [nCategoria, setNCategoria] = useState(""); 
     const [newCourseC, setNewCourseC] = useState({
         name : "",
         description : "",
-        price : "",
-        duration: "",
-        image: "",
-        video: "https://bckt-front.s3.amazonaws.com/videos/Curso+de+Haskell+desde+cero+_+1+-+Primeros+pasos+_+Funciones.mp4",
-        lesson: "",
-        likes:"",
-        categoryId:"",
-        authorId:"",
-        status:"false"
+        status:"true",
+        image:"Image3",
+        class:"",
+        time:"",
+        courseId:""
         });
     const [imgData, setImgData] = useState(null);
     const [videoData, setVideoData] = useState(null);
-    const getCategories = async () => {
-        axios
-          .get(API_URL)
-          .then((response) => {
-            setCategorias(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-            return error;
-          });
-      };
 
-      useEffect(()=> {
-        getCategories();
-        
-    },[]);
 
     const onChangePicture = e => {
         if (e.target.files[0]) {
@@ -109,6 +89,10 @@ const NewCourse = () => {
         });
       };
 
+      //print "deguggin" in console to see the value of the variable        
+      console.log("deguggin");
+        console.log(currentCourseId);
+
     return (
         
         <React.Fragment>
@@ -146,23 +130,7 @@ const NewCourse = () => {
                                         <label>Numero de likes</label>
                                         <input type="text" className="form-control" placeholder="Numero de Likes" onChange={e => setNewCourseC({...newCourseC, likes: e.target.value})} value={newCourseC.likes}/>
                                     </div>
-                                    <div className="form-group">
-                                        <label  for="category">Categoria</label>
-                                        <select onChange={e => setNewCourseC({...newCourseC, categoryId: e.target.value})}id="category" name="category">
-                                        <option >Elige la categoria</option> 
-                                            {categorias.map((item) => ( 
-                                                <option  value={item.category_id}>{item.name}</option>    
-                                                
-                                                      
-                                            ))}     
-                                            
-                                        </select>
-                                    </div>
-                                    {/* <div className="form-group">                                       
-                                        <input id="newCat" type="text" className="form-control" placeholder="Nombe de la categoria" />
-                                        <button type="button"  id="myBtn"> Crear nueva categoria </button>
-                                    </div>*/}
-                                    
+                                   
                                     <div className="form-group">
                                         <label>Autor</label>
                                         <input type="text" className="form-control" placeholder="Autor"  onChange={e => setNewCourseC({...newCourseC, authorId: e.target.value})} value={newCourseC.authorId} />
