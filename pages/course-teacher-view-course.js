@@ -27,18 +27,26 @@ const Profile = () => {
     };
 
     const verModulos =() => {
-      console.log("Hola estas creando una leccion"); 
+      console.log("Hola estas viendo los modulos"); 
       setVentanaCourse("VerModulos");     
       
     };
+
+    const crearLeccion =() => {
+      console.log("Hola estas creando una leccion"); 
+      setVentanaCourse("CrearLeccion");     
+      
+    };
+
 
     const renderComponent=() => {
       switch(ventanaCourse) { 
       case "CrearModulo":
         return <NewModule currentCourseId={cursoActual} />
       case "VerModulos":
-        return <SeeModules 
-        currentCourse={cursoActual}/>
+        return <SeeModules currentCourse={cursoActual}/>
+      case "CrearLeccion":
+        return <NewLesson currentCourseId={cursoActual}/>  
     }
   };
 
@@ -99,15 +107,20 @@ const debug = () => {
               currentCourse={infoCurso}
             />
            
-           <div className='container'>
+           <div className='container '>
+            <div className='flex-row'>
               <div>                               
                 <a className="default-btn" onClick={verModulos}>Modulos</a>                                      
               </div>            
               <div>
                 <a className="default-btn" onClick={crearModulo}>Crear Modulo</a>                                      
               </div>
+              <div>
+                <a className="default-btn" onClick={crearLeccion}>Crear Lección</a>                                      
+              </div>
+
             </div>
-            
+            </div>
 
             <div>
               { renderComponent() }

@@ -101,7 +101,6 @@ const SeeCourses = () => {
     };
 
     const seeIndividualCourse = (item) =>{
-        console.log(item.name);
         //router.push('/course-teacher-view-course',item.course_id  );
 
         router.push({

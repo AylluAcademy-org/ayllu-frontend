@@ -2,12 +2,11 @@ import React from 'react';
 import Navbar from '../components/_App/Navbar';
 import PageBanner from '../components/Common/PageBanner';
 import Footer from '../components/_App/Footer';
-import ProfileCourses from '../components/Profile/ProfileCourses';
-import Courses from '../components/Profile/courses-teacher';
 import NewCourse from '../components/NewCourse/newCourse';
 import NewModule from '../components/NewCourse/newModule';
 import NewLesson from '../components/NewCourse/newLesson';
 import SeeCourses from '../components/NewCourse/seeCourses';
+import router from 'next/router';
 import { useEffect, useState,useRef } from "react";
 import axios from "axios";
 const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/categories";
@@ -68,6 +67,11 @@ const Profile = () => {
     const btn = document.getElementById("myBtn");
     // add event listener for the button, for action "click"
     btn.addEventListener("click", handleClick);*/}
+    const verCurso =() => {
+      router.reload();    
+      
+    };
+
     const crearCurso =() => {
       console.log("Hola estas creando un curso"); 
       setVentana("CrearCurso");     
@@ -108,21 +112,16 @@ const Profile = () => {
             <Navbar />
             <PageBanner 
                 pageTitle="Tus Cursos" 
-                homePageUrl="/" 
-                homePageText="Inicio" 
-                activePageText="Perfil" 
+                homePageUrl="/course-teacher-view" 
+                homePageText="Tus Cursos" 
+                activePageText={ventana} 
             />  
             <div className='container'>
+            <div>
+                <a className="default-btn pointer" onClick={verCurso}>Tus Cursos</a>                                      
+              </div>
               <div>
                 <a className="default-btn pointer" onClick={crearCurso}>Crear Curso</a>                                      
-              </div>
-
-              <div>
-                <a className="default-btn" onClick={crearModulo}>Crear Modulo</a>                                      
-              </div>
-
-              <div>
-                <a className="default-btn" onClick={crearLecciones}>Crear Lecciones</a>                                      
               </div>
             </div>
             

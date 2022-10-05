@@ -10,7 +10,7 @@ const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/cate
 
 const NewCourse = () => {
     const [categorias, setCategorias] = useState([]);
-    const [nCategoria, setNCategoria] = useState(""); 
+    const [newCourseId, setNewCourseId] = useState(0);
     const [newCourseC, setNewCourseC] = useState({
         name : "",
         description : "",
@@ -22,7 +22,7 @@ const NewCourse = () => {
         likes:"",
         categoryId:"",
         authorId:"",
-        status:"false"
+        status:true
         });
     const [imgData, setImgData] = useState(null);
     const [videoData, setVideoData] = useState(null);
@@ -82,28 +82,31 @@ const NewCourse = () => {
         
       };
 
+      const CreateCourse = (nwCourse) => {
+        axios.post(
+            'https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/courses',
+            `{\n    "name": "${nwCourse.name}",\n    "description": "${nwCourse.description}",\n    "price": ${nwCourse.price},\n    "duration": ${nwCourse.duration},\n    "image": "${nwCourse.image}",\n    "video": "${nwCourse.video}",\n    "lesson": ${nwCourse.lesson},\n    "likes": ${nwCourse.likes},\n    "categoryId": ${nwCourse.categoryId},\n    "authorId": ${nwCourse.authorId},\n    "status": ${nwCourse.status}    \n}`,
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+        ).then((response) => {
+            console.log(response.data);
+            setNewCourseId(response.data.course_id);
+        })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
 
       const crearCurso =() => {
-        console.log("Hola mundo"); 
-        {/**  
-     setNewCourse({
-        name : "",
-        description : "",
-        price : "",
-        duration: "",
-        image: "",
-        video: "",
-        lesson: "",
-        likes:"",
-        categoryId:"",
-        authorId:"",
-        status:""
-        });
-    */}      
-
-       
-        console.log(newCourseC);
+        CreateCourse(newCourseC);
         
+        console.log(newCourseId); 
+        
+        Router.reload();
       };
 
     return (
@@ -164,10 +167,7 @@ const NewCourse = () => {
                                         <label>Autor</label>
                                         <input type="text" className="form-control" placeholder="Autor"  onChange={e => setNewCourseC({...newCourseC, authorId: e.target.value})} value={newCourseC.authorId} />
                                     </div>
-                                    <div className="form-group">
-                                        <label>Estatus  <input type="checkbox" onChange={e => setNewCourseC({...newCourseC, status: e.target.value})} value="true"/></label>
-                                        
-                                    </div>
+                                    
                                 </div>           
                    
 
