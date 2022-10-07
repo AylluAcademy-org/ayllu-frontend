@@ -4,7 +4,7 @@ import Progressbar from '../components/TestModule/Progress_bar';
 import TestView from '../components/TestModule/TestView';
 import Link from '../utils/ActiveLink';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState,useRef, componentDidMount } from "react";
 import { display } from '@mui/system';
 import {getTestByModuleId} from "./api/Tests/test";
 import {createUserTestAnswers} from "./api/Tests/answers";
@@ -16,10 +16,11 @@ const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
 
 
 const CouseTestV2 = () => {
+    const [testArr, setTestArr] = useState([]);
     const pageTitle="Introducción a Haskell";
     const titlePageUrl="/single-courses-1";
     const nameModule="Exam module 3";
-    const questionArray=[{quest:'Esta es la pregunta 1?',answ:['Answer 1','Answer 2','Answer 3','Answer 4']},{quest:'Esta es la pregunta 2?',answ:['Answer 1','Answer 2']},{quest:'Esta es la pregunta 3?',answ:['Answer 1','Answer 2','Answer 3','Answer 4']}];
+    //const questionArray=[{quest:'Esta es la pregunta 1?',answ:['Answer 1','Answer 2','Answer 3','Answer 4']},{quest:'Esta es la pregunta 2?',answ:['Answer 1','Answer 2']},{quest:'Esta es la pregunta 3?',answ:['Answer 1','Answer 2','Answer 3','Answer 4']}];
     const responseTest= [{
           "question_id": 1,
           "text": "En que año y por quienes fue creado Haskell?",
@@ -55,15 +56,14 @@ const CouseTestV2 = () => {
             "order": 2
           }]
         }];
-
-    const [testArr, setTestArr] = useState([]);
-    const numberQ=testArr.length;
-    const [actualQ, setActualQ] = useState(1);
-    const [showN, setShowN] = useState(true); 
-    const porcNQ = (actualQ*100)/numberQ;
     
+    const numberQ=testArr.length;
+    const [actualQ, setActualQ] = useState(0);
+    const [showN, setShowN] = useState(true); 
+    
+    const porcNQ = (actualQ*100)/numberQ;
     const router = useRouter();
-
+    const [actualP, setActualP] = useState(0);
     const {
         query:{test},
     } = router;
@@ -72,27 +72,12 @@ const CouseTestV2 = () => {
         test
     };
 
-    const examid= props.test;
-    useEffect(()=> {
-        getResponseQ(examid);
-    },[]);
 
-    const fetchQuestions =  (testId) => {
-        axios
-        .post(API_URL + "questions/getQuestionsByTest", {
-            params: {
-              testId: testId,
-            },
-          })
-          .then((res) => {
-            console.log(res);
-            setTestArr(res.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
+
+    const examid= props.test;
+
     
+
 
     const getResponseQ = (testId)=>{ 
         axios.post(
@@ -111,6 +96,23 @@ const CouseTestV2 = () => {
         console.log(error);
       });
     };
+
+    
+    useEffect(()=> {
+        getResponseQ(examid); 
+        
+    },[]);
+
+
+    useEffect(()=> {
+        setActualP(testArr.find(questionActual => questionActual.order===actualQ)); 
+              
+    },[actualQ]);
+
+    
+    
+
+    
     
    /*
     const getTestArr = async (examid) => {
@@ -152,9 +154,17 @@ const CouseTestV2 = () => {
     const actualObject = responseTest.find(questionActual => questionActual.order===actualQ);
 
 
-    const actualObject2 = testArr.find(questionActual => questionActual.order===actualQ);
+    var actualObject2 = testArr.find(questionActual => questionActual.order===actualQ);
     
-    console.log(testArr);
+  
+    
+    //Save response.data in local storage called arrPregAct
+    //localStorage.setItem("arrPregAct", JSON.stringify(testArr.find(questionActual => questionActual.order===actualQ)));
+
+
+
+
+    
     //console.log(actualObject2);
 
     //setTestArr(getQuestionsByTestId(examid))
@@ -174,7 +184,7 @@ const CouseTestV2 = () => {
         setActualQ(actualQ -1);        
         if(!showN ===true){
             setShowN(!showN);
-        }
+        };
     };
 
    
@@ -184,10 +194,15 @@ const CouseTestV2 = () => {
         if(actualQ + 1 === numberQ){
             setShowN(!showN);
         };
+    };
 
-        
-        
-        
+    function btnStart () {
+        setActualQ(actualQ + 1);  
+        console.log("debugging hola 2"); 
+        console.log(testArr);
+        console.log("debugging");   
+        setActualP(0);  
+        console.log(actualP);
     };
 
     function btnFiQ () {
@@ -196,7 +211,15 @@ const CouseTestV2 = () => {
         
     };
     
-
+    function mostrarBoton (){
+        if (actualQ == 0){
+            return <button onClick={btnStart} className="btn-test-next">Iniciar examen</button>
+        }else  if (showN === true) {
+            return <button onClick={btnNextQ} className="btn-test-next">Siguiente</button> 
+        }{
+            return <Link href="/course-test-result"><a onClick={btnFiQ} className="btn-test-next">Terminar</a></Link>
+        }
+    }
   
      
     
@@ -227,14 +250,15 @@ const CouseTestV2 = () => {
 
                 <TestView
                     onClick={handleClick} 
-                    currentQ={actualObject2}
+                    actualP={actualQ}
+                    testArr={testArr}
                 />
 
                 
             <div className='testAreaButton'>                
-                <button onClick={btnPreviousQ}  disabled={actualQ ===1 }className="btn-test-previous">Anterior</button>                    
-                                
-                {showN ? (
+                {/*<button onClick={btnPreviousQ}  disabled={actualQ ===1 }className="btn-test-previous">Anterior</button>  */  }                
+                 {/*}               
+                {showN ?  (
                     <button onClick={btnNextQ} className="btn-test-next">Siguiente</button> 
                     ) : (
 
@@ -242,7 +266,8 @@ const CouseTestV2 = () => {
                             <a onClick={btnFiQ} className="btn-test-next">Terminar</a>
                         </Link>
                         
-                    )}           
+                    )}    */}    
+                {mostrarBoton()}   
             </div> 
 
                   

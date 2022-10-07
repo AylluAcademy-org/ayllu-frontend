@@ -117,14 +117,15 @@ const Profile = () => {
                 activePageText={ventana} 
             />  
             <div className='container'>
-            <div>
-                <a className="default-btn pointer" onClick={verCurso}>Tus Cursos</a>                                      
-              </div>
-              <div>
-                <a className="default-btn pointer" onClick={crearCurso}>Crear Curso</a>                                      
+              <div className='teacherview-createCoBTN'>
+                <div>
+                  <a className="default-btn pointer" onClick={verCurso}>Tus Cursos</a>                                      
+                </div>
+                <div>
+                 <a className="default-btn pointer" onClick={crearCurso}>Crear Curso</a>                                      
+                </div>
               </div>
             </div>
-            
 
             <div>
               { renderComponent() }
