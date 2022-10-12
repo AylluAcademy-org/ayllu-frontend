@@ -18611,5 +18611,18 @@ Go Top CSS
   color: #ffffff;
 }
 
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
 
+.card-body{
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}
 
+.card-group .col{
+ margin-bottom: 20px;
+}

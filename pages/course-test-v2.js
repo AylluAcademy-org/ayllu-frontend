@@ -146,11 +146,7 @@ const CouseTestV2 = () => {
         );}, []);
     };
     */
-  
-
-    
       
-    
     const actualObject = responseTest.find(questionActual => questionActual.order===actualQ);
 
 
@@ -160,15 +156,8 @@ const CouseTestV2 = () => {
     
     //Save response.data in local storage called arrPregAct
     //localStorage.setItem("arrPregAct", JSON.stringify(testArr.find(questionActual => questionActual.order===actualQ)));
-
-
-
-
-    
     //console.log(actualObject2);
-
     //setTestArr(getQuestionsByTestId(examid))
-   
     //console.log(actualObject);
 
     const [indexBtnClicked, setIndexBtnClicked] = useState([]);
