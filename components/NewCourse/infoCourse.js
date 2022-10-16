@@ -17,9 +17,9 @@ const InfoCourse = ({ currentCourse }) => {
     // Save the prop in a state 
     useEffect(() => {
         //read infocurso from localstorage
-        const infoCurso = JSON.parse(localStorage.getItem("infocurso"));
-        console.log("localstorager",infoCurso);
-        setModulosList(infoCurso.modules)
+        //const infoCurso = JSON.parse(localStorage.getItem("infocurso"));
+        //console.log("localstorager",infoCurso);
+        //setModulosList(infoCurso.modules)
 
     }, []);
     return (
@@ -38,8 +38,8 @@ const InfoCourse = ({ currentCourse }) => {
                                     <h3>{currentCourse.duration}</h3>
                                     <label>Número de lecciones: </label>
                                     <h3>{currentCourse.lesson}</h3>
-                                    <label>Cantidad de Likes: </label>
-                                    <h3>{currentCourse.likes}</h3>
+                                    <label>Rating: </label>
+                                    <h3>{currentCourse.rating}</h3>
                                 </div>
                             </div>
 

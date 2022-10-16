@@ -61,7 +61,7 @@ const Profile = () => {
     console.log(response.data);
     setInfoCurso(response.data);
     //Save response.data in local storage called infocurso
-    localStorage.setItem("infocurso", JSON.stringify(response.data));
+    //localStorage.setItem("infocurso", JSON.stringify(response.data));
 
   })
   .catch((error) => {

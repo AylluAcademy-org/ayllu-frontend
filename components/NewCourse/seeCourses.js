@@ -92,13 +92,30 @@ const SeeCourses = () => {
         getListbyAuthor(authorId);
 
     }, []);
+    
+    ///function to get the couses By AuthorId ands Category
+    const getListbyAuthorAndCategory = (authorId, catId) => {
+        axios.get('https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/courses/getCourseByAuthorIdAndCategoryId', {
+    params: {
+        'authorId': `${authorId}`,
+        'categoryId': `${catId}`
+    }
+    }).then((response) => {
+        console.log(response.data);
+        setCursosAuthor(response.data);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+    };
 
     
 
 
     const buscarCursoCat = () => {
         console.log(courseC);
-        getresponse(courseC);
+        getListbyAuthorAndCategory(authorId, courseC);
+        //getresponse(courseC);
         //getCoursebyCat(courseC);
     };
 
