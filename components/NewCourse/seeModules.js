@@ -50,7 +50,7 @@ const SeeModules = ({ currentCourse }) => {
             <div className="profile-area">
                 <div className="container">
 
-                    <div className="profile-box ptb-100">
+                    <div className="profile-box ptb-50">
                         <div className="row align-items-center">
                             <h3>Lista de Modulos</h3>
 

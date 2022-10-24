@@ -108,7 +108,7 @@ const debug = () => {
             />
            
            <div className='container '>
-            <div className='flex-row'>
+            <div className='boton-course-area'>
               <div>                               
                 <a className="default-btn" onClick={verModulos}>Modulos</a>                                      
               </div>            
