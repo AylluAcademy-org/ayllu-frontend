@@ -36,7 +36,7 @@ const NewModule = (currentCourseId) => {
 
       const onChangePictureLink = e => {
         setImgData(e.target.value);
-        setNewCourseC({...newCourseC, image: e.target.value})
+        setNewModuleC({...newModuleC, image: e.target.value})
         console.log('value is:', e.target.value);
       };
 

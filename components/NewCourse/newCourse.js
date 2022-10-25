@@ -1,7 +1,7 @@
 import React from 'react';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useEffect, useState,useRef } from "react";
-import Router from 'next/router'
+import router from 'next/router'
 resetIdCounter();
 import axios from "axios";
 const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/categories";
@@ -18,8 +18,6 @@ const NewCourse = () => {
         duration: "",
         image: "",
         video: "https://bckt-front.s3.amazonaws.com/videos/Curso+de+Haskell+desde+cero+_+1+-+Primeros+pasos+_+Funciones.mp4",
-        lesson: "",
-        likes:"",
         categoryId:"",
         authorId:"",
         status:true
@@ -85,7 +83,7 @@ const NewCourse = () => {
       const CreateCourse = (nwCourse) => {
         axios.post(
             'https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/courses',
-            `{\n    "name": "${nwCourse.name}",\n    "description": "${nwCourse.description}",\n    "price": ${nwCourse.price},\n    "duration": ${nwCourse.duration},\n    "image": "${nwCourse.image}",\n    "video": "${nwCourse.video}",\n    "lesson": ${nwCourse.lesson},\n    "likes": ${nwCourse.likes},\n    "categoryId": ${nwCourse.categoryId},\n    "authorId": ${nwCourse.authorId},\n    "status": ${nwCourse.status}    \n}`,
+            `{\n    "name": "${nwCourse.name}",\n    "description": "${nwCourse.description}",\n    "price": ${nwCourse.price},\n    "duration": ${nwCourse.duration},\n    "image": "${nwCourse.image}",\n    "video": "${nwCourse.video}",\n      "categoryId": ${nwCourse.categoryId},\n    "authorId": ${nwCourse.authorId},\n    "status": ${nwCourse.status}    \n}`,
             {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -94,6 +92,13 @@ const NewCourse = () => {
         ).then((response) => {
             console.log(response.data);
             setNewCourseId(response.data.course_id);
+            router.push({
+                pathname: "/course-teacher-view-course",
+                asPath: "/course-teacher-view-course",
+                query: {
+                    idCourse: response.data.course_id,
+                }
+            });
         })
             .catch((error) => {
                 console.log(error);
@@ -101,13 +106,14 @@ const NewCourse = () => {
     };
 
 
-      const crearCurso =() => {
+    function crearCurso ()  {
         CreateCourse(newCourseC);
         
         console.log(newCourseId); 
         
-        Router.reload();
+        
       };
+      
 
     return (
         
@@ -137,14 +143,6 @@ const NewCourse = () => {
                                     <div className="form-group">
                                         <label>Duración</label>
                                         <input type="text" className="form-control" placeholder="Duración" onChange={e => setNewCourseC({...newCourseC, duration: e.target.value})} value={newCourseC.duration} />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Cantidad de lecciones</label>
-                                        <input type="text" className="form-control" placeholder="Cantidad de lecciones" onChange={e => setNewCourseC({...newCourseC, lesson: e.target.value})} value={newCourseC.lesson}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Numero de likes</label>
-                                        <input type="text" className="form-control" placeholder="Numero de Likes" onChange={e => setNewCourseC({...newCourseC, likes: e.target.value})} value={newCourseC.likes}/>
                                     </div>
                                     <div className="form-group">
                                         <label  for="category">Categoria</label>

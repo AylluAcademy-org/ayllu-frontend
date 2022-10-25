@@ -53,13 +53,8 @@ const InfoCourse = ({ currentCourse }) => {
 
                                 <div className="content">
 
-                                    <video width="320" height="240" controls>
-                                        <source
-                                            src={currentCourse.video}
-                                            alt="Course Video"
-                                            type="video/mp4"
-                                        />
-                                    </video>
+                                    
+                                    <video src={currentCourse.video} width="320" height="240" controls> </video>
                                 </div>
                             </div>
                             

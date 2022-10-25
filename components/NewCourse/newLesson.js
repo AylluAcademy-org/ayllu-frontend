@@ -15,7 +15,7 @@ const NewCourse = (currentCourseId) => {
         "name" : "",
         "status" :true,
         "image" : "imagen1",
-        "video" : "video1",
+        "video" : "https://bckt-front.s3.amazonaws.com/videos/Curso+de+Haskell+desde+cero+_+1+-+Primeros+pasos+_+Funciones.mp4",
         "moduleId": ""
         
         });
@@ -60,7 +60,7 @@ const NewCourse = (currentCourseId) => {
 
       const onChangePictureLink = e => {
         setImgData(e.target.value);
-        setNewCourseC({...newCourseC, image: e.target.value})
+        setNewLessonC({...newLessonC, image: e.target.value})
         console.log('value is:', e.target.value);
       };
 
