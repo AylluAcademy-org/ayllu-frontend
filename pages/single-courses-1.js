@@ -8,8 +8,11 @@ import { useEffect, useState } from 'react';
 import { getCourseById } from '../pages/api/Courses/courses';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 resetIdCounter();
+import axios from 'axios';
 
 const SingleCourses = () => {
+    const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
+
     /**Get couse by id */
     const [course, setCourse] = useState({});
     const [loading, setLoading] = useState(true);
@@ -17,25 +20,31 @@ const SingleCourses = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
-    const [couseid, setCouseid] = useState('');
+    const [couseid, setCouseid] = useState(2);
 
-    useEffect(() => {
-        getCourseById(couseid).then(response => {
-            if (response.status === 200) {
-                setCourse(response.data);
-                setLoading(false);
-            } else {
-                setError(true);
-                setErrorMessage(response.data.message);
-                setLoading(false);
-            }
-        }
-        ).catch(error => {
+
+    /**Get course by Id with AXIOS with parameters*/
+    const getCourse = async () => {
+        try {
+            /**
+             * TODO: 
+             * 1. Get course by id from REDUX store
+             * 2. Get course by id from API
+             */
+            const response = await axios.get(API_URL +'courses/getById?course_id=7');
+            console.log("data",response.data);
+            setCourse(response.data);
+            setLoading(false);
+        } catch (error) {
             setError(true);
             setErrorMessage(error.message);
             setLoading(false);
         }
-        );
+    }
+
+    useEffect(() => {
+        /** Get course by Id */
+        getCourse();
     }, []);
 
     return (
@@ -51,8 +60,8 @@ const SingleCourses = () => {
             />  
 
             <div className="courses-details-area pb-100">
-                <div className="courses-details-image">
-                    <img src={course.video} alt="image" />
+                <div className="courses-details-image w-4/5">
+                    <img src={course.image} alt="image"  />
                 </div>
 
                 <div className="container">
@@ -61,7 +70,7 @@ const SingleCourses = () => {
                             <div className="courses-details-desc">
                                 <Tabs>
                                     <TabList>
-                                        <Tab>Overview</Tab>
+                                        <Tab>Generalidades</Tab>
                                         <Tab>Curriculum</Tab>
                                         <Tab>Instructor</Tab>
                                         <Tab>Reviews</Tab>
@@ -69,7 +78,7 @@ const SingleCourses = () => {
                                 
                                     <TabPanel>
                                         <div className="courses-overview">
-                                            <h3>Course Description</h3>
+                                            <h3>Descripcion</h3>
                                             <p>{course.description}</p>
                                             {/* <h3>Certification</h3>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
@@ -84,94 +93,23 @@ const SingleCourses = () => {
                                             <ul>
                                                 <li>
                                                     <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">{couseid.name}</span>
+                                                        <span className="courses-name">{course.name}</span>
                                                         <div className="courses-meta">
-                                                            <span className="questions">5 questions</span>
-                                                            <span className="duration">01 Hour</span>
-                                                            <span className="status">Preview</span>
-                                                        </div>
+                                                            <span className="questions">{course.lesson} lecciones</span>
+                                                            <span className="duration">{course.duration} Horas</span>                                                        </div>
                                                     </a>
                                                 </li>
                                             </ul>
-                                            <h3>{course.description}</h3>
+
+                                            <h3>Ejemplo: Nombre Modulo</h3>
                                             <ul>
                                                 <li>
                                                     <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">NumPy Introduction</span>
-                                                        <div className="courses-meta">
-                                                            <span className="duration">15 Min</span>
-                                                            <span className="status locked"><i className="flaticon-password"></i></span>
-                                                        </div>
+                                                        <span className="courses-name">Leccion 1</span>
+
                                                     </a>
                                                 </li>
-                                                <li>
-                                                    <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">NumPy Getting Started</span>
-                                                        <div className="courses-meta">
-                                                            <span className="duration">30 Min</span>
-                                                            <span className="status locked"><i className="flaticon-password"></i></span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">NumPy Creating Arrays</span>
-                                                        <div className="courses-meta">
-                                                            <span className="duration">45 Min</span>
-                                                            <span className="status locked"><i className="flaticon-password"></i></span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">NumPy Array Indexing</span>
-                                                        <div className="courses-meta">
-                                                            <span className="questions">4 questions</span>
-                                                            <span className="duration">1 Hour</span>
-                                                            <span className="status locked"><i className="flaticon-password"></i></span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">NumPy Array Slicing</span>
-                                                        <div className="courses-meta">
-                                                            <span className="duration">1.5 Hour</span>
-                                                            <span className="status locked"><i className="flaticon-password"></i></span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <h3>Python MySQL</h3>
-                                            <ul>
-                                                <li>
-                                                    <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">Python MySQL</span>
-                                                        <div className="courses-meta">
-                                                            <span className="duration">01 Hour</span>
-                                                            <span className="status locked"><i className="flaticon-password"></i></span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">Python MySQL Create Database</span>
-                                                        <div className="courses-meta">
-                                                            <span className="questions">3 questions</span>
-                                                            <span className="duration">1.1 Hour</span>
-                                                            <span className="status locked"><i className="flaticon-password"></i></span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">Python MySQL Create Table</span>
-                                                        <div className="courses-meta">
-                                                            <span className="duration">1.5 Hour</span>
-                                                            <span className="status locked"><i className="flaticon-password"></i></span>
-                                                        </div>
-                                                    </a>
-                                                </li>
+                                           
                                             </ul>
                                         </div>
                                     </TabPanel>
