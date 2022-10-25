@@ -18,27 +18,35 @@ const Profile = () => {
     const [categorias, setCategorias] = useState([]);
     const [nCategoria, setNCategoria] = useState("");
     const [cursoActual, setCursoActual] = useState(router.query.idCourse);
-    const [ventanaCourse, setVentanaCourse] = useState("SeeModules");
+    const [ventanaCourse, setVentanaCourse] = useState("VerModulos");
     const [infoCurso, setInfoCurso] = useState([]);
     const crearModulo =() => {
-      console.log("Hola estas creando una leccion"); 
+      console.log("Hola estas creando un modulo"); 
       setVentanaCourse("CrearModulo");     
       
     };
 
     const verModulos =() => {
-      console.log("Hola estas creando una leccion"); 
+      console.log("Hola estas viendo los modulos"); 
       setVentanaCourse("VerModulos");     
       
     };
 
+    const crearLeccion =() => {
+      console.log("Hola estas creando una leccion"); 
+      setVentanaCourse("CrearLeccion");     
+      
+    };
+
+
     const renderComponent=() => {
       switch(ventanaCourse) { 
       case "CrearModulo":
-        return <NewModule />
+        return <NewModule currentCourseId={cursoActual} />
       case "VerModulos":
-        return <SeeModules 
-        currentCourse={cursoActual}/>
+        return <SeeModules currentCourse={cursoActual}/>
+      case "CrearLeccion":
+        return <NewLesson currentCourseId={cursoActual}/>  
     }
   };
 
@@ -52,6 +60,9 @@ const Profile = () => {
   }).then((response) => {
     console.log(response.data);
     setInfoCurso(response.data);
+    //Save response.data in local storage called infocurso
+    //localStorage.setItem("infocurso", JSON.stringify(response.data));
+
   })
   .catch((error) => {
     console.log(error);
@@ -60,9 +71,22 @@ const Profile = () => {
 
 useEffect(()=> {
   responseCourse(cursoActual);
+  //debug();
   
 },[]);
     
+//Create function called debug
+const debug = () => {
+  console.log("Debugging");
+  console.log(cursoActual);
+  console.log(infoCurso);
+}
+
+
+
+
+
+
 
     
 
@@ -71,26 +95,32 @@ useEffect(()=> {
     return (
         <React.Fragment>
             <Navbar />
+            
             <PageBanner 
                 pageTitle="Información del Curso" 
-                homePageUrl="/" 
-                homePageText="Inicio" 
-                activePageText="Perfil" 
+                homePageUrl="/course-teacher-view" 
+                homePageText="Tus Cursos" 
+                activePageText={infoCurso.name}   
             />  
 
             <InfoCourse 
               currentCourse={infoCurso}
             />
            
-           <div>
-              <div>
+           <div className='container '>
+            <div className='boton-course-area'>
+              <div>                               
                 <a className="default-btn" onClick={verModulos}>Modulos</a>                                      
               </div>            
               <div>
                 <a className="default-btn" onClick={crearModulo}>Crear Modulo</a>                                      
               </div>
+              <div>
+                <a className="default-btn" onClick={crearLeccion}>Crear Lección</a>                                      
+              </div>
+
             </div>
-            
+            </div>
 
             <div>
               { renderComponent() }

@@ -8,38 +8,40 @@ const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/cate
 
 
 
-const NewCourse = () => {
-    const [categorias, setCategorias] = useState([]);
-    const [nCategoria, setNCategoria] = useState(""); 
-    const [newCourseC, setNewCourseC] = useState({
-        name : "",
-        description : "",
-        price : "",
-        duration: "",
-        image: "",
-        video: "https://bckt-front.s3.amazonaws.com/videos/Curso+de+Haskell+desde+cero+_+1+-+Primeros+pasos+_+Funciones.mp4",
-        lesson: "",
-        likes:"",
-        categoryId:"",
-        authorId:"",
-        status:"false"
+const NewCourse = (currentCourseId) => {
+    const [modulos, setModulos] = useState([]);
+    const [nModulo, setNModulo] = useState(""); 
+    const [newLessonC, setNewLessonC] = useState({
+        "name" : "",
+        "status" :true,
+        "image" : "imagen1",
+        "video" : "https://bckt-front.s3.amazonaws.com/videos/Curso+de+Haskell+desde+cero+_+1+-+Primeros+pasos+_+Funciones.mp4",
+        "moduleId": ""
+        
         });
     const [imgData, setImgData] = useState(null);
     const [videoData, setVideoData] = useState(null);
-    const getCategories = async () => {
-        axios
-          .get(API_URL)
-          .then((response) => {
-            setCategorias(response.data);
+
+    const getModules = (courseId)=>{ 
+        axios.post(
+            'https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/modules/getByCourse',
+            `{\n    "courseId": ${courseId}\n}`,
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+        ).then((response) => {
+            setModulos(response.data);
           })
           .catch((error) => {
             console.log(error);
-            return error;
           });
-      };
+        };
+    
 
       useEffect(()=> {
-        getCategories();
+        getModules(parseInt(currentCourseId.currentCourseId));
         
     },[]);
 
@@ -58,7 +60,7 @@ const NewCourse = () => {
 
       const onChangePictureLink = e => {
         setImgData(e.target.value);
-        setNewCourseC({...newCourseC, image: e.target.value})
+        setNewLessonC({...newLessonC, image: e.target.value})
         console.log('value is:', e.target.value);
       };
 
@@ -82,32 +84,39 @@ const NewCourse = () => {
         
       };
 
+      const CreateLesson = (nwLesson) => {
+        axios.post(
+            'https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/lessons',
+            `{\n    "name": "${nwLesson.name}",\n    "status": ${nwLesson.status},\n    "image": "${nwLesson.image}",\n    "video": "${nwLesson.video}",\n    "moduleId": ${nwLesson.moduleId}\n}`,
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+        ).then((response) => {
+            console.log(response.data);
+        })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
-      const crearCurso =() => {
-        console.log("Hola mundo"); 
-        {/**  
-     setNewCourse({
-        name : "",
-        description : "",
-        price : "",
-        duration: "",
-        image: "",
-        video: "",
-        lesson: "",
-        likes:"",
-        categoryId:"",
-        authorId:"",
-        status:""
-        });
-    */}      
 
-       
-        console.log(newCourseC);
+
+      const crearLesson =() => {
+        // parse int newLessonC.moduleId    
+        newLessonC.moduleId = parseInt(newLessonC.moduleId);
+        CreateLesson(newLessonC);
         Router.push({
-            pathname:"/course-teacher-addLesson",
-            
-        });
+            pathname:"/course-teacher-view-course",
+            query:{
+                idCourse:parseInt(currentCourseId.currentCourseId),
+            }
+        }); 
+
+
       };
+
 
     return (
         
@@ -116,61 +125,28 @@ const NewCourse = () => {
              <div className="profile-area">
                 <div className="container">
 
-                    <div className="profile-box ptb-100">
+                    <div className="profile-box ptb-50">
                         <div className="row align-items-center">
                         <h3>Datos de la leccion</h3>
 
                             <div className="col-lg-9 col-md-9">
                                 <div className="profile-details">
                                     <div className="form-group">
-                                        <label>Nombre del curso</label>
-                                        <input type="text" className="form-control" placeholder="Nombre del curso" onChange={e => setNewCourseC({...newCourseC, name: e.target.value})} value={newCourseC.name}/>
+                                        <label>Nombre de la leccion</label>
+                                        <input type="text" className="form-control" placeholder="Nombre " onChange={e => setNewLessonC({...newLessonC, name: e.target.value})} value={newLessonC.name}/>
                                     </div>
                                     <div className="form-group">
-                                        <label>Descripción</label>
-                                        <textarea type="text" className="form-control" placeholder="Descripción del curso" onChange={e => setNewCourseC({...newCourseC, description: e.target.value})} value={newCourseC.description} />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Precio</label>
-                                        <input type="text" className="form-control" placeholder="Precio" onChange={e => setNewCourseC({...newCourseC, price: e.target.value})} value={newCourseC.price} />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Duración</label>
-                                        <input type="text" className="form-control" placeholder="Duración" onChange={e => setNewCourseC({...newCourseC, duration: e.target.value})} value={newCourseC.duration} />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Cantidad de lecciones</label>
-                                        <input type="text" className="form-control" placeholder="Cantidad de lecciones" onChange={e => setNewCourseC({...newCourseC, lesson: e.target.value})} value={newCourseC.lesson}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Numero de likes</label>
-                                        <input type="text" className="form-control" placeholder="Numero de Likes" onChange={e => setNewCourseC({...newCourseC, likes: e.target.value})} value={newCourseC.likes}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label  for="category">Categoria</label>
-                                        <select onChange={e => setNewCourseC({...newCourseC, categoryId: e.target.value})}id="category" name="category">
-                                        <option >Elige la categoria</option> 
-                                            {categorias.map((item) => ( 
-                                                <option  value={item.category_id}>{item.name}</option>    
-                                                
-                                                      
+                                        <label  for="module">Modulo</label>
+                                        <select onChange={e => setNewLessonC({...newLessonC, moduleId: e.target.value})}id="module" name="module">
+                                        <option >Elige El Modulo</option> 
+                                            {modulos.map((item) => ( 
+                                                <option  value={item.module_id}>{item.name}</option>   
                                             ))}     
                                             
                                         </select>
                                     </div>
-                                    {/* <div className="form-group">                                       
-                                        <input id="newCat" type="text" className="form-control" placeholder="Nombe de la categoria" />
-                                        <button type="button"  id="myBtn"> Crear nueva categoria </button>
-                                    </div>*/}
+                                
                                     
-                                    <div className="form-group">
-                                        <label>Autor</label>
-                                        <input type="text" className="form-control" placeholder="Autor"  onChange={e => setNewCourseC({...newCourseC, authorId: e.target.value})} value={newCourseC.authorId} />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Estatus  <input type="checkbox" onChange={e => setNewCourseC({...newCourseC, status: e.target.value})} value="true"/></label>
-                                        
-                                    </div>
                                 </div>           
                    
 
@@ -209,15 +185,10 @@ const NewCourse = () => {
                                     
 
                                 </div>
-
-                                
-                                
                             </div>
 
-                                 <div>
-                                        
-                                    <a className="default-btn" onClick={crearCurso}>Crear Curso</a>
-                                       
+                                 <div>                                        
+                                    <a className="default-btn" onClick={crearLesson}>Crear Lección</a>                                       
                                 </div>
                         </div>
 

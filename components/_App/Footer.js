@@ -7,6 +7,7 @@ const FooterV2 = () => {
     return (
         <footer className="footer-area">
             <div className="container-fluid">
+            
                 <div className="row">
                     <div className="col-lg-6 col-md-6 col-sm-12">
                         <div className="single-footer-widget">
@@ -109,7 +110,10 @@ const FooterV2 = () => {
                         </div>
                     </div>
                 </div>
+                
+                
             </div>
+            
 
             
         </footer>

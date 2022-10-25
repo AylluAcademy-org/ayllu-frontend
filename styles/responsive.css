@@ -2891,6 +2891,13 @@
     -ms-flex-preferred-size: inherit;
     flex-basis: inherit;
   }
+
+  .vl {
+    display: none;
+}
+.single-footer-widget {
+  text-align: center;
+}
 }
 
 /* Min width 576px Max width 767px */

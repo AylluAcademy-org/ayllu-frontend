@@ -14,61 +14,63 @@ const InfoCourse = ({ currentCourse }) => {
     const [courseC, setCourseC] = useState("");
     const router = useRouter();
 
+    // Save the prop in a state 
+    useEffect(() => {
+        //read infocurso from localstorage
+        //const infoCurso = JSON.parse(localStorage.getItem("infocurso"));
+        //console.log("localstorager",infoCurso);
+        //setModulosList(infoCurso.modules)
+
+    }, []);
     return (
         <React.Fragment>
-            <div className="profile-area">
+            <div className="profile-area course-info-area">
                 <div className="container">
-                    <div className="profile-box ptb-100">
+                    <div className="profile-box ptb-50">
                         <div className="row align-items-center">
                             <div className="col-lg-9 col-md-9">
-                                <div className="profile-details">
+                                <div className="courses-details">
                                     <h1>{currentCourse.name}</h1>
                                     <h3>{currentCourse.description}</h3>
-                                    <label>Precio: </label>
-                                    <h3>{currentCourse.price}</h3>
-                                    <label>Duración: </label>
-                                    <h3>{currentCourse.duration}</h3>
-                                    <label>Número de lecciones: </label>
-                                    <h3>{currentCourse.lesson}</h3>
-                                    <label>Cantidad de Likes: </label>
-                                    <h3>{currentCourse.likes}</h3>
+                                    <div className="courses-basic-info">
+                                        <h3>${currentCourse.price}</h3>
+                                        <h3>{currentCourse.duration}h</h3>
+                                        <h3>{currentCourse.lesson} lecciones</h3>
+                                        <h3>{currentCourse.rating} estrellas</h3>
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="col-lg-3 col-md-3">
                                 <div className="content">
-                                    <label>Portada del curso</label>
                                     <img
                                         alt="Course Image"
                                         class="img-preview"
                                         src={currentCourse.image}
+                                        
                                     />
                                 </div>
 
                                 <div className="content">
-                                    <label>Video del curso</label>
 
-                                    <video width="320" height="240" controls>
-                                        <source
-                                            src={currentCourse.video}
-                                            alt="Course Video"
-                                            type="video/mp4"
-                                        />
-                                    </video>
+                                    
+                                    <video src={currentCourse.video} width="320" height="240" controls> </video>
                                 </div>
                             </div>
+                            
+                            
 {/*}
-                            <div className="container">
+                          <div className="container">
                                 <div class="list-group">
 
-                                    {(currentCourse.modules).map((item) => (
+                                    {modulesList.map((item) => (
                                         <a href="#" class="list-group-item list-group-item-action">
-                                            {item.nameº}
+                                            {item.name}
                                         </a>
                                     ))}
                                 </div>
-
-                               
+                            </div>
+                           
                             </div>
                                     */}
                         </div>

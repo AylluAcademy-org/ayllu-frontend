@@ -9,11 +9,13 @@ import 'react-tabs/style/react-tabs.css'
 import 'react-image-lightbox/style.css'
 import '../styles/style.css'
 import '../styles/responsive.css'
-
 import Layout from '../components/_App/Layout';
-
+import {useEffect} from 'react';
 const MyApp =  ({ Component, pageProps }) => {
-    return (
+    useEffect(()=>{
+        import("bootstrap/dist/js/bootstrap");
+    },[])
+    return (       
         <Layout>
             <Component {...pageProps} />
         </Layout>
