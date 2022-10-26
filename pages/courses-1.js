@@ -7,6 +7,8 @@ import Link from 'next/link';
 import Footer from '../components/_App/Footer';
 import {getAllCourses} from '../pages/api/Courses/courses';
 import axios from 'axios';
+import { Router, useRouter } from 'next/router'
+
 const CoursesGrid01 = () => {
     const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
 
@@ -20,6 +22,7 @@ const CoursesGrid01 = () => {
     const [userId, setUserId] = useState('');
     const [total, setTotal] = useState(0);
 
+    const router = useRouter();
     const getCourses = async () => {
         try {
             const response = await axios.get(API_URL + "courses");
@@ -40,6 +43,19 @@ const CoursesGrid01 = () => {
         /**Get list of courses */
         getCourses();
       }, []);
+
+    //Save the course id to local storage
+    const saveCourseId = (course) => {
+        console.log("course",course.course_id);
+        localStorage.setItem('courseId', course.course_id);
+        //Print the course id to the console
+        console.log("courseId", localStorage.getItem('courseId'));
+        //Send to a new page
+        router.push('/single-courses-1');
+    }
+
+    //Function to send to another page when the user clicks on the course
+
         
     return (
         <React.Fragment>
@@ -95,9 +111,9 @@ const CoursesGrid01 = () => {
                                     </div>
 
                                     <h3>
-                                        <Link href="/single-courses-1">
-                                            <a>{course.name}</a>
-                                        </Link>
+                                        <p>{course.course_id}</p>
+                                        <a onClick={() => saveCourseId(course)}>{course.name}</a>
+                
                                     </h3>
                                     
                                     <p>{course.description}</p>

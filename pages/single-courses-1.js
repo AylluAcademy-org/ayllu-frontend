@@ -20,7 +20,7 @@ const SingleCourses = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
-    const [couseid, setCouseid] = useState(2);
+    //const [couseid, setCouseid] = useState(localStorage.getItem('courseId') || "19");  // 1 is default
 
 
     /**Get course by Id with AXIOS with parameters*/
@@ -31,7 +31,7 @@ const SingleCourses = () => {
              * 1. Get course by id from REDUX store
              * 2. Get course by id from API
              */
-            const response = await axios.get(API_URL +'courses/getById?course_id=7');
+            const response = await axios.get(API_URL +'courses/getById?course_id=2');
             console.log("data",response.data);
             setCourse(response.data);
             setLoading(false);
@@ -42,21 +42,21 @@ const SingleCourses = () => {
         }
     }
 
-    useEffect(() => {
+    useEffect(async () => {
         /** Get course by Id */
-        getCourse();
+       await getCourse();
     }, []);
 
     return (
         <React.Fragment>
             <Navbar />
             <PageBanner 
-                pageTitle={course.title}
+                pageTitle={course.name}
                 homePageUrl="/" 
                 homePageText="Home" 
                 innerPageUrl="/courses-1" 
                 innerPageText="Courses" 
-                activePageText="Introducción a haskell" 
+                activePageText={course.name}
             />  
 
             <div className="courses-details-area pb-100">
@@ -101,12 +101,11 @@ const SingleCourses = () => {
                                                 </li>
                                             </ul>
 
-                                            <h3>Ejemplo: Nombre Modulo</h3>
+                                            <h3>Breve descripcion de que es haskel</h3>
                                             <ul>
                                                 <li>
                                                     <a href="#" className="d-flex justify-content-between align-items-center">
-                                                        <span className="courses-name">Leccion 1</span>
-
+                                                        <span className="courses-name">Qué es Cardano</span>
                                                     </a>
                                                 </li>
                                            
@@ -126,16 +125,9 @@ const SingleCourses = () => {
                         
                                                     <div className="col-lg-8 col-md-8">
                                                         <div className="advisor-content">
-                                                            <h3>Sarah Taylor</h3>
-                                                            <span className="sub-title">Agile Project Expert</span>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            
-                                                            <ul className="social-link">
-                                                                <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
-                                                                <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
-                                                                <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
-                                                                <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-linkedin'></i></a></li>
-                                                            </ul>
+                                                            <h3>David Quintanilla</h3>
+                                                            <p>Email: {'dave@gmail.com'}</p>
+                                                         
                                                         </div>
                                                     </div>
                                                 </div>
@@ -147,152 +139,19 @@ const SingleCourses = () => {
                                         <div className="courses-reviews">
                                             <h3>Course Rating</h3>
                                             <div className="rating">
-                                                <span className="bx bxs-star checked"></span>
-                                                <span className="bx bxs-star checked"></span>
-                                                <span className="bx bxs-star checked"></span>
-                                                <span className="bx bxs-star checked"></span>
+                                                <span className="bx bxs-star "></span>
+                                                <span className="bx bxs-star "></span>
+                                                <span className="bx bxs-star "></span>
+                                                <span className="bx bxs-star "></span>
                                                 <span className="bx bxs-star"></span>
                                             </div>
                                             <div className="rating-count">
-                                                <span>4.1 average based on 4 reviews.</span>
+                                                <span>{course.rating}.</span>
                                             </div>
-                                            <div className="row">
-                                                <div className="side">
-                                                    <div>5 star</div>
-                                                </div>
-                                                <div className="middle">
-                                                    <div className="bar-container">
-                                                        <div className="bar-5"></div>
-                                                    </div>
-                                                </div>
-                                                <div className="side right">
-                                                    <div>02</div>
-                                                </div>
-                                                <div className="side">
-                                                    <div>4 star</div>
-                                                </div>
-                                                <div className="middle">
-                                                    <div className="bar-container">
-                                                        <div className="bar-4"></div>
-                                                    </div>
-                                                </div>
-                                                <div className="side right">
-                                                    <div>03</div>
-                                                </div>
-                                                <div className="side">
-                                                    <div>3 star</div>
-                                                </div>
-                                                <div className="middle">
-                                                    <div className="bar-container">
-                                                        <div className="bar-3"></div>
-                                                    </div>
-                                                </div>
-                                                <div className="side right">
-                                                    <div>04</div>
-                                                </div>
-                                                <div className="side">
-                                                    <div>2 star</div>
-                                                </div>
-                                                <div className="middle">
-                                                    <div className="bar-container">
-                                                        <div className="bar-2"></div>
-                                                    </div>
-                                                </div>
-                                                <div className="side right">
-                                                    <div>05</div>
-                                                </div>
-                                                <div className="side">
-                                                    <div>1 star</div>
-                                                </div>
-                                                <div className="middle">
-                                                    <div className="bar-container">
-                                                        <div className="bar-1"></div>
-                                                    </div>
-                                                </div>
-                                                <div className="side right">
-                                                    <div>00</div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                         
-                                        <div className="courses-review-comments">
-                                            <h3>3 Reviews</h3>
-                                            <div className="user-review">
-                                                <img src="/images/user1.jpg" alt="image" />
-                                                
-                                                <div className="review-rating">
-                                                    <div className="review-stars">
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                    </div>
 
-                                                    <span className="d-inline-block">James Anderson</span>
-                                                </div>
-
-                                                <span className="d-block sub-comment">Excellent</span>
-                                                <p>Very well built theme, couldn't be happier with it. Can't wait for future updates to see what else they add in.</p>
-                                            </div>
-
-                                            <div className="user-review">
-                                                <img src="/images/user2.jpg" alt="image" />
-                                                
-                                                <div className="review-rating">
-                                                    <div className="review-stars">
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star'></i>
-                                                        <i className='bx bxs-star'></i>
-                                                    </div>
-
-                                                    <span className="d-inline-block">Sarah Taylor</span>
-                                                </div>
-
-                                                <span className="d-block sub-comment">Video Quality!</span>
-                                                <p>Was really easy to implement and they quickly answer my additional questions!</p>
-                                            </div>
-
-                                            <div className="user-review">
-                                                <img src="/images/user3.jpg" alt="image" />
-                                                
-                                                <div className="review-rating">
-                                                    <div className="review-stars">
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                    </div>
-
-                                                    <span className="d-inline-block">David Warner</span>
-                                                </div>
-
-                                                <span className="d-block sub-comment">Perfect Coding!</span>
-                                                <p>Stunning design, very dedicated crew who welcome new ideas suggested by customers, nice support.</p>
-                                            </div>
-
-                                            <div className="user-review">
-                                                <img src="/images/user4.jpg" alt="image" />
-                                                
-                                                <div className="review-rating">
-                                                    <div className="review-stars">
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star checked'></i>
-                                                        <i className='bx bxs-star'></i>
-                                                    </div>
-
-                                                    <span className="d-inline-block">King Kong</span>
-                                                </div>
-
-                                                <span className="d-block sub-comment">Perfect Video!</span>
-                                                <p>Stunning design, very dedicated crew who welcome new ideas suggested by customers, nice support.</p>
-                                            </div>
-                                        </div>
                                     </TabPanel>
                                 </Tabs>
                             </div>

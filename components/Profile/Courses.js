@@ -15,6 +15,9 @@ const Courses = () => {
     const [user, setUser] = useState('');
     const [userId, setUserId] = useState('');
 
+    
+
+
     useEffect(() => {
         /** Get userID from state */
         const userId = localStorage.getItem('userId');
@@ -34,7 +37,10 @@ const Courses = () => {
             setErrorMessage(error.message);
             setLoading(false);
         }
-        );}, []);
+        
+        );
+        console.log("courses", courses);
+    }, []);
 
     return (
         <div className="profile-quizzes pb-70">
@@ -54,15 +60,28 @@ const Courses = () => {
                     <tbody>
                         <tr>
                             <td>
-                                <Link href="#">
-                                    <a>{courses.courseId}</a>
+                                <Link href="/course-detail-v2">
+                                    <a>Introducción a Haskel</a>
                                 </Link>
                             </td>
-                            <td>Carlos Pérez</td>
-                            <td><span className="progress pending">{courses.progress}</span></td>
+                            <td>David Quintanilla</td>
+                            <td><span className="progress pending">0%</span></td>
                             <td>{courses.reward} AYLLU</td>
                             <td><button type="button" class="btn btn-secondary btn-sm">Descargar certificado</button>
-</td>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                        <td>
+                                <Link href="/course-detail-v2">
+                                    <a>Haskell en pocos días</a>
+                                </Link>
+                            </td>
+                            <td>David Quintanilla</td>
+                            <td><span className="progress pending">0%</span></td>
+                            <td>{courses.reward} AYLLU</td>
+                            <td><button type="button" class="btn btn-secondary btn-sm">Descargar certificado</button>
+                            </td>
                             
                         </tr>
 

@@ -9,6 +9,8 @@ import {getUserById,updateUser} from '../pages/api/Users/users';
 
 const Profile = () => {
     /**Consume API get profile */
+    const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
+
     const [profile, setProfile] = useState({});
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -19,24 +21,21 @@ const Profile = () => {
     const [user, setUser] = useState('');
     const [userId, setUserId] = useState('');
 
-    useEffect(() => {
-        getUserById(userId).then(response => {
-            if (response.status === 200) {
-                setProfile(response.data);
-                setCourses(response.data.courses);
-                setLoading(false);
-            } else {
-                setError(true);
-                setErrorMessage(response.data.message);
-                setLoading(false);
-            }
-        }
-        ).catch(error => {
+    const getUserBy = async () => {
+        try {
+            const response = await axios.get(API_URL + "users/getUserById?user_id=28");
+            console.log("data",response.data);
+         
+        } catch (error) {
             setError(true);
             setErrorMessage(error.message);
             setLoading(false);
         }
-        );
+    }
+
+    useEffect(() => {
+        "use strict";
+      getUserBy();
     }, []);
     /**Update user */
     const updateUser = (user) => {
@@ -82,15 +81,15 @@ const Profile = () => {
                                 <div className="profile-details">
                                     <div className="form-group">
                                         <label>{profile.name}</label>
-                                        <input type="text" className="form-control" placeholder="David Quintanilla" />
+                                        <input type="text" className="form-control" placeholder="David Quintanilla" value={'David Quintanilla'} />
                                     </div>
                                     <div className="form-group">
                                         <label>{profile.email}</label>
-                                        <input type="text" className="form-control" placeholder="dquintanilla@ayluu.io" />
+                                        <input type="text" className="form-control" placeholder="dquintanilla@ayluu.io" value={'dquintanilla@ayllu.io'}/>
                                     </div>
                                     <div className="form-group">
                                         <label>{profile.wallet}</label>
-                                        <input type="text" className="form-control" placeholder="Nombre completo" />
+                                        <input type="text" className="form-control" value={'David Ernesto Quintanilla Benitez'} placeholder="David Ernesto Quintanilla Benitez" />
                                     </div>
                                 </div>           
                    

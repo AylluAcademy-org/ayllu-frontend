@@ -6,9 +6,13 @@ import { getCourseById } from '../../pages/api/Courses/courses';
 const ModalVideo = dynamic(() => import('react-modal-video'), {
     ssr: false
 });
+import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Router, useRouter } from 'next/router'
+
 const CoursesDetailsSidebar = () => {
     const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
+    const router = useRouter();
 
     /**Get couse by id */
     const [course, setCourse] = useState({});
@@ -17,7 +21,9 @@ const CoursesDetailsSidebar = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
-    const [couseid, setCouseid] = useState(2);
+    //const [couseid, setCouseid] = useState(localStorage.getItem('courseId'));
+
+    //Load page after the api has been called
 
 
     /**Get course by Id with AXIOS with parameters*/
@@ -28,7 +34,7 @@ const CoursesDetailsSidebar = () => {
              * 1. Get course by id from REDUX store
              * 2. Get course by id from API
              */
-            const response = await axios.get(API_URL +'courses/getById?course_id=7');
+            const response = await axios.get(API_URL +'courses/getById?course_id=2');
             console.log("data",response.data);
             setCourse(response.data);
             setLoading(false);
@@ -43,6 +49,32 @@ const CoursesDetailsSidebar = () => {
         /** Get course by Id */
         getCourse();
     }, []);
+
+    //Swal alert for the button "Comprar"
+    const buyCourse = () => {
+        Swal.fire({
+            title: '¿Estás seguro que deseas comprar este curso?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Sí, comprar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    '¡Comprado!',
+                    'El curso ha sido comprado.',
+                    'success'
+                ).then((result) => {
+                    if (result.isConfirmed) {
+                        router.push('/profile');
+                    }
+                })
+            }
+        })
+    }
+
 
 
     // Popup Video
@@ -91,16 +123,16 @@ const CoursesDetailsSidebar = () => {
                             {course.duration} hrs
                         </div>
                     </li>
-                    <li>
+                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-distance-learning"></i> Lecciones</span>
                             {course.lesson}
                         </div>
                     </li>
-                     <li>
+                      <li>
                         <div className="d-flex justify-content-between align-items-center">
-                            <span><i className="flaticon-distance-learning"></i> Lecciones</span>
-                            {course.lesson}
+                            <span><i className="flaticon-distance-learning"></i> Categoria</span>
+                            Blockchain
                         </div>
                     </li>
 
@@ -114,11 +146,9 @@ ${course.price}                        </div>
 
                 <div className="btn-box">
 
-                    <Link href="#">
-                        <a className="default-btn">
-                            <i className="flaticon-tag"></i> Comprar ahora <span></span>
-                        </a>
-                    </Link>
+                    <a className="default-btn"  onClick={()=>buyCourse()}>
+                        <i className="flaticon-tag"></i> Comprar ahora <span></span>
+                    </a>
                 </div>
 
             
