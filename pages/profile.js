@@ -6,6 +6,7 @@ import Footer from '../components/_App/Footer';
 import ProfileCourses from '../components/Profile/ProfileCourses';
 import Courses from '../components/Profile/Courses';
 import {getUserById,updateUser} from '../pages/api/Users/users';
+import axios from 'axios';
 
 const Profile = () => {
     /**Consume API get profile */
@@ -21,43 +22,27 @@ const Profile = () => {
     const [user, setUser] = useState('');
     const [userId, setUserId] = useState('');
 
-    const getUserBy = async () => {
+    //**Get user by ID from API */
+    const getUser = async () => {
         try {
-            const response = await axios.get(API_URL + "users/getUserById?user_id=28");
+            //const userId = localStorage.getItem('userId');
+            const response = await axios.get(API_URL + "users/getUserById?user_id=" + "2");
             console.log("data",response.data);
-         
+            setProfile(response.data);
+            setLoading(false)
         } catch (error) {
+            console.log("error",error);
             setError(true);
             setErrorMessage(error.message);
             setLoading(false);
         }
     }
-
     useEffect(() => {
-        "use strict";
-      getUserBy();
-    }, []);
-    /**Update user */
-    const updateUser = (user) => {
-        updateUser(user).then(response => {
-            if (response.status === 200) {
-                setSuccess(true);
-                setSuccessMessage(response.data.message);
-                setLoading(false);
-            } else {
-                setError(true);
-                setErrorMessage(response.data.message);
-                setLoading(false);
-            }
-        }
-        ).catch(error => {
-            setError(true);
-            setErrorMessage(error.message);
-            setLoading(false);
-        }
-        );
-    }
-
+        /**Get list of courses */
+        console.log("Getting User");
+        getUser();
+      }, []);
+   
     
 
     return (
@@ -70,7 +55,8 @@ const Profile = () => {
                 activePageText="Perfil" 
             />  
 
-            <div className="profile-area">
+            {loading ? (<h1>Loading</h1>):(
+                   <div className="profile-area">
                 <div className="container">
 
                     <div className="profile-box ptb-100">
@@ -80,16 +66,16 @@ const Profile = () => {
                             <div className="col-lg-9 col-md-9">
                                 <div className="profile-details">
                                     <div className="form-group">
-                                        <label>{profile.name}</label>
-                                        <input type="text" className="form-control" placeholder="David Quintanilla" value={'David Quintanilla'} />
+                                        <label>Nombre</label>
+                                        <input type="text" className="form-control" placeholder="David Quintanilla" value={profile.name} />
                                     </div>
                                     <div className="form-group">
-                                        <label>{profile.email}</label>
-                                        <input type="text" className="form-control" placeholder="dquintanilla@ayluu.io" value={'dquintanilla@ayllu.io'}/>
+                                        <label>Email</label>
+                                        <input type="text" className="form-control" placeholder="dquintanilla@ayluu.io" value={profile.email}/>
                                     </div>
                                     <div className="form-group">
-                                        <label>{profile.wallet}</label>
-                                        <input type="text" className="form-control" value={'David Ernesto Quintanilla Benitez'} placeholder="David Ernesto Quintanilla Benitez" />
+                                        <label>Wallet</label>
+                                        <input type="text" className="form-control" value={profile.wallet} />
                                     </div>
                                 </div>           
                    
@@ -100,16 +86,17 @@ const Profile = () => {
                             <div className="col-lg-3 col-md-3">
                                 <div className="content">
                                    
-                                <img class="rounded-circle z-depth-2" alt="100x100" src={profile.avatar}
+                                <img className="rounded-circle z-depth-2" alt="100x100" src={profile.image}
                                     data-holder-rendered="true"/>
-                                    <label onClick={updateUser}>Cambiar foto</label>
+                                 
 
-                                    <div class="custom-file">
+                                    <div className="custom-file">
                                         <input type="file" className="custom-file-input" id="customFile"/>
                                     </div>
+
+                                    <h3 className='mt-3'>Saldo: {profile.totalRewards}</h3>
                                     
-                                    <h3 className='mt-3'>Saldo: {profile.totalRewards} AYLLU</h3>
-                                    <button class="btn btn-primary" type="submit">Transferir a wallet</button>
+                                 
 
                                 </div>
                                 
@@ -121,6 +108,7 @@ const Profile = () => {
                     <Courses />
                 </div>
             </div>
+            )}
  
             <Footer />
         </React.Fragment>
