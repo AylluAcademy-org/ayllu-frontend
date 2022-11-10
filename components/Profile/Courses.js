@@ -2,10 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getUsersOnCourse } from '../../pages/api/Courses/usersoncourse';
+import axios from 'axios';
 
 
 const Courses = () => {
     /**get users on Course */
+    const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
+
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -15,31 +18,43 @@ const Courses = () => {
     const [user, setUser] = useState('');
     const [userId, setUserId] = useState('');
 
-    
+    //Get courses active from API
+    const getCourses = async () => {
+        try {
+            const response = await axios.get(API_URL + "usersOnCourses/userCoursesActive?user_id=2");
+          
+            //Add field to responde.data and create a new array
+            
+            setCourses(response.data);
+            setLoading(false)
+        } catch (error) {
+            console.log("error",error);
+            setError(true);
+            setErrorMessage(error.message);
+            setLoading(false);
+        }
+    }
 
+    //Get course by ID from API
+    const getCourseById = async (courseId) => {
+        try {
+            const response = await axios.get(API_URL + "courses/getById?course_id=" + courseId);
+            return "CURSO";
+        }
+        catch (error) {
+            console.log("error",error);
+        }
+    }
 
     useEffect(() => {
         /** Get userID from state */
         const userId = localStorage.getItem('userId');
 
-        getUsersOnCourse(userId).then(response => {
-            if (response.status === 200) {
-                setCourses(response.data);
-                setLoading(false);
-            } else {
-                setError(true);
-                setErrorMessage(response.data.message);
-                setLoading(false);
-            }
-        }
-        ).catch(error => {
-            setError(true);
-            setErrorMessage(error.message);
-            setLoading(false);
-        }
-        
-        );
-        console.log("courses", courses);
+        /**Get list of courses */
+        console.log("Getting Courses");
+        getCourses();
+        console.log("Courses",courses);
+
     }, []);
 
     return (
@@ -50,7 +65,6 @@ const Courses = () => {
                     <thead>
                         <tr>
                             <th>Nombre de curso</th>
-                            <th>Instructor</th>
                             <th>Progreso</th>
                             <th>Rewards</th>
                             <th>Certificado</th>
@@ -58,32 +72,25 @@ const Courses = () => {
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>
-                                <Link href="/course-detail-v2">
-                                    <a>Introducción a Haskel</a>
-                                </Link>
-                            </td>
-                            <td>David Quintanilla</td>
-                            <td><span className="progress pending">0%</span></td>
-                            <td>{courses.reward} AYLLU</td>
-                            <td><button type="button" class="btn btn-secondary btn-sm">Descargar certificado</button>
-                            </td>
-                            
-                        </tr>
-                        <tr>
-                        <td>
-                                <Link href="/course-detail-v2">
-                                    <a>Haskell en pocos días</a>
-                                </Link>
-                            </td>
-                            <td>David Quintanilla</td>
-                            <td><span className="progress pending">0%</span></td>
-                            <td>{courses.reward} AYLLU</td>
-                            <td><button type="button" class="btn btn-secondary btn-sm">Descargar certificado</button>
-                            </td>
-                            
-                        </tr>
+                        {loading ? (<h1 className='ml-3'>Loading....</h1>):(
+                        <>
+                        {courses.map((course, id) => {
+                            return    <tr key={id}>
+                                <td>
+                                    <Link href="/course-detail-v2">
+                                        <a>{course.courseId}</a>
+                                    </Link>
+                                </td>
+                                <td><span className="progress pending">{course.progress}%</span></td>
+                                <td>{course.reward} AYLLU</td>
+                                <td><button type="button" class="btn btn-secondary btn-sm">Descargar certificado</button>
+                                </td>
+                                
+                            </tr>
+                         })}
+                         </>
+                         )}
+                        
 
 
                     </tbody>

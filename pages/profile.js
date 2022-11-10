@@ -55,7 +55,7 @@ const Profile = () => {
                 activePageText="Perfil" 
             />  
 
-            {loading ? (<h1>Loading</h1>):(
+            {loading ? (<h1 className='ml-3'>Loading....</h1>):(
                    <div className="profile-area">
                 <div className="container">
 
