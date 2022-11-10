@@ -4,7 +4,7 @@ import PageBanner from '../components/SingleCourses/PageBanner';
 import Footer from '../components/_App/Footer';
 import { useEffect, useState, useRef } from "react";
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Router from 'next/router'
+import { Router, useRouter } from 'next/router'
 resetIdCounter();
 import axios from "axios";
 const SingleCourses = () => {
@@ -15,7 +15,8 @@ const SingleCourses = () => {
     const [testId, setTestId] = useState(0);
     const [videoUrl, setVideoUrl] = useState("");
     const [author, setAuthor] = useState("");
-    const course=1;
+    const router = useRouter();
+    const [cursoActual, setCursoActual] = useState(router.query.idCourse);
     const getCourseInfo = (course_id) => {
         axios.get('https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/courses/GetAllCourseInfo', {
                 params: {
@@ -36,7 +37,7 @@ const SingleCourses = () => {
             });
     };
     useEffect(() => {
-        getCourseInfo(course);       
+        getCourseInfo(cursoActual);       
     }, []);
 
     const renderComponent=() => {

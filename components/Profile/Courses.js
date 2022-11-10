@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getUsersOnCourse } from '../../pages/api/Courses/usersoncourse';
 import axios from 'axios';
+import { Router, useRouter } from 'next/router' 
 
 
 const Courses = () => {
     /**get users on Course */
     const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
-
+    const router = useRouter();
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -57,6 +58,17 @@ const Courses = () => {
 
     }, []);
 
+    const seeIndividualCourse = (item) => {
+        router.push({
+            pathname: "/course-detail-v2",
+            asPath: "/course-detail-v2",
+            query: {
+                idCourse: item.courseId,
+            }
+        });
+        
+    };
+
     return (
         <div className="profile-quizzes pb-70">
             <h3 className="title">Historial de cursos</h3>
@@ -77,9 +89,9 @@ const Courses = () => {
                         {courses.map((course, id) => {
                             return    <tr key={id}>
                                 <td>
-                                    <Link href="/course-detail-v2">
-                                        <a>{course.courseId}</a>
-                                    </Link>
+                                        <div onClick={() => seeIndividualCourse(course)} >
+                                        <a >{course.courseId}</a>
+                                        </div>
                                 </td>
                                 <td><span className="progress pending">{course.progress}%</span></td>
                                 <td>{course.reward} AYLLU</td>

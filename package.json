@@ -35,7 +35,7 @@
         "react-image-lightbox": "^5.1.4",
         "react-modal-video": "^1.2.8",
         "react-owl-carousel3": "^2.2.5",
-        "react-player": "^2.10.1",
+        "react-player": "^2.11.0",
         "react-tabs": "^3.2.2",
         "readme-md-generator": "^1.0.0",
         "sass": "^1.41.0",
@@ -44,5 +44,4 @@
         "sweetalert2-react-content": "^3.3.3"
     },
     "scss.lint.unknownAtRules": "ignore"
-    
 }
