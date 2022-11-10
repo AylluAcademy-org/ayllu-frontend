@@ -10,11 +10,12 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { Router, useRouter } from 'next/router'
 
-const CoursesDetailsSidebar = () => {
+const CoursesDetailsSidebar = (currentCourseId) => {
     const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
     const router = useRouter();
 
     /**Get couse by id */
+    const [courseId, setCourseId] = useState(parseInt(currentCourseId.currentCourseId));
     const [course, setCourse] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -34,7 +35,7 @@ const CoursesDetailsSidebar = () => {
              * 1. Get course by id from REDUX store
              * 2. Get course by id from API
              */
-            const response = await axios.get(API_URL +'courses/getById?course_id=2');
+            const response = await axios.get(API_URL +`courses/getById?course_id=${courseId}`);
             console.log("data",response.data);
             setCourse(response.data);
             setLoading(false);

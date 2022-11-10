@@ -56,6 +56,15 @@ const CoursesGrid01 = () => {
 
     //Function to send to another page when the user clicks on the course
 
+    const seeIndividualCourse = (item) => {
+        router.push({
+            pathname: "/single-courses-1",
+            asPath: "/single-courses-1",
+            query: {
+                idCourse: item.course_id,
+            }
+        });
+    };
         
     return (
         <React.Fragment>
@@ -90,13 +99,16 @@ const CoursesGrid01 = () => {
                     <div className="row">
                          {courses.map((course, id) => {
                         return  <div className="col-lg-4 col-md-6" key={id}>
-                            <div className="single-courses-box">
+                            <div onClick={() => seeIndividualCourse(course)} className="single-courses-box">
                                 <div className="courses-image">
-                                    <Link href="/single-courses-1">
+                                    <a className="d-block image">
+                                            <img src={course.image} alt="image" />
+                                        </a>
+                                    {/* <Link href="/single-courses-1">
                                         <a className="d-block image">
                                             <img src={course.image} alt="image" />
                                         </a>
-                                    </Link>
+                                    </Link> */}
                                     {/* <a href="#" className="fav">
                                         <i className="flaticon-heart"></i>
                                     </a> */}

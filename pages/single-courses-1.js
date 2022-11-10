@@ -7,12 +7,14 @@ import Footer from '../components/_App/Footer';
 import { useEffect, useState } from 'react';
 import { getCourseById } from '../pages/api/Courses/courses';
 import { resetIdCounter, Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { useRouter } from 'next/router';
 resetIdCounter();
 import axios from 'axios';
 
 const SingleCourses = () => {
     const API_URL = "https://oh6s1ltanb.execute-api.us-east-1.amazonaws.com/dev/";
-
+    const router = useRouter();
+    const [cursoActual, setCursoActual] = useState(router.query.idCourse);
     /**Get couse by id */
     const [course, setCourse] = useState({});
     const [loading, setLoading] = useState(true);
@@ -31,7 +33,7 @@ const SingleCourses = () => {
              * 1. Get course by id from REDUX store
              * 2. Get course by id from API
              */
-            const response = await axios.get(API_URL +'courses/getById?course_id=2');
+            const response = await axios.get(API_URL +`courses/getById?course_id=${cursoActual}`);
             console.log("data",response.data);
             setCourse(response.data);
             setLoading(false);
@@ -158,7 +160,7 @@ const SingleCourses = () => {
                         </div>
 
                         <div className="col-lg-4 col-md-12">
-                            <CoursesDetailsSidebar />
+                            <CoursesDetailsSidebar currentCourseId={cursoActual} />
                         </div>
                     </div>
                 </div>
